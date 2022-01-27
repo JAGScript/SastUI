@@ -1,0 +1,745 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SASTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBL_CABECERA_FICHA">
+          <Key>
+            <PropertyRef Name="cf_id" />
+          </Key>
+          <Property Name="cf_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cl_id" Type="int" Nullable="false" />
+          <Property Name="us_id" Type="int" Nullable="false" />
+          <Property Name="cf_fecha" Type="datetime" Nullable="false" />
+          <Property Name="cf_codigo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="cf_estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_CLIENTE">
+          <Key>
+            <PropertyRef Name="cl_id" />
+          </Key>
+          <Property Name="cl_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cl_identificacion" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="cl_nombre" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="cl_correo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cl_estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_DETALLE_FICHA">
+          <Key>
+            <PropertyRef Name="cf_id" />
+          </Key>
+          <Property Name="df_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cf_id" Type="int" Nullable="false" />
+          <Property Name="eq_id" Type="int" Nullable="false" />
+          <Property Name="df_observaciones" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="df_proceso" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="df_estado" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_EQUIPO">
+          <Key>
+            <PropertyRef Name="eq_id" />
+          </Key>
+          <Property Name="eq_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tp_id" Type="int" Nullable="false" />
+          <Property Name="ma_id" Type="int" Nullable="false" />
+          <Property Name="mo_id" Type="int" Nullable="false" />
+          <Property Name="eq_serie" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="eq_so" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="eq_cartacteristicas" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="eq_observaciones" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="eq_estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_MARCA">
+          <Key>
+            <PropertyRef Name="ma_id" />
+          </Key>
+          <Property Name="ma_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ma_descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ma_estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_MODELO">
+          <Key>
+            <PropertyRef Name="mo_id" />
+          </Key>
+          <Property Name="mo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mo_descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="mo_estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_PERFIL">
+          <Key>
+            <PropertyRef Name="pe_id" />
+          </Key>
+          <Property Name="pe_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pe_nombre" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="pe_estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_TELEFONO">
+          <Key>
+            <PropertyRef Name="te_id" />
+          </Key>
+          <Property Name="te_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tt_id" Type="int" Nullable="false" />
+          <Property Name="cl_id" Type="int" Nullable="false" />
+          <Property Name="te_numero" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="te_estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_TIPO_EQUIPO">
+          <Key>
+            <PropertyRef Name="tp_id" />
+          </Key>
+          <Property Name="tp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tp_descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tp_estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_TIPO_TELEFONO">
+          <Key>
+            <PropertyRef Name="tt_id" />
+          </Key>
+          <Property Name="tt_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tt_descripcion" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="tt_estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_USUARIO">
+          <Key>
+            <PropertyRef Name="us_id" />
+          </Key>
+          <Property Name="us_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pe_id" Type="int" Nullable="false" />
+          <Property Name="us_login" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="us_pass" Type="varchar" MaxLength="300" />
+          <Property Name="us_nombre" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="us_correo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="us_identificacion" Type="varchar" MaxLength="10" />
+          <Property Name="us_estado" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CabeceraFicha_Cliente">
+          <End Role="TBL_CLIENTE" Type="Self.TBL_CLIENTE" Multiplicity="1" />
+          <End Role="TBL_CABECERA_FICHA" Type="Self.TBL_CABECERA_FICHA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CLIENTE">
+              <PropertyRef Name="cl_id" />
+            </Principal>
+            <Dependent Role="TBL_CABECERA_FICHA">
+              <PropertyRef Name="cl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CabeceraFicha_Usuario">
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="1" />
+          <End Role="TBL_CABECERA_FICHA" Type="Self.TBL_CABECERA_FICHA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_USUARIO">
+              <PropertyRef Name="us_id" />
+            </Principal>
+            <Dependent Role="TBL_CABECERA_FICHA">
+              <PropertyRef Name="us_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleFicha_CabeceraFicha">
+          <End Role="TBL_CABECERA_FICHA" Type="Self.TBL_CABECERA_FICHA" Multiplicity="1" />
+          <End Role="TBL_DETALLE_FICHA" Type="Self.TBL_DETALLE_FICHA" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CABECERA_FICHA">
+              <PropertyRef Name="cf_id" />
+            </Principal>
+            <Dependent Role="TBL_DETALLE_FICHA">
+              <PropertyRef Name="cf_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleFicha_Equipo">
+          <End Role="TBL_EQUIPO" Type="Self.TBL_EQUIPO" Multiplicity="1" />
+          <End Role="TBL_DETALLE_FICHA" Type="Self.TBL_DETALLE_FICHA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_EQUIPO">
+              <PropertyRef Name="eq_id" />
+            </Principal>
+            <Dependent Role="TBL_DETALLE_FICHA">
+              <PropertyRef Name="eq_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipo_Marca">
+          <End Role="TBL_MARCA" Type="Self.TBL_MARCA" Multiplicity="1" />
+          <End Role="TBL_EQUIPO" Type="Self.TBL_EQUIPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MARCA">
+              <PropertyRef Name="ma_id" />
+            </Principal>
+            <Dependent Role="TBL_EQUIPO">
+              <PropertyRef Name="ma_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipo_Modelo">
+          <End Role="TBL_MODELO" Type="Self.TBL_MODELO" Multiplicity="1" />
+          <End Role="TBL_EQUIPO" Type="Self.TBL_EQUIPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MODELO">
+              <PropertyRef Name="mo_id" />
+            </Principal>
+            <Dependent Role="TBL_EQUIPO">
+              <PropertyRef Name="mo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipo_TipoEquipo">
+          <End Role="TBL_TIPO_EQUIPO" Type="Self.TBL_TIPO_EQUIPO" Multiplicity="1" />
+          <End Role="TBL_EQUIPO" Type="Self.TBL_EQUIPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_TIPO_EQUIPO">
+              <PropertyRef Name="tp_id" />
+            </Principal>
+            <Dependent Role="TBL_EQUIPO">
+              <PropertyRef Name="tp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Telefono_Cliente">
+          <End Role="TBL_CLIENTE" Type="Self.TBL_CLIENTE" Multiplicity="1" />
+          <End Role="TBL_TELEFONO" Type="Self.TBL_TELEFONO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CLIENTE">
+              <PropertyRef Name="cl_id" />
+            </Principal>
+            <Dependent Role="TBL_TELEFONO">
+              <PropertyRef Name="cl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Telefono_TipoTelefono">
+          <End Role="TBL_TIPO_TELEFONO" Type="Self.TBL_TIPO_TELEFONO" Multiplicity="1" />
+          <End Role="TBL_TELEFONO" Type="Self.TBL_TELEFONO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_TIPO_TELEFONO">
+              <PropertyRef Name="tt_id" />
+            </Principal>
+            <Dependent Role="TBL_TELEFONO">
+              <PropertyRef Name="tt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Perfil">
+          <End Role="TBL_PERFIL" Type="Self.TBL_PERFIL" Multiplicity="1" />
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PERFIL">
+              <PropertyRef Name="pe_id" />
+            </Principal>
+            <Dependent Role="TBL_USUARIO">
+              <PropertyRef Name="pe_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SASTModelStoreContainer">
+          <EntitySet Name="TBL_CABECERA_FICHA" EntityType="Self.TBL_CABECERA_FICHA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_CLIENTE" EntityType="Self.TBL_CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_DETALLE_FICHA" EntityType="Self.TBL_DETALLE_FICHA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_EQUIPO" EntityType="Self.TBL_EQUIPO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_MARCA" EntityType="Self.TBL_MARCA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_MODELO" EntityType="Self.TBL_MODELO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PERFIL" EntityType="Self.TBL_PERFIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_TELEFONO" EntityType="Self.TBL_TELEFONO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_TIPO_EQUIPO" EntityType="Self.TBL_TIPO_EQUIPO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_TIPO_TELEFONO" EntityType="Self.TBL_TIPO_TELEFONO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_USUARIO" EntityType="Self.TBL_USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CabeceraFicha_Cliente" Association="Self.FK_CabeceraFicha_Cliente">
+            <End Role="TBL_CLIENTE" EntitySet="TBL_CLIENTE" />
+            <End Role="TBL_CABECERA_FICHA" EntitySet="TBL_CABECERA_FICHA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CabeceraFicha_Usuario" Association="Self.FK_CabeceraFicha_Usuario">
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+            <End Role="TBL_CABECERA_FICHA" EntitySet="TBL_CABECERA_FICHA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleFicha_CabeceraFicha" Association="Self.FK_DetalleFicha_CabeceraFicha">
+            <End Role="TBL_CABECERA_FICHA" EntitySet="TBL_CABECERA_FICHA" />
+            <End Role="TBL_DETALLE_FICHA" EntitySet="TBL_DETALLE_FICHA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleFicha_Equipo" Association="Self.FK_DetalleFicha_Equipo">
+            <End Role="TBL_EQUIPO" EntitySet="TBL_EQUIPO" />
+            <End Role="TBL_DETALLE_FICHA" EntitySet="TBL_DETALLE_FICHA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_Marca" Association="Self.FK_Equipo_Marca">
+            <End Role="TBL_MARCA" EntitySet="TBL_MARCA" />
+            <End Role="TBL_EQUIPO" EntitySet="TBL_EQUIPO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_Modelo" Association="Self.FK_Equipo_Modelo">
+            <End Role="TBL_MODELO" EntitySet="TBL_MODELO" />
+            <End Role="TBL_EQUIPO" EntitySet="TBL_EQUIPO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_TipoEquipo" Association="Self.FK_Equipo_TipoEquipo">
+            <End Role="TBL_TIPO_EQUIPO" EntitySet="TBL_TIPO_EQUIPO" />
+            <End Role="TBL_EQUIPO" EntitySet="TBL_EQUIPO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Telefono_Cliente" Association="Self.FK_Telefono_Cliente">
+            <End Role="TBL_CLIENTE" EntitySet="TBL_CLIENTE" />
+            <End Role="TBL_TELEFONO" EntitySet="TBL_TELEFONO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Telefono_TipoTelefono" Association="Self.FK_Telefono_TipoTelefono">
+            <End Role="TBL_TIPO_TELEFONO" EntitySet="TBL_TIPO_TELEFONO" />
+            <End Role="TBL_TELEFONO" EntitySet="TBL_TELEFONO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Perfil" Association="Self.FK_Usuario_Perfil">
+            <End Role="TBL_PERFIL" EntitySet="TBL_PERFIL" />
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SASTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBL_CABECERA_FICHA">
+          <Key>
+            <PropertyRef Name="cf_id" />
+          </Key>
+          <Property Name="cf_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cl_id" Type="Int32" Nullable="false" />
+          <Property Name="us_id" Type="Int32" Nullable="false" />
+          <Property Name="cf_fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cf_codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cf_estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_CLIENTE" Relationship="Self.FK_CabeceraFicha_Cliente" FromRole="TBL_CABECERA_FICHA" ToRole="TBL_CLIENTE" />
+          <NavigationProperty Name="TBL_USUARIO" Relationship="Self.FK_CabeceraFicha_Usuario" FromRole="TBL_CABECERA_FICHA" ToRole="TBL_USUARIO" />
+          <NavigationProperty Name="TBL_DETALLE_FICHA" Relationship="Self.FK_DetalleFicha_CabeceraFicha" FromRole="TBL_CABECERA_FICHA" ToRole="TBL_DETALLE_FICHA" />
+        </EntityType>
+        <EntityType Name="TBL_CLIENTE">
+          <Key>
+            <PropertyRef Name="cl_id" />
+          </Key>
+          <Property Name="cl_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cl_identificacion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cl_nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cl_correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cl_estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_CABECERA_FICHA" Relationship="Self.FK_CabeceraFicha_Cliente" FromRole="TBL_CLIENTE" ToRole="TBL_CABECERA_FICHA" />
+          <NavigationProperty Name="TBL_TELEFONO" Relationship="Self.FK_Telefono_Cliente" FromRole="TBL_CLIENTE" ToRole="TBL_TELEFONO" />
+        </EntityType>
+        <EntityType Name="TBL_DETALLE_FICHA">
+          <Key>
+            <PropertyRef Name="cf_id" />
+          </Key>
+          <Property Name="df_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cf_id" Type="Int32" Nullable="false" />
+          <Property Name="eq_id" Type="Int32" Nullable="false" />
+          <Property Name="df_observaciones" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="df_proceso" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="df_estado" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TBL_CABECERA_FICHA" Relationship="Self.FK_DetalleFicha_CabeceraFicha" FromRole="TBL_DETALLE_FICHA" ToRole="TBL_CABECERA_FICHA" />
+          <NavigationProperty Name="TBL_EQUIPO" Relationship="Self.FK_DetalleFicha_Equipo" FromRole="TBL_DETALLE_FICHA" ToRole="TBL_EQUIPO" />
+        </EntityType>
+        <EntityType Name="TBL_EQUIPO">
+          <Key>
+            <PropertyRef Name="eq_id" />
+          </Key>
+          <Property Name="eq_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tp_id" Type="Int32" Nullable="false" />
+          <Property Name="ma_id" Type="Int32" Nullable="false" />
+          <Property Name="mo_id" Type="Int32" Nullable="false" />
+          <Property Name="eq_serie" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="eq_so" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="eq_cartacteristicas" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="eq_observaciones" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="eq_estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_DETALLE_FICHA" Relationship="Self.FK_DetalleFicha_Equipo" FromRole="TBL_EQUIPO" ToRole="TBL_DETALLE_FICHA" />
+          <NavigationProperty Name="TBL_MARCA" Relationship="Self.FK_Equipo_Marca" FromRole="TBL_EQUIPO" ToRole="TBL_MARCA" />
+          <NavigationProperty Name="TBL_MODELO" Relationship="Self.FK_Equipo_Modelo" FromRole="TBL_EQUIPO" ToRole="TBL_MODELO" />
+          <NavigationProperty Name="TBL_TIPO_EQUIPO" Relationship="Self.FK_Equipo_TipoEquipo" FromRole="TBL_EQUIPO" ToRole="TBL_TIPO_EQUIPO" />
+        </EntityType>
+        <EntityType Name="TBL_MARCA">
+          <Key>
+            <PropertyRef Name="ma_id" />
+          </Key>
+          <Property Name="ma_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ma_descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ma_estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_EQUIPO" Relationship="Self.FK_Equipo_Marca" FromRole="TBL_MARCA" ToRole="TBL_EQUIPO" />
+        </EntityType>
+        <EntityType Name="TBL_MODELO">
+          <Key>
+            <PropertyRef Name="mo_id" />
+          </Key>
+          <Property Name="mo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mo_descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mo_estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_EQUIPO" Relationship="Self.FK_Equipo_Modelo" FromRole="TBL_MODELO" ToRole="TBL_EQUIPO" />
+        </EntityType>
+        <EntityType Name="TBL_PERFIL">
+          <Key>
+            <PropertyRef Name="pe_id" />
+          </Key>
+          <Property Name="pe_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pe_nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TBL_USUARIO" Relationship="Self.FK_Usuario_Perfil" FromRole="TBL_PERFIL" ToRole="TBL_USUARIO" />
+          <Property Name="pe_estado" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_TELEFONO">
+          <Key>
+            <PropertyRef Name="te_id" />
+          </Key>
+          <Property Name="te_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tt_id" Type="Int32" Nullable="false" />
+          <Property Name="cl_id" Type="Int32" Nullable="false" />
+          <Property Name="te_numero" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="te_estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_CLIENTE" Relationship="Self.FK_Telefono_Cliente" FromRole="TBL_TELEFONO" ToRole="TBL_CLIENTE" />
+          <NavigationProperty Name="TBL_TIPO_TELEFONO" Relationship="Self.FK_Telefono_TipoTelefono" FromRole="TBL_TELEFONO" ToRole="TBL_TIPO_TELEFONO" />
+        </EntityType>
+        <EntityType Name="TBL_TIPO_EQUIPO">
+          <Key>
+            <PropertyRef Name="tp_id" />
+          </Key>
+          <Property Name="tp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tp_descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tp_estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_EQUIPO" Relationship="Self.FK_Equipo_TipoEquipo" FromRole="TBL_TIPO_EQUIPO" ToRole="TBL_EQUIPO" />
+        </EntityType>
+        <EntityType Name="TBL_TIPO_TELEFONO">
+          <Key>
+            <PropertyRef Name="tt_id" />
+          </Key>
+          <Property Name="tt_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tt_descripcion" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tt_estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_TELEFONO" Relationship="Self.FK_Telefono_TipoTelefono" FromRole="TBL_TIPO_TELEFONO" ToRole="TBL_TELEFONO" />
+        </EntityType>
+        <EntityType Name="TBL_USUARIO">
+          <Key>
+            <PropertyRef Name="us_id" />
+          </Key>
+          <Property Name="us_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pe_id" Type="Int32" Nullable="false" />
+          <Property Name="us_login" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="us_pass" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="us_nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="us_correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="us_identificacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="us_estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_CABECERA_FICHA" Relationship="Self.FK_CabeceraFicha_Usuario" FromRole="TBL_USUARIO" ToRole="TBL_CABECERA_FICHA" />
+          <NavigationProperty Name="TBL_PERFIL" Relationship="Self.FK_Usuario_Perfil" FromRole="TBL_USUARIO" ToRole="TBL_PERFIL" />
+        </EntityType>
+        <Association Name="FK_CabeceraFicha_Cliente">
+          <End Role="TBL_CLIENTE" Type="Self.TBL_CLIENTE" Multiplicity="1" />
+          <End Role="TBL_CABECERA_FICHA" Type="Self.TBL_CABECERA_FICHA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CLIENTE">
+              <PropertyRef Name="cl_id" />
+            </Principal>
+            <Dependent Role="TBL_CABECERA_FICHA">
+              <PropertyRef Name="cl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CabeceraFicha_Usuario">
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="1" />
+          <End Role="TBL_CABECERA_FICHA" Type="Self.TBL_CABECERA_FICHA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_USUARIO">
+              <PropertyRef Name="us_id" />
+            </Principal>
+            <Dependent Role="TBL_CABECERA_FICHA">
+              <PropertyRef Name="us_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleFicha_CabeceraFicha">
+          <End Role="TBL_CABECERA_FICHA" Type="Self.TBL_CABECERA_FICHA" Multiplicity="1" />
+          <End Role="TBL_DETALLE_FICHA" Type="Self.TBL_DETALLE_FICHA" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CABECERA_FICHA">
+              <PropertyRef Name="cf_id" />
+            </Principal>
+            <Dependent Role="TBL_DETALLE_FICHA">
+              <PropertyRef Name="cf_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Telefono_Cliente">
+          <End Role="TBL_CLIENTE" Type="Self.TBL_CLIENTE" Multiplicity="1" />
+          <End Role="TBL_TELEFONO" Type="Self.TBL_TELEFONO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CLIENTE">
+              <PropertyRef Name="cl_id" />
+            </Principal>
+            <Dependent Role="TBL_TELEFONO">
+              <PropertyRef Name="cl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleFicha_Equipo">
+          <End Role="TBL_EQUIPO" Type="Self.TBL_EQUIPO" Multiplicity="1" />
+          <End Role="TBL_DETALLE_FICHA" Type="Self.TBL_DETALLE_FICHA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_EQUIPO">
+              <PropertyRef Name="eq_id" />
+            </Principal>
+            <Dependent Role="TBL_DETALLE_FICHA">
+              <PropertyRef Name="eq_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipo_Marca">
+          <End Role="TBL_MARCA" Type="Self.TBL_MARCA" Multiplicity="1" />
+          <End Role="TBL_EQUIPO" Type="Self.TBL_EQUIPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MARCA">
+              <PropertyRef Name="ma_id" />
+            </Principal>
+            <Dependent Role="TBL_EQUIPO">
+              <PropertyRef Name="ma_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipo_Modelo">
+          <End Role="TBL_MODELO" Type="Self.TBL_MODELO" Multiplicity="1" />
+          <End Role="TBL_EQUIPO" Type="Self.TBL_EQUIPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MODELO">
+              <PropertyRef Name="mo_id" />
+            </Principal>
+            <Dependent Role="TBL_EQUIPO">
+              <PropertyRef Name="mo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipo_TipoEquipo">
+          <End Role="TBL_TIPO_EQUIPO" Type="Self.TBL_TIPO_EQUIPO" Multiplicity="1" />
+          <End Role="TBL_EQUIPO" Type="Self.TBL_EQUIPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_TIPO_EQUIPO">
+              <PropertyRef Name="tp_id" />
+            </Principal>
+            <Dependent Role="TBL_EQUIPO">
+              <PropertyRef Name="tp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Perfil">
+          <End Role="TBL_PERFIL" Type="Self.TBL_PERFIL" Multiplicity="1" />
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PERFIL">
+              <PropertyRef Name="pe_id" />
+            </Principal>
+            <Dependent Role="TBL_USUARIO">
+              <PropertyRef Name="pe_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Telefono_TipoTelefono">
+          <End Role="TBL_TIPO_TELEFONO" Type="Self.TBL_TIPO_TELEFONO" Multiplicity="1" />
+          <End Role="TBL_TELEFONO" Type="Self.TBL_TELEFONO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_TIPO_TELEFONO">
+              <PropertyRef Name="tt_id" />
+            </Principal>
+            <Dependent Role="TBL_TELEFONO">
+              <PropertyRef Name="tt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SASTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBL_CABECERA_FICHA" EntityType="Self.TBL_CABECERA_FICHA" />
+          <EntitySet Name="TBL_CLIENTE" EntityType="Self.TBL_CLIENTE" />
+          <EntitySet Name="TBL_DETALLE_FICHA" EntityType="Self.TBL_DETALLE_FICHA" />
+          <EntitySet Name="TBL_EQUIPO" EntityType="Self.TBL_EQUIPO" />
+          <EntitySet Name="TBL_MARCA" EntityType="Self.TBL_MARCA" />
+          <EntitySet Name="TBL_MODELO" EntityType="Self.TBL_MODELO" />
+          <EntitySet Name="TBL_PERFIL" EntityType="Self.TBL_PERFIL" />
+          <EntitySet Name="TBL_TELEFONO" EntityType="Self.TBL_TELEFONO" />
+          <EntitySet Name="TBL_TIPO_EQUIPO" EntityType="Self.TBL_TIPO_EQUIPO" />
+          <EntitySet Name="TBL_TIPO_TELEFONO" EntityType="Self.TBL_TIPO_TELEFONO" />
+          <EntitySet Name="TBL_USUARIO" EntityType="Self.TBL_USUARIO" />
+          <AssociationSet Name="FK_CabeceraFicha_Cliente" Association="Self.FK_CabeceraFicha_Cliente">
+            <End Role="TBL_CLIENTE" EntitySet="TBL_CLIENTE" />
+            <End Role="TBL_CABECERA_FICHA" EntitySet="TBL_CABECERA_FICHA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CabeceraFicha_Usuario" Association="Self.FK_CabeceraFicha_Usuario">
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+            <End Role="TBL_CABECERA_FICHA" EntitySet="TBL_CABECERA_FICHA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleFicha_CabeceraFicha" Association="Self.FK_DetalleFicha_CabeceraFicha">
+            <End Role="TBL_CABECERA_FICHA" EntitySet="TBL_CABECERA_FICHA" />
+            <End Role="TBL_DETALLE_FICHA" EntitySet="TBL_DETALLE_FICHA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Telefono_Cliente" Association="Self.FK_Telefono_Cliente">
+            <End Role="TBL_CLIENTE" EntitySet="TBL_CLIENTE" />
+            <End Role="TBL_TELEFONO" EntitySet="TBL_TELEFONO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleFicha_Equipo" Association="Self.FK_DetalleFicha_Equipo">
+            <End Role="TBL_EQUIPO" EntitySet="TBL_EQUIPO" />
+            <End Role="TBL_DETALLE_FICHA" EntitySet="TBL_DETALLE_FICHA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_Marca" Association="Self.FK_Equipo_Marca">
+            <End Role="TBL_MARCA" EntitySet="TBL_MARCA" />
+            <End Role="TBL_EQUIPO" EntitySet="TBL_EQUIPO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_Modelo" Association="Self.FK_Equipo_Modelo">
+            <End Role="TBL_MODELO" EntitySet="TBL_MODELO" />
+            <End Role="TBL_EQUIPO" EntitySet="TBL_EQUIPO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_TipoEquipo" Association="Self.FK_Equipo_TipoEquipo">
+            <End Role="TBL_TIPO_EQUIPO" EntitySet="TBL_TIPO_EQUIPO" />
+            <End Role="TBL_EQUIPO" EntitySet="TBL_EQUIPO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Perfil" Association="Self.FK_Usuario_Perfil">
+            <End Role="TBL_PERFIL" EntitySet="TBL_PERFIL" />
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Telefono_TipoTelefono" Association="Self.FK_Telefono_TipoTelefono">
+            <End Role="TBL_TIPO_TELEFONO" EntitySet="TBL_TIPO_TELEFONO" />
+            <End Role="TBL_TELEFONO" EntitySet="TBL_TELEFONO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SASTModelStoreContainer" CdmEntityContainer="SASTEntities">
+          <EntitySetMapping Name="TBL_CABECERA_FICHA">
+            <EntityTypeMapping TypeName="SASTModel.TBL_CABECERA_FICHA">
+              <MappingFragment StoreEntitySet="TBL_CABECERA_FICHA">
+                <ScalarProperty Name="cf_id" ColumnName="cf_id" />
+                <ScalarProperty Name="cl_id" ColumnName="cl_id" />
+                <ScalarProperty Name="us_id" ColumnName="us_id" />
+                <ScalarProperty Name="cf_fecha" ColumnName="cf_fecha" />
+                <ScalarProperty Name="cf_codigo" ColumnName="cf_codigo" />
+                <ScalarProperty Name="cf_estado" ColumnName="cf_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_CLIENTE">
+            <EntityTypeMapping TypeName="SASTModel.TBL_CLIENTE">
+              <MappingFragment StoreEntitySet="TBL_CLIENTE">
+                <ScalarProperty Name="cl_id" ColumnName="cl_id" />
+                <ScalarProperty Name="cl_identificacion" ColumnName="cl_identificacion" />
+                <ScalarProperty Name="cl_nombre" ColumnName="cl_nombre" />
+                <ScalarProperty Name="cl_correo" ColumnName="cl_correo" />
+                <ScalarProperty Name="cl_estado" ColumnName="cl_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DETALLE_FICHA">
+            <EntityTypeMapping TypeName="SASTModel.TBL_DETALLE_FICHA">
+              <MappingFragment StoreEntitySet="TBL_DETALLE_FICHA">
+                <ScalarProperty Name="df_id" ColumnName="df_id" />
+                <ScalarProperty Name="cf_id" ColumnName="cf_id" />
+                <ScalarProperty Name="eq_id" ColumnName="eq_id" />
+                <ScalarProperty Name="df_observaciones" ColumnName="df_observaciones" />
+                <ScalarProperty Name="df_proceso" ColumnName="df_proceso" />
+                <ScalarProperty Name="df_estado" ColumnName="df_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_EQUIPO">
+            <EntityTypeMapping TypeName="SASTModel.TBL_EQUIPO">
+              <MappingFragment StoreEntitySet="TBL_EQUIPO">
+                <ScalarProperty Name="eq_id" ColumnName="eq_id" />
+                <ScalarProperty Name="tp_id" ColumnName="tp_id" />
+                <ScalarProperty Name="ma_id" ColumnName="ma_id" />
+                <ScalarProperty Name="mo_id" ColumnName="mo_id" />
+                <ScalarProperty Name="eq_serie" ColumnName="eq_serie" />
+                <ScalarProperty Name="eq_so" ColumnName="eq_so" />
+                <ScalarProperty Name="eq_cartacteristicas" ColumnName="eq_cartacteristicas" />
+                <ScalarProperty Name="eq_observaciones" ColumnName="eq_observaciones" />
+                <ScalarProperty Name="eq_estado" ColumnName="eq_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_MARCA">
+            <EntityTypeMapping TypeName="SASTModel.TBL_MARCA">
+              <MappingFragment StoreEntitySet="TBL_MARCA">
+                <ScalarProperty Name="ma_id" ColumnName="ma_id" />
+                <ScalarProperty Name="ma_descripcion" ColumnName="ma_descripcion" />
+                <ScalarProperty Name="ma_estado" ColumnName="ma_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_MODELO">
+            <EntityTypeMapping TypeName="SASTModel.TBL_MODELO">
+              <MappingFragment StoreEntitySet="TBL_MODELO">
+                <ScalarProperty Name="mo_id" ColumnName="mo_id" />
+                <ScalarProperty Name="mo_descripcion" ColumnName="mo_descripcion" />
+                <ScalarProperty Name="mo_estado" ColumnName="mo_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PERFIL">
+            <EntityTypeMapping TypeName="SASTModel.TBL_PERFIL">
+              <MappingFragment StoreEntitySet="TBL_PERFIL">
+                <ScalarProperty Name="pe_estado" ColumnName="pe_estado" />
+                <ScalarProperty Name="pe_id" ColumnName="pe_id" />
+                <ScalarProperty Name="pe_nombre" ColumnName="pe_nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_TELEFONO">
+            <EntityTypeMapping TypeName="SASTModel.TBL_TELEFONO">
+              <MappingFragment StoreEntitySet="TBL_TELEFONO">
+                <ScalarProperty Name="te_id" ColumnName="te_id" />
+                <ScalarProperty Name="tt_id" ColumnName="tt_id" />
+                <ScalarProperty Name="cl_id" ColumnName="cl_id" />
+                <ScalarProperty Name="te_numero" ColumnName="te_numero" />
+                <ScalarProperty Name="te_estado" ColumnName="te_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_TIPO_EQUIPO">
+            <EntityTypeMapping TypeName="SASTModel.TBL_TIPO_EQUIPO">
+              <MappingFragment StoreEntitySet="TBL_TIPO_EQUIPO">
+                <ScalarProperty Name="tp_id" ColumnName="tp_id" />
+                <ScalarProperty Name="tp_descripcion" ColumnName="tp_descripcion" />
+                <ScalarProperty Name="tp_estado" ColumnName="tp_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_TIPO_TELEFONO">
+            <EntityTypeMapping TypeName="SASTModel.TBL_TIPO_TELEFONO">
+              <MappingFragment StoreEntitySet="TBL_TIPO_TELEFONO">
+                <ScalarProperty Name="tt_id" ColumnName="tt_id" />
+                <ScalarProperty Name="tt_descripcion" ColumnName="tt_descripcion" />
+                <ScalarProperty Name="tt_estado" ColumnName="tt_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_USUARIO">
+            <EntityTypeMapping TypeName="SASTModel.TBL_USUARIO">
+              <MappingFragment StoreEntitySet="TBL_USUARIO">
+                <ScalarProperty Name="us_id" ColumnName="us_id" />
+                <ScalarProperty Name="pe_id" ColumnName="pe_id" />
+                <ScalarProperty Name="us_login" ColumnName="us_login" />
+                <ScalarProperty Name="us_pass" ColumnName="us_pass" />
+                <ScalarProperty Name="us_nombre" ColumnName="us_nombre" />
+                <ScalarProperty Name="us_correo" ColumnName="us_correo" />
+                <ScalarProperty Name="us_identificacion" ColumnName="us_identificacion" />
+                <ScalarProperty Name="us_estado" ColumnName="us_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b1b65e345cf94c48a7d31eaf770d7a3e" Name="Diagram1">
+        <EntityTypeShape EntityType="SASTModel.TBL_CABECERA_FICHA" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SASTModel.TBL_CLIENTE" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SASTModel.TBL_DETALLE_FICHA" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SASTModel.TBL_EQUIPO" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SASTModel.TBL_MARCA" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SASTModel.TBL_MODELO" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SASTModel.TBL_PERFIL" Width="1.5" PointX="1.5" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="SASTModel.TBL_TELEFONO" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SASTModel.TBL_TIPO_EQUIPO" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SASTModel.TBL_TIPO_TELEFONO" Width="1.5" PointX="0.75" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SASTModel.TBL_USUARIO" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+        <AssociationConnector Association="SASTModel.FK_CabeceraFicha_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="SASTModel.FK_CabeceraFicha_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SASTModel.FK_DetalleFicha_CabeceraFicha" ManuallyRouted="false" />
+        <AssociationConnector Association="SASTModel.FK_Telefono_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="SASTModel.FK_DetalleFicha_Equipo" ManuallyRouted="false" />
+        <AssociationConnector Association="SASTModel.FK_Equipo_Marca" ManuallyRouted="false" />
+        <AssociationConnector Association="SASTModel.FK_Equipo_Modelo" ManuallyRouted="false" />
+        <AssociationConnector Association="SASTModel.FK_Equipo_TipoEquipo" ManuallyRouted="false" />
+        <AssociationConnector Association="SASTModel.FK_Usuario_Perfil" ManuallyRouted="false" />
+        <AssociationConnector Association="SASTModel.FK_Telefono_TipoTelefono" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

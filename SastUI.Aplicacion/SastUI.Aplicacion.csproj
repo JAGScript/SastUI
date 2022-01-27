@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SastUI.Dominio.Modelo\SastUI.Dominio.Modelo.csproj" />
+    <ProjectReference Include="..\SastUI.Dominio.Servicios\SastUI.Dominio.Servicios.csproj" />
+    <ProjectReference Include="..\SastUI.Infraestructura.AccesoDatos\SastUI.Infraestructura.AccesoDatos.csproj" />
+    <ProjectReference Include="..\SastUI.Infraestructura.CrossCutting\SastUI.Infraestructura.CrossCutting.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+</Project>
