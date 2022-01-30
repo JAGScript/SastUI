@@ -36,6 +36,15 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlContenido = new System.Windows.Forms.Panel();
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.pctPerfiles = new System.Windows.Forms.PictureBox();
+            this.pctUsuarios = new System.Windows.Forms.PictureBox();
+            this.pctModelos = new System.Windows.Forms.PictureBox();
+            this.pctMarcas = new System.Windows.Forms.PictureBox();
+            this.pctTipoEquipo = new System.Windows.Forms.PictureBox();
+            this.pctEquipos = new System.Windows.Forms.PictureBox();
+            this.pctFicha = new System.Windows.Forms.PictureBox();
+            this.pctTipoTelefono = new System.Windows.Forms.PictureBox();
+            this.pctTelefonos = new System.Windows.Forms.PictureBox();
             this.pctClientes = new System.Windows.Forms.PictureBox();
             this.btnAbrirModelos = new System.Windows.Forms.Button();
             this.btnAbrirMarcas = new System.Windows.Forms.Button();
@@ -47,28 +56,19 @@
             this.btnAbrirTelefonos = new System.Windows.Forms.Button();
             this.btnAbrirPerfiles = new System.Windows.Forms.Button();
             this.btnAbrirUsuarios = new System.Windows.Forms.Button();
-            this.pctTelefonos = new System.Windows.Forms.PictureBox();
-            this.pctTipoTelefono = new System.Windows.Forms.PictureBox();
-            this.pctFicha = new System.Windows.Forms.PictureBox();
-            this.pctEquipos = new System.Windows.Forms.PictureBox();
-            this.pctTipoEquipo = new System.Windows.Forms.PictureBox();
-            this.pctMarcas = new System.Windows.Forms.PictureBox();
-            this.pctModelos = new System.Windows.Forms.PictureBox();
-            this.pctUsuarios = new System.Windows.Forms.PictureBox();
-            this.pctPerfiles = new System.Windows.Forms.PictureBox();
             this.pnlCabecera.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctClientes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctTelefonos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctTipoTelefono)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctFicha)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctEquipos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctTipoEquipo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctMarcas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctModelos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctPerfiles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctUsuarios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctModelos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctMarcas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctTipoEquipo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctEquipos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctFicha)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctTipoTelefono)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctTelefonos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlCabecera
@@ -88,6 +88,7 @@
             // 
             // txtIdUsuario
             // 
+            this.txtIdUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtIdUsuario.Location = new System.Drawing.Point(1267, 49);
             this.txtIdUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdUsuario.Name = "txtIdUsuario";
@@ -98,6 +99,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -112,6 +114,7 @@
             // 
             // txtNombreUsuario
             // 
+            this.txtNombreUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNombreUsuario.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombreUsuario.Location = new System.Drawing.Point(1267, 75);
             this.txtNombreUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -122,6 +125,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(1155, 78);
@@ -143,6 +147,9 @@
             // 
             // pnlContenido
             // 
+            this.pnlContenido.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlContenido.Location = new System.Drawing.Point(292, 114);
             this.pnlContenido.Margin = new System.Windows.Forms.Padding(4);
             this.pnlContenido.Name = "pnlContenido";
@@ -176,6 +183,123 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(291, 818);
             this.pnlMenu.TabIndex = 14;
+            // 
+            // pctPerfiles
+            // 
+            this.pctPerfiles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pctPerfiles.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pctPerfiles.Image = global::SastUI.UI.Windows.Properties.Resources.Perfiles;
+            this.pctPerfiles.Location = new System.Drawing.Point(8, 658);
+            this.pctPerfiles.Name = "pctPerfiles";
+            this.pctPerfiles.Size = new System.Drawing.Size(67, 67);
+            this.pctPerfiles.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctPerfiles.TabIndex = 30;
+            this.pctPerfiles.TabStop = false;
+            this.pctPerfiles.Click += new System.EventHandler(this.pctPerfiles_Click);
+            // 
+            // pctUsuarios
+            // 
+            this.pctUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pctUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pctUsuarios.Image = global::SastUI.UI.Windows.Properties.Resources.Usuarios;
+            this.pctUsuarios.Location = new System.Drawing.Point(8, 586);
+            this.pctUsuarios.Name = "pctUsuarios";
+            this.pctUsuarios.Size = new System.Drawing.Size(67, 67);
+            this.pctUsuarios.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctUsuarios.TabIndex = 29;
+            this.pctUsuarios.TabStop = false;
+            this.pctUsuarios.Click += new System.EventHandler(this.pctUsuarios_Click);
+            // 
+            // pctModelos
+            // 
+            this.pctModelos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pctModelos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pctModelos.Image = global::SastUI.UI.Windows.Properties.Resources.Tipos;
+            this.pctModelos.Location = new System.Drawing.Point(8, 514);
+            this.pctModelos.Name = "pctModelos";
+            this.pctModelos.Size = new System.Drawing.Size(67, 67);
+            this.pctModelos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctModelos.TabIndex = 28;
+            this.pctModelos.TabStop = false;
+            this.pctModelos.Click += new System.EventHandler(this.pctModelos_Click);
+            // 
+            // pctMarcas
+            // 
+            this.pctMarcas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pctMarcas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pctMarcas.Image = global::SastUI.UI.Windows.Properties.Resources.Tipos;
+            this.pctMarcas.Location = new System.Drawing.Point(8, 442);
+            this.pctMarcas.Name = "pctMarcas";
+            this.pctMarcas.Size = new System.Drawing.Size(67, 67);
+            this.pctMarcas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctMarcas.TabIndex = 27;
+            this.pctMarcas.TabStop = false;
+            this.pctMarcas.Click += new System.EventHandler(this.pctMarcas_Click);
+            // 
+            // pctTipoEquipo
+            // 
+            this.pctTipoEquipo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pctTipoEquipo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pctTipoEquipo.Image = global::SastUI.UI.Windows.Properties.Resources.Tipos;
+            this.pctTipoEquipo.Location = new System.Drawing.Point(8, 370);
+            this.pctTipoEquipo.Name = "pctTipoEquipo";
+            this.pctTipoEquipo.Size = new System.Drawing.Size(67, 67);
+            this.pctTipoEquipo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctTipoEquipo.TabIndex = 26;
+            this.pctTipoEquipo.TabStop = false;
+            this.pctTipoEquipo.Click += new System.EventHandler(this.pctTipoEquipo_Click);
+            // 
+            // pctEquipos
+            // 
+            this.pctEquipos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pctEquipos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pctEquipos.Image = global::SastUI.UI.Windows.Properties.Resources.Equipos;
+            this.pctEquipos.Location = new System.Drawing.Point(8, 298);
+            this.pctEquipos.Name = "pctEquipos";
+            this.pctEquipos.Size = new System.Drawing.Size(67, 67);
+            this.pctEquipos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctEquipos.TabIndex = 25;
+            this.pctEquipos.TabStop = false;
+            this.pctEquipos.Click += new System.EventHandler(this.pctEquipos_Click);
+            // 
+            // pctFicha
+            // 
+            this.pctFicha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pctFicha.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pctFicha.Image = global::SastUI.UI.Windows.Properties.Resources.Ficha;
+            this.pctFicha.Location = new System.Drawing.Point(8, 226);
+            this.pctFicha.Name = "pctFicha";
+            this.pctFicha.Size = new System.Drawing.Size(67, 67);
+            this.pctFicha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctFicha.TabIndex = 24;
+            this.pctFicha.TabStop = false;
+            this.pctFicha.Click += new System.EventHandler(this.pctFicha_Click);
+            // 
+            // pctTipoTelefono
+            // 
+            this.pctTipoTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pctTipoTelefono.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pctTipoTelefono.Image = global::SastUI.UI.Windows.Properties.Resources.Tipos;
+            this.pctTipoTelefono.Location = new System.Drawing.Point(8, 154);
+            this.pctTipoTelefono.Name = "pctTipoTelefono";
+            this.pctTipoTelefono.Size = new System.Drawing.Size(67, 67);
+            this.pctTipoTelefono.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctTipoTelefono.TabIndex = 23;
+            this.pctTipoTelefono.TabStop = false;
+            this.pctTipoTelefono.Click += new System.EventHandler(this.pctTipoTelefono_Click);
+            // 
+            // pctTelefonos
+            // 
+            this.pctTelefonos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pctTelefonos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pctTelefonos.Image = global::SastUI.UI.Windows.Properties.Resources.Telefonos;
+            this.pctTelefonos.Location = new System.Drawing.Point(8, 83);
+            this.pctTelefonos.Name = "pctTelefonos";
+            this.pctTelefonos.Size = new System.Drawing.Size(67, 67);
+            this.pctTelefonos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctTelefonos.TabIndex = 22;
+            this.pctTelefonos.TabStop = false;
+            this.pctTelefonos.Click += new System.EventHandler(this.pctTelefonos_Click);
             // 
             // pctClientes
             // 
@@ -340,123 +464,6 @@
             this.btnAbrirUsuarios.UseVisualStyleBackColor = true;
             this.btnAbrirUsuarios.Click += new System.EventHandler(this.btnAbrirUsuarios_Click);
             // 
-            // pctTelefonos
-            // 
-            this.pctTelefonos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pctTelefonos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pctTelefonos.Image = global::SastUI.UI.Windows.Properties.Resources.Telefonos;
-            this.pctTelefonos.Location = new System.Drawing.Point(8, 83);
-            this.pctTelefonos.Name = "pctTelefonos";
-            this.pctTelefonos.Size = new System.Drawing.Size(67, 67);
-            this.pctTelefonos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pctTelefonos.TabIndex = 22;
-            this.pctTelefonos.TabStop = false;
-            this.pctTelefonos.Click += new System.EventHandler(this.pctTelefonos_Click);
-            // 
-            // pctTipoTelefono
-            // 
-            this.pctTipoTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pctTipoTelefono.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pctTipoTelefono.Image = global::SastUI.UI.Windows.Properties.Resources.Tipos;
-            this.pctTipoTelefono.Location = new System.Drawing.Point(8, 154);
-            this.pctTipoTelefono.Name = "pctTipoTelefono";
-            this.pctTipoTelefono.Size = new System.Drawing.Size(67, 67);
-            this.pctTipoTelefono.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pctTipoTelefono.TabIndex = 23;
-            this.pctTipoTelefono.TabStop = false;
-            this.pctTipoTelefono.Click += new System.EventHandler(this.pctTipoTelefono_Click);
-            // 
-            // pctFicha
-            // 
-            this.pctFicha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pctFicha.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pctFicha.Image = global::SastUI.UI.Windows.Properties.Resources.Ficha;
-            this.pctFicha.Location = new System.Drawing.Point(8, 226);
-            this.pctFicha.Name = "pctFicha";
-            this.pctFicha.Size = new System.Drawing.Size(67, 67);
-            this.pctFicha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pctFicha.TabIndex = 24;
-            this.pctFicha.TabStop = false;
-            this.pctFicha.Click += new System.EventHandler(this.pctFicha_Click);
-            // 
-            // pctEquipos
-            // 
-            this.pctEquipos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pctEquipos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pctEquipos.Image = global::SastUI.UI.Windows.Properties.Resources.Equipos;
-            this.pctEquipos.Location = new System.Drawing.Point(8, 298);
-            this.pctEquipos.Name = "pctEquipos";
-            this.pctEquipos.Size = new System.Drawing.Size(67, 67);
-            this.pctEquipos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pctEquipos.TabIndex = 25;
-            this.pctEquipos.TabStop = false;
-            this.pctEquipos.Click += new System.EventHandler(this.pctEquipos_Click);
-            // 
-            // pctTipoEquipo
-            // 
-            this.pctTipoEquipo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pctTipoEquipo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pctTipoEquipo.Image = global::SastUI.UI.Windows.Properties.Resources.Tipos;
-            this.pctTipoEquipo.Location = new System.Drawing.Point(8, 370);
-            this.pctTipoEquipo.Name = "pctTipoEquipo";
-            this.pctTipoEquipo.Size = new System.Drawing.Size(67, 67);
-            this.pctTipoEquipo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pctTipoEquipo.TabIndex = 26;
-            this.pctTipoEquipo.TabStop = false;
-            this.pctTipoEquipo.Click += new System.EventHandler(this.pctTipoEquipo_Click);
-            // 
-            // pctMarcas
-            // 
-            this.pctMarcas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pctMarcas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pctMarcas.Image = global::SastUI.UI.Windows.Properties.Resources.Tipos;
-            this.pctMarcas.Location = new System.Drawing.Point(8, 442);
-            this.pctMarcas.Name = "pctMarcas";
-            this.pctMarcas.Size = new System.Drawing.Size(67, 67);
-            this.pctMarcas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pctMarcas.TabIndex = 27;
-            this.pctMarcas.TabStop = false;
-            this.pctMarcas.Click += new System.EventHandler(this.pctMarcas_Click);
-            // 
-            // pctModelos
-            // 
-            this.pctModelos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pctModelos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pctModelos.Image = global::SastUI.UI.Windows.Properties.Resources.Tipos;
-            this.pctModelos.Location = new System.Drawing.Point(8, 514);
-            this.pctModelos.Name = "pctModelos";
-            this.pctModelos.Size = new System.Drawing.Size(67, 67);
-            this.pctModelos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pctModelos.TabIndex = 28;
-            this.pctModelos.TabStop = false;
-            this.pctModelos.Click += new System.EventHandler(this.pctModelos_Click);
-            // 
-            // pctUsuarios
-            // 
-            this.pctUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pctUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pctUsuarios.Image = global::SastUI.UI.Windows.Properties.Resources.Usuarios;
-            this.pctUsuarios.Location = new System.Drawing.Point(8, 586);
-            this.pctUsuarios.Name = "pctUsuarios";
-            this.pctUsuarios.Size = new System.Drawing.Size(67, 67);
-            this.pctUsuarios.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pctUsuarios.TabIndex = 29;
-            this.pctUsuarios.TabStop = false;
-            this.pctUsuarios.Click += new System.EventHandler(this.pctUsuarios_Click);
-            // 
-            // pctPerfiles
-            // 
-            this.pctPerfiles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pctPerfiles.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pctPerfiles.Image = global::SastUI.UI.Windows.Properties.Resources.Perfiles;
-            this.pctPerfiles.Location = new System.Drawing.Point(8, 658);
-            this.pctPerfiles.Name = "pctPerfiles";
-            this.pctPerfiles.Size = new System.Drawing.Size(67, 67);
-            this.pctPerfiles.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pctPerfiles.TabIndex = 30;
-            this.pctPerfiles.TabStop = false;
-            this.pctPerfiles.Click += new System.EventHandler(this.pctPerfiles_Click);
-            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -479,16 +486,16 @@
             this.pnlCabecera.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pctClientes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctTelefonos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctTipoTelefono)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctFicha)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctEquipos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctTipoEquipo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctMarcas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctModelos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctUsuarios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctPerfiles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctUsuarios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctModelos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctMarcas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctTipoEquipo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctEquipos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctFicha)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctTipoTelefono)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctTelefonos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
