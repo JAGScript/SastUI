@@ -57,10 +57,47 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                 {
                     Id = item.ma_id,
                     Descripcion = item.ma_descripcion,
+                    Estado = item.ma_estado,
+                    DescripcionEstado = item.ma_estado == 1 ? "Activo" : "Inactivo"
+                });
+            }
+            return marcaView;
+        }
+
+        public IEnumerable<MarcaVistaModelo> ListarMarcasActivas()
+        {
+            var lista = new MarcaServicio().ListarMarcasActivas();
+            List<MarcaVistaModelo> marcaView = new List<MarcaVistaModelo>();
+
+            marcaView.Add(new MarcaVistaModelo
+            {
+                Id = 0,
+                Descripcion = "Marcas",
+                Estado = 1
+            });
+
+            foreach (TBL_MARCA item in lista)
+            {
+                marcaView.Add(new MarcaVistaModelo
+                {
+                    Id = item.ma_id,
+                    Descripcion = item.ma_descripcion,
                     Estado = item.ma_estado
                 });
             }
             return marcaView;
+        }
+
+        public bool DesactivarMarca(int idMarca)
+        {
+            try
+            {
+                return new MarcaServicio().DesactivarMarca(idMarca);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

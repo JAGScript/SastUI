@@ -77,5 +77,17 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
                 throw new Exception("Error: " + ex.Message);
             }
         }
+
+        public bool DesactivarEquipo(int idEquipo)
+        {
+            try
+            {
+                return equipoRepositorio.DesactivarEquipo(idEquipo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
     }
 }

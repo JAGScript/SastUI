@@ -14,8 +14,6 @@ namespace SastUI.UI.Windows.Formulario
 {
     public partial class FormPerfil : Form
     {
-        private PerfilVistaModelo perfilView;
-
         public FormPerfil(int idUsuario, string nombreUsuario)
         {
             InitializeComponent();
@@ -37,7 +35,7 @@ namespace SastUI.UI.Windows.Formulario
 
         private void btnGuardar_Click_1(object sender, EventArgs e)
         {
-            perfilView = new PerfilVistaModelo();
+            PerfilVistaModelo perfilView = new PerfilVistaModelo();
             perfilView.Nombre = txtNombre.Text.ToUpper().Trim();
             perfilView.Estado = int.Parse(cmbEstado.SelectedValue.ToString());
 

@@ -9,6 +9,8 @@ namespace SastUI.Dominio.Modelo.Abstracciones
 {
     public interface ITipoEquipoRepositorio : IBaseRepositorio<TBL_TIPO_EQUIPO>
     {
+        IEnumerable<TBL_TIPO_EQUIPO> ListarTiposActivos();
 
+        bool DesactivarTipoEquipo(int idTipo);
     }
 }

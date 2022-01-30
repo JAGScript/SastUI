@@ -77,5 +77,29 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
                 throw new Exception("Error: " + ex.Message);
             }
         }
+
+        public IEnumerable<TBL_TIPO_EQUIPO> ListarTiposActivos()
+        {
+            try
+            {
+                return tipoEquipoRepositorio.ListarTiposActivos();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
+        public bool DesactivarTipoEquipo(int idTipo)
+        {
+            try
+            {
+                return tipoEquipoRepositorio.DesactivarTipoEquipo(idTipo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
     }
 }

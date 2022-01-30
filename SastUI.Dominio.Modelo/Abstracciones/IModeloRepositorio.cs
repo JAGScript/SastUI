@@ -9,5 +9,8 @@ namespace SastUI.Dominio.Modelo.Abstracciones
 {
     public interface IModeloRepositorio : IBaseRepositorio<TBL_MODELO>
     {
+        IEnumerable<TBL_MODELO> ListarModelosActivos();
+
+        bool DesactivarModelo(int idModelo);
     }
 }

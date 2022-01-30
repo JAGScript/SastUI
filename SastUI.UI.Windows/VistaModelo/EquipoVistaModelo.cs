@@ -10,12 +10,16 @@ namespace SastUI.UI.Windows.VistaModelo
     {
         public int Id { get; set; }
         public int TipoId { get; set; }
+        public string DescripcionTipo { get; set; }
         public int MarcaId { get; set; }
+        public string DescripcionMarca { get; set; }
         public int ModeloId { get; set; }
+        public string DescripcionModelo { get; set; }
         public string Serie { get; set; }
         public string SistemaOperativo { get; set; }
         public string Caracteristicas { get; set; }
         public string Observaciones { get; set; }
         public int Estado { get; set; }
+        public string DescripcionEstado { get; set; }
     }
 }

@@ -114,7 +114,9 @@ namespace SastUI.UI.Windows.Formulario
         {
             dgvTelefonos.DataSource = new TelefonoControlador().ListarTelefonosCliente(idCliente);
             dgvTelefonos.Columns["IdTipoTelefono"].Visible = false;
+            dgvTelefonos.Columns["DescripcionTipo"].Visible = false;
             dgvTelefonos.Columns["ClienteId"].Visible = false;
+            dgvTelefonos.Columns["NombreCliente"].Visible = false;
             dgvTelefonos.Columns["Estado"].Visible = false;
         }
 

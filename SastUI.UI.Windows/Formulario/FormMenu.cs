@@ -37,31 +37,19 @@ namespace SastUI.UI.Windows.Formulario
             login.Show();
         }
 
-        private void btnAbrirUsuarios_Click(object sender, EventArgs e)
+        public void EnConstruccion()
         {
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormUsuario usuario = new FormUsuario(idUsuario, nombreUsuario);
-            usuario.TopLevel = false;
-            pnlContenido.Controls.Add(usuario);
+            FormConstruccion constr = new FormConstruccion(idUsuario, nombreUsuario);
+            constr.TopLevel = false;
+            pnlContenido.Controls.Add(constr);
             pnlContenido.Visible = true;
             pnlContenido.BringToFront();
-            usuario.Show();
+            constr.Show();
         }
 
-        private void btnAbrirPerfiles_Click(object sender, EventArgs e)
-        {
-            var idUsuario = int.Parse(txtIdUsuario.Text);
-            var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormPerfil perfil = new FormPerfil(idUsuario, nombreUsuario);
-            perfil.TopLevel = false;
-            pnlContenido.Controls.Add(perfil);
-            pnlContenido.Visible = true;
-            pnlContenido.BringToFront();
-            perfil.Show();
-        }
-
-        private void btnAbrirClientes_Click(object sender, EventArgs e)
+        public void AbrirClientes()
         {
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
@@ -73,19 +61,7 @@ namespace SastUI.UI.Windows.Formulario
             cliente.Show();
         }
 
-        private void btnAbrirTiposTelefonos_Click(object sender, EventArgs e)
-        {
-            var idUsuario = int.Parse(txtIdUsuario.Text);
-            var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormTipoTelefono tipo = new FormTipoTelefono(idUsuario, nombreUsuario);
-            tipo.TopLevel = false;
-            pnlContenido.Controls.Add(tipo);
-            pnlContenido.Visible = true;
-            pnlContenido.BringToFront();
-            tipo.Show();
-        }
-
-        private void btnAbrirTelefonos_Click(object sender, EventArgs e)
+        public void AbrirTelefonos()
         {
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
@@ -97,28 +73,188 @@ namespace SastUI.UI.Windows.Formulario
             telefono.Show();
         }
 
-        private void btnAbrirFicha_Click(object sender, EventArgs e)
+        public void AbrirTipoTelefono()
         {
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormConstruccion constr = new FormConstruccion(idUsuario, nombreUsuario);
-            constr.TopLevel = false;
-            pnlContenido.Controls.Add(constr);
+            FormTipoTelefono tipo = new FormTipoTelefono(idUsuario, nombreUsuario);
+            tipo.TopLevel = false;
+            pnlContenido.Controls.Add(tipo);
             pnlContenido.Visible = true;
             pnlContenido.BringToFront();
-            constr.Show();
+            tipo.Show();
+        }
+
+        public void AbrirEquipos()
+        {
+            var idUsuario = int.Parse(txtIdUsuario.Text);
+            var nombreUsuario = txtNombreUsuario.Text.ToString();
+            FormEquipo equipo = new FormEquipo(idUsuario, nombreUsuario);
+            equipo.TopLevel = false;
+            pnlContenido.Controls.Add(equipo);
+            pnlContenido.Visible = true;
+            pnlContenido.BringToFront();
+            equipo.Show();
+        }
+
+        public void AbrirTipoEquipo()
+        {
+            var idUsuario = int.Parse(txtIdUsuario.Text);
+            var nombreUsuario = txtNombreUsuario.Text.ToString();
+            FormTipoEquipo tipoEquipo = new FormTipoEquipo(idUsuario, nombreUsuario);
+            tipoEquipo.TopLevel = false;
+            pnlContenido.Controls.Add(tipoEquipo);
+            pnlContenido.Visible = true;
+            pnlContenido.BringToFront();
+            tipoEquipo.Show();
+        }
+
+        public void AbrirMarcas()
+        {
+            var idUsuario = int.Parse(txtIdUsuario.Text);
+            var nombreUsuario = txtNombreUsuario.Text.ToString();
+            FormMarca marca = new FormMarca(idUsuario, nombreUsuario);
+            marca.TopLevel = false;
+            pnlContenido.Controls.Add(marca);
+            pnlContenido.Visible = true;
+            pnlContenido.BringToFront();
+            marca.Show();
+        }
+
+        public void AbrirModelos()
+        {
+            var idUsuario = int.Parse(txtIdUsuario.Text);
+            var nombreUsuario = txtNombreUsuario.Text.ToString();
+            FormModelo modelo = new FormModelo(idUsuario, nombreUsuario);
+            modelo.TopLevel = false;
+            pnlContenido.Controls.Add(modelo);
+            pnlContenido.Visible = true;
+            pnlContenido.BringToFront();
+            modelo.Show();
+        }
+
+        public void AbrirUsuarios()
+        {
+            var idUsuario = int.Parse(txtIdUsuario.Text);
+            var nombreUsuario = txtNombreUsuario.Text.ToString();
+            FormUsuario usuario = new FormUsuario(idUsuario, nombreUsuario);
+            usuario.TopLevel = false;
+            pnlContenido.Controls.Add(usuario);
+            pnlContenido.Visible = true;
+            pnlContenido.BringToFront();
+            usuario.Show();
+        }
+
+        public void AbrirPerfiles()
+        {
+            var idUsuario = int.Parse(txtIdUsuario.Text);
+            var nombreUsuario = txtNombreUsuario.Text.ToString();
+            FormPerfil perfil = new FormPerfil(idUsuario, nombreUsuario);
+            perfil.TopLevel = false;
+            pnlContenido.Controls.Add(perfil);
+            pnlContenido.Visible = true;
+            pnlContenido.BringToFront();
+            perfil.Show();
+        }
+
+        private void pctClientes_Click(object sender, EventArgs e)
+        {
+            AbrirClientes();
+        }
+
+        private void btnAbrirClientes_Click(object sender, EventArgs e)
+        {
+            AbrirClientes();
+        }
+
+        private void pctTelefonos_Click(object sender, EventArgs e)
+        {
+            AbrirTelefonos();
+        }
+
+        private void btnAbrirTelefonos_Click(object sender, EventArgs e)
+        {
+            AbrirTelefonos();
+        }
+
+        private void pctTipoTelefono_Click(object sender, EventArgs e)
+        {
+            AbrirTipoTelefono();
+        }
+
+        private void btnAbrirTiposTelefonos_Click(object sender, EventArgs e)
+        {
+            AbrirTipoTelefono();
+        }
+
+        private void pctFicha_Click(object sender, EventArgs e)
+        {
+            EnConstruccion();
+        }
+
+        private void btnAbrirFicha_Click(object sender, EventArgs e)
+        {
+            EnConstruccion();
+        }
+
+        private void pctEquipos_Click(object sender, EventArgs e)
+        {
+            AbrirEquipos();
         }
 
         private void btnAbrirEquipos_Click(object sender, EventArgs e)
         {
-            var idUsuario = int.Parse(txtIdUsuario.Text);
-            var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormConstruccion constr = new FormConstruccion(idUsuario, nombreUsuario);
-            constr.TopLevel = false;
-            pnlContenido.Controls.Add(constr);
-            pnlContenido.Visible = true;
-            pnlContenido.BringToFront();
-            constr.Show();
+            AbrirEquipos();
+        }
+
+        private void pctTipoEquipo_Click(object sender, EventArgs e)
+        {
+            AbrirTipoEquipo();
+        }
+
+        private void btnAbrirTipoEquipos_Click(object sender, EventArgs e)
+        {
+            AbrirTipoEquipo();
+        }
+
+        private void pctMarcas_Click(object sender, EventArgs e)
+        {
+            AbrirMarcas();
+        }
+
+        private void btnAbrirMarcas_Click(object sender, EventArgs e)
+        {
+            AbrirMarcas();
+        }
+
+        private void pctModelos_Click(object sender, EventArgs e)
+        {
+            AbrirModelos();
+        }
+
+        private void btnAbrirModelos_Click(object sender, EventArgs e)
+        {
+            AbrirModelos();
+        }
+
+        private void pctUsuarios_Click(object sender, EventArgs e)
+        {
+            AbrirUsuarios();
+        }
+
+        private void btnAbrirUsuarios_Click(object sender, EventArgs e)
+        {
+            AbrirUsuarios();
+        }
+
+        private void pctPerfiles_Click(object sender, EventArgs e)
+        {
+            AbrirPerfiles();
+        }
+
+        private void btnAbrirPerfiles_Click(object sender, EventArgs e)
+        {
+            AbrirPerfiles();
         }
     }
 }

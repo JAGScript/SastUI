@@ -16,9 +16,9 @@ namespace SastUI.UI.Windows.ControladorAplicacion
             TBL_EQUIPO nuevoEquipo = new TBL_EQUIPO();
             try
             {
-                nuevoEquipo.TBL_TIPO_EQUIPO.tp_id = equipoView.TipoId;
-                nuevoEquipo.TBL_MARCA.ma_id = equipoView.MarcaId;
-                nuevoEquipo.TBL_MODELO.mo_id = equipoView.ModeloId;
+                nuevoEquipo.tp_id = equipoView.TipoId;
+                nuevoEquipo.ma_id = equipoView.MarcaId;
+                nuevoEquipo.mo_id = equipoView.ModeloId;
                 nuevoEquipo.eq_serie = equipoView.Serie;
                 nuevoEquipo.eq_so = equipoView.SistemaOperativo;
                 nuevoEquipo.eq_cartacteristicas = equipoView.Caracteristicas;
@@ -39,9 +39,9 @@ namespace SastUI.UI.Windows.ControladorAplicacion
             TBL_EQUIPO equipo = new TBL_EQUIPO();
             try
             {
-                equipo.TBL_TIPO_EQUIPO.tp_id = equipoView.TipoId;
-                equipo.TBL_MARCA.ma_id = equipoView.MarcaId;
-                equipo.TBL_MODELO.mo_id = equipoView.ModeloId;
+                equipo.tp_id = equipoView.TipoId;
+                equipo.ma_id = equipoView.MarcaId;
+                equipo.mo_id = equipoView.ModeloId;
                 equipo.eq_serie = equipoView.Serie;
                 equipo.eq_so = equipoView.SistemaOperativo;
                 equipo.eq_cartacteristicas = equipoView.Caracteristicas;
@@ -62,21 +62,42 @@ namespace SastUI.UI.Windows.ControladorAplicacion
             var lista = new EquipoServicio().ListaridEquipos();
             List<EquipoVistaModelo> equipoView = new List<EquipoVistaModelo>();
 
+            var tiposEquipo = new TipoEquipoServicio().ListarTipoEquipos().ToList();
+            var marcas = new MarcaServicio().ListarMarcas().ToList();
+            var modelos = new ModeloServicio().ListarModelos().ToList();
+
             foreach (TBL_EQUIPO item in lista)
             {
                 equipoView.Add(new EquipoVistaModelo
                 {
+                    Id = item.eq_id,
                     TipoId = item.tp_id,
+                    DescripcionTipo = tiposEquipo.Find(t => t.tp_id == item.tp_id).tp_descripcion,
                     MarcaId = item.ma_id,
+                    DescripcionMarca = marcas.Find(m => m.ma_id == item.ma_id).ma_descripcion,
                     ModeloId = item.mo_id,
+                    DescripcionModelo = modelos.Find(o => o.mo_id == item.mo_id).mo_descripcion,
                     Serie = item.eq_serie,
                     SistemaOperativo = item.eq_so,
                     Caracteristicas = item.eq_cartacteristicas,
                     Observaciones = item.eq_observaciones,
-                    Estado = item.eq_estado
+                    Estado = item.eq_estado,
+                    DescripcionEstado = item.eq_estado == 1 ? "Activo" : "Inactivo"
                 });
             }
             return equipoView;
+        }
+
+        public bool DesactivarEquipo(int idEquipo)
+        {
+            try
+            {
+                return new EquipoServicio().DesactivarEquipo(idEquipo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

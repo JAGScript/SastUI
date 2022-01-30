@@ -9,5 +9,6 @@ namespace SastUI.Dominio.Modelo.Abstracciones
 {
     public interface IEquipoRepositorio : IBaseRepositorio<TBL_EQUIPO>
     {
+        bool DesactivarEquipo(int idEquipo);
     }
 }

@@ -9,5 +9,8 @@ namespace SastUI.Dominio.Modelo.Abstracciones
 {
     public interface IMarcaRepositorio : IBaseRepositorio<TBL_MARCA>
     {
+        IEnumerable<TBL_MARCA> ListarMarcasActivas();
+
+        bool DesactivarMarca(int idMarca);
     }
 }

@@ -43,6 +43,7 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                 usuario.us_login = usuarioView.Login;
                 usuario.us_pass = usuarioView.Pass;
                 usuario.us_nombre = usuarioView.Nombre;
+                usuario.us_correo = usuarioView.Correo;
                 usuario.us_identificacion = usuarioView.Identificacion;
                 usuario.us_estado = usuarioView.Estado;
                 new UsuarioServicio().ModificarUsuario(usuario);

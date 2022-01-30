@@ -57,10 +57,47 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                 {
                     Id = item.mo_id,
                     Descripcion = item.mo_descripcion,
+                    Estado = item.mo_estado,
+                    DescripcionEstado = item.mo_estado == 1 ? "Activo" : "Inactivo"
+                });
+            }
+            return modeloView;
+        }
+
+        public IEnumerable<ModeloVistaModelo> ListarModelosActivos()
+        {
+            var lista = new ModeloServicio().ListarModelosActivos();
+            List<ModeloVistaModelo> modeloView = new List<ModeloVistaModelo>();
+
+            modeloView.Add(new ModeloVistaModelo
+            {
+                Id = 0,
+                Descripcion = "Modelos",
+                Estado = 1
+            });
+
+            foreach (TBL_MODELO item in lista)
+            {
+                modeloView.Add(new ModeloVistaModelo
+                {
+                    Id = item.mo_id,
+                    Descripcion = item.mo_descripcion,
                     Estado = item.mo_estado
                 });
             }
             return modeloView;
+        }
+
+        public bool DesactivarModelo(int idModelo)
+        {
+            try
+            {
+                return new ModeloServicio().DesactivarModelo(idModelo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

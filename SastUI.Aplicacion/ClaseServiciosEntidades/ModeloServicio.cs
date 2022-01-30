@@ -77,5 +77,29 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
                 throw new Exception("Error: " + ex.Message);
             }
         }
+
+        public IEnumerable<TBL_MODELO> ListarModelosActivos()
+        {
+            try
+            {
+                return modeloRepositorio.ListarModelosActivos();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
+        public bool DesactivarModelo(int idModelo)
+        {
+            try
+            {
+                return modeloRepositorio.DesactivarModelo(idModelo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
     }
 }

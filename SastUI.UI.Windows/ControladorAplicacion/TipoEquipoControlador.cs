@@ -58,10 +58,47 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                 {
                     Id = item.tp_id,
                     Descripcion = item.tp_descripcion,
-                    Estado = item.tp_estado
+                    Estado = item.tp_estado,
+                    EstadoDescripcion = item.tp_estado == 1 ? "Activo" : "Inactivo"
                 });
             }
             return tipoEquipoView;
+        }
+
+        public IEnumerable<TipoEquipoVistaModelo> ListarTiposActivos()
+        {
+            var lista = new TipoEquipoServicio().ListarTiposActivos();
+            List<TipoEquipoVistaModelo> tipoView = new List<TipoEquipoVistaModelo>();
+
+            tipoView.Add(new TipoEquipoVistaModelo
+            {
+                Id = 0,
+                Descripcion = "Tipos",
+                Estado = 1
+            });
+
+            foreach (TBL_TIPO_EQUIPO item in lista)
+            {
+                tipoView.Add(new TipoEquipoVistaModelo
+                {
+                    Id = item.tp_id,
+                    Descripcion = item.tp_descripcion,
+                    Estado = item.tp_estado
+                });
+            }
+            return tipoView;
+        }
+
+        public bool DesactivarTipoEquipo(int idTipo)
+        {
+            try
+            {
+                return new TipoEquipoServicio().DesactivarTipoEquipo(idTipo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
