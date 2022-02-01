@@ -89,5 +89,17 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
                 throw new Exception("Error: " + ex.Message);
             }
         }
+
+        public IEnumerable<TBL_EQUIPO> ListarEquiposActivos()
+        {
+            try
+            {
+                return equipoRepositorio.ListarEquiposActivos();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
     }
 }

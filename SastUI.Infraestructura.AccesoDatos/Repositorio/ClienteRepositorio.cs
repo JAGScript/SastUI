@@ -48,6 +48,24 @@ namespace SastUI.Infraestructura.AccesoDatos.Repositorio
             return cliente;
         }
 
+        public int GuardarConId (TBL_CLIENTE cliente)
+        {
+            try
+            {
+                using (var context = new SASTEntities())
+                {
+                    context.Set<TBL_CLIENTE>().Add(cliente);
+                    context.SaveChanges();
+
+                    return cliente.cl_id;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se puede eliminar el registro" + ex.Message);
+            }
+        }
+
         #region Métodos privados
 
         private TBL_CLIENTE BuscarPorCedula(string cedula)

@@ -94,5 +94,22 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                 throw new Exception(ex.Message);
             }
         }
+
+        public int GuardarConId(ClienteVistaModelo cliente)
+        {
+            try
+            {
+                TBL_CLIENTE nuevoCliente = new TBL_CLIENTE();
+                nuevoCliente.cl_identificacion = cliente.Identificacion;
+                nuevoCliente.cl_nombre = cliente.Nombre;
+                nuevoCliente.cl_correo = cliente.Correo;
+                nuevoCliente.cl_estado = cliente.Estado;
+                return new ClienteServicio().GuardarConId(nuevoCliente);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

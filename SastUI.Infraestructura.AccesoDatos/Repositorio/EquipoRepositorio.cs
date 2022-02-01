@@ -31,5 +31,24 @@ namespace SastUI.Infraestructura.AccesoDatos.Repositorio
                 throw new Exception("Error al desactviar equipo, ", ex);
             }
         }
+
+        public IEnumerable<TBL_EQUIPO> ListarEquiposActivos()
+        {
+            try
+            {
+                using (var contexto = new SASTEntities())
+                {
+                    var query = from equipo in contexto.TBL_EQUIPO
+                                where equipo.eq_estado == 1
+                                select equipo;
+
+                    return query.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al consultar equipo, ", ex);
+            }
+        }
     }
 }

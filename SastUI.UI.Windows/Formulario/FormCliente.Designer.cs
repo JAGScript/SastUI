@@ -91,7 +91,7 @@
             // 
             this.txtId.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtId.Location = new System.Drawing.Point(204, 71);
-            this.txtId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtId.Margin = new System.Windows.Forms.Padding(4);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(415, 32);
@@ -101,7 +101,7 @@
             // 
             this.txtIdentificacion.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdentificacion.Location = new System.Drawing.Point(204, 118);
-            this.txtIdentificacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIdentificacion.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdentificacion.Name = "txtIdentificacion";
             this.txtIdentificacion.Size = new System.Drawing.Size(415, 32);
             this.txtIdentificacion.TabIndex = 24;
@@ -122,7 +122,7 @@
             // 
             this.txtNombre.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.Location = new System.Drawing.Point(204, 166);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(415, 32);
             this.txtNombre.TabIndex = 26;
@@ -143,7 +143,7 @@
             // 
             this.txtCorreo.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCorreo.Location = new System.Drawing.Point(204, 215);
-            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(415, 32);
             this.txtCorreo.TabIndex = 28;
@@ -165,7 +165,7 @@
             this.cmbEstado.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Location = new System.Drawing.Point(204, 263);
-            this.cmbEstado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(415, 32);
             this.cmbEstado.TabIndex = 30;
@@ -199,7 +199,7 @@
             // 
             this.dgv_clientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_clientes.Location = new System.Drawing.Point(55, 422);
-            this.dgv_clientes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgv_clientes.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_clientes.Name = "dgv_clientes";
             this.dgv_clientes.RowHeadersWidth = 51;
             this.dgv_clientes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -210,8 +210,8 @@
             // txtNombreUsuario
             // 
             this.txtNombreUsuario.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreUsuario.Location = new System.Drawing.Point(1323, 15);
-            this.txtNombreUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombreUsuario.Location = new System.Drawing.Point(1266, 20);
+            this.txtNombreUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.ReadOnly = true;
             this.txtNombreUsuario.Size = new System.Drawing.Size(37, 32);
@@ -221,8 +221,8 @@
             // txtIdUsuario
             // 
             this.txtIdUsuario.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdUsuario.Location = new System.Drawing.Point(1277, 15);
-            this.txtIdUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIdUsuario.Location = new System.Drawing.Point(1220, 20);
+            this.txtIdUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdUsuario.Name = "txtIdUsuario";
             this.txtIdUsuario.ReadOnly = true;
             this.txtIdUsuario.Size = new System.Drawing.Size(36, 32);
@@ -239,7 +239,7 @@
             this.pnlTelefono.Controls.Add(this.txtNumero);
             this.pnlTelefono.Controls.Add(this.label6);
             this.pnlTelefono.Location = new System.Drawing.Point(475, 49);
-            this.pnlTelefono.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlTelefono.Margin = new System.Windows.Forms.Padding(4);
             this.pnlTelefono.Name = "pnlTelefono";
             this.pnlTelefono.Size = new System.Drawing.Size(497, 333);
             this.pnlTelefono.TabIndex = 40;
@@ -250,7 +250,7 @@
             this.btnCancelarTelefono.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarTelefono.Image = global::SastUI.UI.Windows.Properties.Resources.Cancelar;
             this.btnCancelarTelefono.Location = new System.Drawing.Point(271, 238);
-            this.btnCancelarTelefono.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelarTelefono.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelarTelefono.Name = "btnCancelarTelefono";
             this.btnCancelarTelefono.Size = new System.Drawing.Size(153, 52);
             this.btnCancelarTelefono.TabIndex = 31;
@@ -264,7 +264,7 @@
             this.btnGuardarTelefono.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarTelefono.Image = global::SastUI.UI.Windows.Properties.Resources.Guardar;
             this.btnGuardarTelefono.Location = new System.Drawing.Point(83, 238);
-            this.btnGuardarTelefono.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardarTelefono.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardarTelefono.Name = "btnGuardarTelefono";
             this.btnGuardarTelefono.Size = new System.Drawing.Size(153, 52);
             this.btnGuardarTelefono.TabIndex = 30;
@@ -278,7 +278,7 @@
             this.cmbTipoTelefono.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTipoTelefono.FormattingEnabled = true;
             this.cmbTipoTelefono.Location = new System.Drawing.Point(29, 156);
-            this.cmbTipoTelefono.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbTipoTelefono.Margin = new System.Windows.Forms.Padding(4);
             this.cmbTipoTelefono.Name = "cmbTipoTelefono";
             this.cmbTipoTelefono.Size = new System.Drawing.Size(436, 32);
             this.cmbTipoTelefono.TabIndex = 29;
@@ -300,7 +300,7 @@
             // 
             this.txtNumero.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumero.Location = new System.Drawing.Point(29, 71);
-            this.txtNumero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNumero.Margin = new System.Windows.Forms.Padding(4);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(436, 32);
             this.txtNumero.TabIndex = 27;
@@ -333,7 +333,7 @@
             // 
             this.dgvTelefonos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTelefonos.Location = new System.Drawing.Point(56, 666);
-            this.dgvTelefonos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvTelefonos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvTelefonos.Name = "dgvTelefonos";
             this.dgvTelefonos.RowHeadersWidth = 51;
             this.dgvTelefonos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -344,8 +344,8 @@
             // 
             this.pct_cerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pct_cerrar.Image = global::SastUI.UI.Windows.Properties.Resources.Cerrar;
-            this.pct_cerrar.Location = new System.Drawing.Point(1223, 15);
-            this.pct_cerrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pct_cerrar.Location = new System.Drawing.Point(1315, 15);
+            this.pct_cerrar.Margin = new System.Windows.Forms.Padding(4);
             this.pct_cerrar.Name = "pct_cerrar";
             this.pct_cerrar.Size = new System.Drawing.Size(47, 37);
             this.pct_cerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -358,7 +358,7 @@
             this.btn_eliminar.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_eliminar.Image = global::SastUI.UI.Windows.Properties.Resources.Eliminar;
             this.btn_eliminar.Location = new System.Drawing.Point(676, 293);
-            this.btn_eliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_eliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_eliminar.Name = "btn_eliminar";
             this.btn_eliminar.Size = new System.Drawing.Size(152, 74);
             this.btn_eliminar.TabIndex = 36;
@@ -372,7 +372,7 @@
             this.btn_limpiar.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_limpiar.Image = global::SastUI.UI.Windows.Properties.Resources.Limpiar;
             this.btn_limpiar.Location = new System.Drawing.Point(676, 212);
-            this.btn_limpiar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_limpiar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_limpiar.Name = "btn_limpiar";
             this.btn_limpiar.Size = new System.Drawing.Size(152, 74);
             this.btn_limpiar.TabIndex = 35;
@@ -386,7 +386,7 @@
             this.btnAgregarTelefono.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarTelefono.Image = global::SastUI.UI.Windows.Properties.Resources.Agregar;
             this.btnAgregarTelefono.Location = new System.Drawing.Point(676, 130);
-            this.btnAgregarTelefono.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAgregarTelefono.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregarTelefono.Name = "btnAgregarTelefono";
             this.btnAgregarTelefono.Size = new System.Drawing.Size(152, 74);
             this.btnAgregarTelefono.TabIndex = 34;
@@ -400,7 +400,7 @@
             this.btn_guardar.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_guardar.Image = global::SastUI.UI.Windows.Properties.Resources.Guardar;
             this.btn_guardar.Location = new System.Drawing.Point(676, 49);
-            this.btn_guardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_guardar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(152, 74);
             this.btn_guardar.TabIndex = 33;
@@ -439,7 +439,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlTelefono);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

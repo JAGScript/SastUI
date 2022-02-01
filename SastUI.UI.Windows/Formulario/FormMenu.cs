@@ -33,7 +33,7 @@ namespace SastUI.UI.Windows.Formulario
         {
             txtIdUsuario.Text = "";
             txtNombreUsuario.Text = "";
-            FormLogin login = new FormLogin();
+            FormIngreso login = new FormIngreso();
             login.Show();
         }
 
@@ -83,6 +83,18 @@ namespace SastUI.UI.Windows.Formulario
             pnlContenido.Visible = true;
             pnlContenido.BringToFront();
             tipo.Show();
+        }
+
+        public void AbrirFicha()
+        {
+            var idUsuario = int.Parse(txtIdUsuario.Text);
+            var nombreUsuario = txtNombreUsuario.Text.ToString();
+            FormFicha ficha = new FormFicha(idUsuario, nombreUsuario);
+            ficha.TopLevel = false;
+            pnlContenido.Controls.Add(ficha);
+            pnlContenido.Visible = true;
+            pnlContenido.BringToFront();
+            ficha.Show();
         }
 
         public void AbrirEquipos()
@@ -189,12 +201,12 @@ namespace SastUI.UI.Windows.Formulario
 
         private void pctFicha_Click(object sender, EventArgs e)
         {
-            EnConstruccion();
+            AbrirFicha();
         }
 
         private void btnAbrirFicha_Click(object sender, EventArgs e)
         {
-            EnConstruccion();
+            AbrirFicha();
         }
 
         private void pctEquipos_Click(object sender, EventArgs e)

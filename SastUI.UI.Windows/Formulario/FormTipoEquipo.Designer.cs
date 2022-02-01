@@ -149,7 +149,7 @@
             // txtNombreUsuario
             // 
             this.txtNombreUsuario.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreUsuario.Location = new System.Drawing.Point(1325, 20);
+            this.txtNombreUsuario.Location = new System.Drawing.Point(1272, 20);
             this.txtNombreUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.ReadOnly = true;
@@ -160,7 +160,7 @@
             // txtIdUsuario
             // 
             this.txtIdUsuario.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdUsuario.Location = new System.Drawing.Point(1279, 20);
+            this.txtIdUsuario.Location = new System.Drawing.Point(1226, 20);
             this.txtIdUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdUsuario.Name = "txtIdUsuario";
             this.txtIdUsuario.ReadOnly = true;
@@ -170,8 +170,9 @@
             // 
             // pctCerrar
             // 
+            this.pctCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pctCerrar.Image = global::SastUI.UI.Windows.Properties.Resources.Cerrar;
-            this.pctCerrar.Location = new System.Drawing.Point(1223, 15);
+            this.pctCerrar.Location = new System.Drawing.Point(1315, 15);
             this.pctCerrar.Name = "pctCerrar";
             this.pctCerrar.Size = new System.Drawing.Size(47, 37);
             this.pctCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

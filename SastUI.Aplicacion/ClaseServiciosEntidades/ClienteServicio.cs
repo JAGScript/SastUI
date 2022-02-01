@@ -101,5 +101,17 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
                 throw new Exception("Error: " + ex.Message);
             }
         }
+
+        public int GuardarConId(TBL_CLIENTE cliente)
+        {
+            try
+            {
+                return clienteRepositorio.GuardarConId(cliente);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
     }
 }

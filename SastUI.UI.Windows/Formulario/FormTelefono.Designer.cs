@@ -44,6 +44,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.dgvTelefonos = new System.Windows.Forms.DataGridView();
             this.pnlBusquedaCliente = new System.Windows.Forms.Panel();
+            this.btnCancelarBusqueda = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtInformacion = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -57,12 +58,11 @@
             this.txtNombreUsuario = new System.Windows.Forms.TextBox();
             this.txtIdUsuario = new System.Windows.Forms.TextBox();
             this.pnlNuevoTipo = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtNuevoTipo = new System.Windows.Forms.TextBox();
-            this.btnGuardarNuevoTipo = new System.Windows.Forms.Button();
-            this.btnCancelarNuevoTipo = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.btnCancelarBusqueda = new System.Windows.Forms.Button();
+            this.btnCancelarNuevoTipo = new System.Windows.Forms.Button();
+            this.btnGuardarNuevoTipo = new System.Windows.Forms.Button();
+            this.txtNuevoTipo = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTelefonos)).BeginInit();
             this.pnlBusquedaCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctCerrar)).BeginInit();
@@ -74,9 +74,10 @@
             this.label1.AutoSize = true;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label1.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(36, 18);
+            this.label1.Location = new System.Drawing.Point(48, 22);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 25);
+            this.label1.Size = new System.Drawing.Size(131, 33);
             this.label1.TabIndex = 21;
             this.label1.Text = "Teléfonos";
             // 
@@ -84,9 +85,10 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(90, 61);
+            this.label10.Location = new System.Drawing.Point(120, 75);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(28, 19);
+            this.label10.Size = new System.Drawing.Size(33, 24);
             this.label10.TabIndex = 22;
             this.label10.Text = "ID:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -94,28 +96,31 @@
             // txtId
             // 
             this.txtId.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtId.Location = new System.Drawing.Point(124, 58);
+            this.txtId.Location = new System.Drawing.Point(165, 71);
+            this.txtId.Margin = new System.Windows.Forms.Padding(4);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(358, 27);
+            this.txtId.Size = new System.Drawing.Size(476, 32);
             this.txtId.TabIndex = 23;
             // 
             // txtIdCliente
             // 
             this.txtIdCliente.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdCliente.Location = new System.Drawing.Point(124, 100);
+            this.txtIdCliente.Location = new System.Drawing.Point(165, 123);
+            this.txtIdCliente.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdCliente.Name = "txtIdCliente";
             this.txtIdCliente.ReadOnly = true;
-            this.txtIdCliente.Size = new System.Drawing.Size(62, 27);
+            this.txtIdCliente.Size = new System.Drawing.Size(81, 32);
             this.txtIdCliente.TabIndex = 25;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(54, 103);
+            this.label2.Location = new System.Drawing.Point(72, 127);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 19);
+            this.label2.Size = new System.Drawing.Size(78, 24);
             this.label2.TabIndex = 24;
             this.label2.Text = "Cliente:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -123,18 +128,20 @@
             // txtNombreCliente
             // 
             this.txtNombreCliente.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreCliente.Location = new System.Drawing.Point(192, 100);
+            this.txtNombreCliente.Location = new System.Drawing.Point(256, 123);
+            this.txtNombreCliente.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreCliente.Name = "txtNombreCliente";
-            this.txtNombreCliente.Size = new System.Drawing.Size(290, 27);
+            this.txtNombreCliente.Size = new System.Drawing.Size(385, 32);
             this.txtNombreCliente.TabIndex = 26;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(9, 141);
+            this.label3.Location = new System.Drawing.Point(12, 174);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 19);
+            this.label3.Size = new System.Drawing.Size(133, 24);
             this.label3.TabIndex = 27;
             this.label3.Text = "Tipo Teléfono:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -143,26 +150,29 @@
             // 
             this.cmbTipo.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTipo.FormattingEnabled = true;
-            this.cmbTipo.Location = new System.Drawing.Point(124, 138);
+            this.cmbTipo.Location = new System.Drawing.Point(165, 170);
+            this.cmbTipo.Margin = new System.Windows.Forms.Padding(4);
             this.cmbTipo.Name = "cmbTipo";
-            this.cmbTipo.Size = new System.Drawing.Size(358, 27);
+            this.cmbTipo.Size = new System.Drawing.Size(476, 32);
             this.cmbTipo.TabIndex = 28;
             // 
             // txtNumero
             // 
             this.txtNumero.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumero.Location = new System.Drawing.Point(124, 177);
+            this.txtNumero.Location = new System.Drawing.Point(165, 218);
+            this.txtNumero.Margin = new System.Windows.Forms.Padding(4);
             this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(358, 27);
+            this.txtNumero.Size = new System.Drawing.Size(476, 32);
             this.txtNumero.TabIndex = 30;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(46, 180);
+            this.label4.Location = new System.Drawing.Point(61, 222);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 19);
+            this.label4.Size = new System.Drawing.Size(88, 24);
             this.label4.TabIndex = 29;
             this.label4.Text = "Número:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -171,9 +181,10 @@
             // 
             this.cmbEstado.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Location = new System.Drawing.Point(124, 216);
+            this.cmbEstado.Location = new System.Drawing.Point(165, 266);
+            this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(358, 27);
+            this.cmbEstado.Size = new System.Drawing.Size(476, 32);
             this.cmbEstado.TabIndex = 32;
             this.cmbEstado.Text = "Estados";
             // 
@@ -181,9 +192,10 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(55, 219);
+            this.label9.Location = new System.Drawing.Point(73, 270);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 19);
+            this.label9.Size = new System.Drawing.Size(77, 24);
             this.label9.TabIndex = 31;
             this.label9.Text = "Estado:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -193,9 +205,10 @@
             this.btnAbrirBusqueda.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAbrirBusqueda.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAbrirBusqueda.Image = global::SastUI.UI.Windows.Properties.Resources.Buscar;
-            this.btnAbrirBusqueda.Location = new System.Drawing.Point(488, 94);
+            this.btnAbrirBusqueda.Location = new System.Drawing.Point(651, 116);
+            this.btnAbrirBusqueda.Margin = new System.Windows.Forms.Padding(4);
             this.btnAbrirBusqueda.Name = "btnAbrirBusqueda";
-            this.btnAbrirBusqueda.Size = new System.Drawing.Size(40, 39);
+            this.btnAbrirBusqueda.Size = new System.Drawing.Size(53, 48);
             this.btnAbrirBusqueda.TabIndex = 33;
             this.btnAbrirBusqueda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAbrirBusqueda.UseVisualStyleBackColor = true;
@@ -206,18 +219,21 @@
             this.label5.AutoSize = true;
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label5.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(36, 299);
+            this.label5.Location = new System.Drawing.Point(48, 368);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(181, 25);
+            this.label5.Size = new System.Drawing.Size(233, 33);
             this.label5.TabIndex = 34;
             this.label5.Text = "Lista de Teléfonos";
             // 
             // dgvTelefonos
             // 
             this.dgvTelefonos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTelefonos.Location = new System.Drawing.Point(41, 345);
+            this.dgvTelefonos.Location = new System.Drawing.Point(55, 425);
+            this.dgvTelefonos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvTelefonos.Name = "dgvTelefonos";
-            this.dgvTelefonos.Size = new System.Drawing.Size(941, 296);
+            this.dgvTelefonos.RowHeadersWidth = 51;
+            this.dgvTelefonos.Size = new System.Drawing.Size(1255, 364);
             this.dgvTelefonos.TabIndex = 35;
             this.dgvTelefonos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTelefonos_CellClick);
             // 
@@ -230,19 +246,35 @@
             this.pnlBusquedaCliente.Controls.Add(this.label7);
             this.pnlBusquedaCliente.Controls.Add(this.cmbTipoBusqueda);
             this.pnlBusquedaCliente.Controls.Add(this.label6);
-            this.pnlBusquedaCliente.Location = new System.Drawing.Point(245, 91);
+            this.pnlBusquedaCliente.Location = new System.Drawing.Point(327, 112);
+            this.pnlBusquedaCliente.Margin = new System.Windows.Forms.Padding(4);
             this.pnlBusquedaCliente.Name = "pnlBusquedaCliente";
-            this.pnlBusquedaCliente.Size = new System.Drawing.Size(320, 223);
+            this.pnlBusquedaCliente.Size = new System.Drawing.Size(426, 274);
             this.pnlBusquedaCliente.TabIndex = 36;
             this.pnlBusquedaCliente.Visible = false;
+            // 
+            // btnCancelarBusqueda
+            // 
+            this.btnCancelarBusqueda.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarBusqueda.Image = global::SastUI.UI.Windows.Properties.Resources.Cancelar;
+            this.btnCancelarBusqueda.Location = new System.Drawing.Point(223, 193);
+            this.btnCancelarBusqueda.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelarBusqueda.Name = "btnCancelarBusqueda";
+            this.btnCancelarBusqueda.Size = new System.Drawing.Size(176, 54);
+            this.btnCancelarBusqueda.TabIndex = 37;
+            this.btnCancelarBusqueda.Text = "Cancelar";
+            this.btnCancelarBusqueda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancelarBusqueda.UseVisualStyleBackColor = true;
+            this.btnCancelarBusqueda.Click += new System.EventHandler(this.btnCancelarBusqueda_Click);
             // 
             // btnBuscar
             // 
             this.btnBuscar.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.Image = global::SastUI.UI.Windows.Properties.Resources.Buscar;
-            this.btnBuscar.Location = new System.Drawing.Point(29, 157);
+            this.btnBuscar.Location = new System.Drawing.Point(39, 193);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(132, 44);
+            this.btnBuscar.Size = new System.Drawing.Size(176, 54);
             this.btnBuscar.TabIndex = 34;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -252,18 +284,20 @@
             // txtInformacion
             // 
             this.txtInformacion.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInformacion.Location = new System.Drawing.Point(29, 118);
+            this.txtInformacion.Location = new System.Drawing.Point(39, 145);
+            this.txtInformacion.Margin = new System.Windows.Forms.Padding(4);
             this.txtInformacion.Name = "txtInformacion";
-            this.txtInformacion.Size = new System.Drawing.Size(266, 27);
+            this.txtInformacion.Size = new System.Drawing.Size(353, 32);
             this.txtInformacion.TabIndex = 31;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(25, 96);
+            this.label7.Location = new System.Drawing.Point(33, 118);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 19);
+            this.label7.Size = new System.Drawing.Size(123, 24);
             this.label7.TabIndex = 30;
             this.label7.Text = "Información:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -272,18 +306,20 @@
             // 
             this.cmbTipoBusqueda.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTipoBusqueda.FormattingEnabled = true;
-            this.cmbTipoBusqueda.Location = new System.Drawing.Point(29, 50);
+            this.cmbTipoBusqueda.Location = new System.Drawing.Point(39, 62);
+            this.cmbTipoBusqueda.Margin = new System.Windows.Forms.Padding(4);
             this.cmbTipoBusqueda.Name = "cmbTipoBusqueda";
-            this.cmbTipoBusqueda.Size = new System.Drawing.Size(266, 27);
+            this.cmbTipoBusqueda.Size = new System.Drawing.Size(353, 32);
             this.cmbTipoBusqueda.TabIndex = 29;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(25, 28);
+            this.label6.Location = new System.Drawing.Point(33, 34);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 19);
+            this.label6.Size = new System.Drawing.Size(114, 24);
             this.label6.TabIndex = 23;
             this.label6.Text = "Buscar por:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -292,9 +328,10 @@
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Image = global::SastUI.UI.Windows.Properties.Resources.Guardar;
-            this.btnGuardar.Location = new System.Drawing.Point(558, 40);
+            this.btnGuardar.Location = new System.Drawing.Point(744, 49);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(114, 60);
+            this.btnGuardar.Size = new System.Drawing.Size(152, 74);
             this.btnGuardar.TabIndex = 37;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -305,9 +342,10 @@
             // 
             this.btnAgregarTipo.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarTipo.Image = global::SastUI.UI.Windows.Properties.Resources.Agregar;
-            this.btnAgregarTipo.Location = new System.Drawing.Point(558, 106);
+            this.btnAgregarTipo.Location = new System.Drawing.Point(744, 130);
+            this.btnAgregarTipo.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregarTipo.Name = "btnAgregarTipo";
-            this.btnAgregarTipo.Size = new System.Drawing.Size(114, 60);
+            this.btnAgregarTipo.Size = new System.Drawing.Size(152, 74);
             this.btnAgregarTipo.TabIndex = 38;
             this.btnAgregarTipo.Text = "Agregar Tipo";
             this.btnAgregarTipo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -318,9 +356,10 @@
             // 
             this.btnLimpiar.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.Image = global::SastUI.UI.Windows.Properties.Resources.Limpiar;
-            this.btnLimpiar.Location = new System.Drawing.Point(558, 172);
+            this.btnLimpiar.Location = new System.Drawing.Point(744, 212);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(114, 60);
+            this.btnLimpiar.Size = new System.Drawing.Size(152, 74);
             this.btnLimpiar.TabIndex = 39;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -331,9 +370,10 @@
             // 
             this.btnEliminar.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.Image = global::SastUI.UI.Windows.Properties.Resources.Eliminar;
-            this.btnEliminar.Location = new System.Drawing.Point(558, 238);
+            this.btnEliminar.Location = new System.Drawing.Point(744, 293);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(114, 60);
+            this.btnEliminar.Size = new System.Drawing.Size(152, 74);
             this.btnEliminar.TabIndex = 40;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -342,10 +382,12 @@
             // 
             // pctCerrar
             // 
+            this.pctCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pctCerrar.Image = global::SastUI.UI.Windows.Properties.Resources.Cerrar;
-            this.pctCerrar.Location = new System.Drawing.Point(917, 12);
+            this.pctCerrar.Location = new System.Drawing.Point(1315, 15);
+            this.pctCerrar.Margin = new System.Windows.Forms.Padding(4);
             this.pctCerrar.Name = "pctCerrar";
-            this.pctCerrar.Size = new System.Drawing.Size(35, 30);
+            this.pctCerrar.Size = new System.Drawing.Size(47, 37);
             this.pctCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctCerrar.TabIndex = 41;
             this.pctCerrar.TabStop = false;
@@ -354,20 +396,22 @@
             // txtNombreUsuario
             // 
             this.txtNombreUsuario.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreUsuario.Location = new System.Drawing.Point(990, 16);
+            this.txtNombreUsuario.Location = new System.Drawing.Point(1268, 20);
+            this.txtNombreUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.ReadOnly = true;
-            this.txtNombreUsuario.Size = new System.Drawing.Size(29, 27);
+            this.txtNombreUsuario.Size = new System.Drawing.Size(37, 32);
             this.txtNombreUsuario.TabIndex = 43;
             this.txtNombreUsuario.Visible = false;
             // 
             // txtIdUsuario
             // 
             this.txtIdUsuario.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdUsuario.Location = new System.Drawing.Point(956, 16);
+            this.txtIdUsuario.Location = new System.Drawing.Point(1223, 20);
+            this.txtIdUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdUsuario.Name = "txtIdUsuario";
             this.txtIdUsuario.ReadOnly = true;
-            this.txtIdUsuario.Size = new System.Drawing.Size(28, 27);
+            this.txtIdUsuario.Size = new System.Drawing.Size(36, 32);
             this.txtIdUsuario.TabIndex = 42;
             this.txtIdUsuario.Visible = false;
             // 
@@ -379,87 +423,80 @@
             this.pnlNuevoTipo.Controls.Add(this.btnGuardarNuevoTipo);
             this.pnlNuevoTipo.Controls.Add(this.txtNuevoTipo);
             this.pnlNuevoTipo.Controls.Add(this.label8);
-            this.pnlNuevoTipo.Location = new System.Drawing.Point(571, 91);
+            this.pnlNuevoTipo.Location = new System.Drawing.Point(761, 112);
+            this.pnlNuevoTipo.Margin = new System.Windows.Forms.Padding(4);
             this.pnlNuevoTipo.Name = "pnlNuevoTipo";
-            this.pnlNuevoTipo.Size = new System.Drawing.Size(320, 223);
+            this.pnlNuevoTipo.Size = new System.Drawing.Size(426, 274);
             this.pnlNuevoTipo.TabIndex = 44;
             this.pnlNuevoTipo.Visible = false;
             // 
-            // label8
+            // label11
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(21, 58);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(99, 19);
-            this.label8.TabIndex = 24;
-            this.label8.Text = "Descripción:";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtNuevoTipo
-            // 
-            this.txtNuevoTipo.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNuevoTipo.Location = new System.Drawing.Point(25, 90);
-            this.txtNuevoTipo.Name = "txtNuevoTipo";
-            this.txtNuevoTipo.Size = new System.Drawing.Size(266, 27);
-            this.txtNuevoTipo.TabIndex = 32;
-            // 
-            // btnGuardarNuevoTipo
-            // 
-            this.btnGuardarNuevoTipo.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardarNuevoTipo.Image = global::SastUI.UI.Windows.Properties.Resources.Guardar;
-            this.btnGuardarNuevoTipo.Location = new System.Drawing.Point(25, 146);
-            this.btnGuardarNuevoTipo.Name = "btnGuardarNuevoTipo";
-            this.btnGuardarNuevoTipo.Size = new System.Drawing.Size(132, 44);
-            this.btnGuardarNuevoTipo.TabIndex = 35;
-            this.btnGuardarNuevoTipo.Text = "Guardar";
-            this.btnGuardarNuevoTipo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardarNuevoTipo.UseVisualStyleBackColor = true;
-            this.btnGuardarNuevoTipo.Click += new System.EventHandler(this.btnGuardarNuevoTipo_Click);
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(28, 14);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(190, 24);
+            this.label11.TabIndex = 37;
+            this.label11.Text = "Nuevo Tipo Teléfono";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnCancelarNuevoTipo
             // 
             this.btnCancelarNuevoTipo.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarNuevoTipo.Image = global::SastUI.UI.Windows.Properties.Resources.Cancelar;
-            this.btnCancelarNuevoTipo.Location = new System.Drawing.Point(163, 146);
+            this.btnCancelarNuevoTipo.Location = new System.Drawing.Point(217, 180);
+            this.btnCancelarNuevoTipo.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelarNuevoTipo.Name = "btnCancelarNuevoTipo";
-            this.btnCancelarNuevoTipo.Size = new System.Drawing.Size(132, 44);
+            this.btnCancelarNuevoTipo.Size = new System.Drawing.Size(176, 54);
             this.btnCancelarNuevoTipo.TabIndex = 36;
             this.btnCancelarNuevoTipo.Text = "Cancelar";
             this.btnCancelarNuevoTipo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelarNuevoTipo.UseVisualStyleBackColor = true;
             this.btnCancelarNuevoTipo.Click += new System.EventHandler(this.btnCancelarNuevoTipo_Click);
             // 
-            // label11
+            // btnGuardarNuevoTipo
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(21, 11);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(155, 19);
-            this.label11.TabIndex = 37;
-            this.label11.Text = "Nuevo Tipo Teléfono";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGuardarNuevoTipo.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarNuevoTipo.Image = global::SastUI.UI.Windows.Properties.Resources.Guardar;
+            this.btnGuardarNuevoTipo.Location = new System.Drawing.Point(33, 180);
+            this.btnGuardarNuevoTipo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGuardarNuevoTipo.Name = "btnGuardarNuevoTipo";
+            this.btnGuardarNuevoTipo.Size = new System.Drawing.Size(176, 54);
+            this.btnGuardarNuevoTipo.TabIndex = 35;
+            this.btnGuardarNuevoTipo.Text = "Guardar";
+            this.btnGuardarNuevoTipo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardarNuevoTipo.UseVisualStyleBackColor = true;
+            this.btnGuardarNuevoTipo.Click += new System.EventHandler(this.btnGuardarNuevoTipo_Click);
             // 
-            // btnCancelarBusqueda
+            // txtNuevoTipo
             // 
-            this.btnCancelarBusqueda.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarBusqueda.Image = global::SastUI.UI.Windows.Properties.Resources.Cancelar;
-            this.btnCancelarBusqueda.Location = new System.Drawing.Point(167, 157);
-            this.btnCancelarBusqueda.Name = "btnCancelarBusqueda";
-            this.btnCancelarBusqueda.Size = new System.Drawing.Size(132, 44);
-            this.btnCancelarBusqueda.TabIndex = 37;
-            this.btnCancelarBusqueda.Text = "Cancelar";
-            this.btnCancelarBusqueda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancelarBusqueda.UseVisualStyleBackColor = true;
-            this.btnCancelarBusqueda.Click += new System.EventHandler(this.btnCancelarBusqueda_Click);
+            this.txtNuevoTipo.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNuevoTipo.Location = new System.Drawing.Point(33, 111);
+            this.txtNuevoTipo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNuevoTipo.Name = "txtNuevoTipo";
+            this.txtNuevoTipo.Size = new System.Drawing.Size(353, 32);
+            this.txtNuevoTipo.TabIndex = 32;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(28, 71);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(121, 24);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "Descripción:";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormTelefono
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(1031, 699);
+            this.ClientSize = new System.Drawing.Size(1375, 860);
             this.ControlBox = false;
             this.Controls.Add(this.txtNombreUsuario);
             this.Controls.Add(this.txtIdUsuario);
@@ -485,6 +522,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlBusquedaCliente);
             this.Controls.Add(this.pnlNuevoTipo);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormTelefono";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

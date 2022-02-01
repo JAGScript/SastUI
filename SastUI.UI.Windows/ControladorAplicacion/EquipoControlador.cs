@@ -99,5 +99,36 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                 throw new Exception(ex.Message);
             }
         }
+
+        public IEnumerable<EquipoVistaModelo> ListarEquiposActivos()
+        {
+            var lista = new EquipoServicio().ListarEquiposActivos();
+            List<EquipoVistaModelo> equipoView = new List<EquipoVistaModelo>();
+
+            var tiposEquipo = new TipoEquipoServicio().ListarTipoEquipos().ToList();
+            var marcas = new MarcaServicio().ListarMarcas().ToList();
+            var modelos = new ModeloServicio().ListarModelos().ToList();
+
+            foreach (TBL_EQUIPO item in lista)
+            {
+                equipoView.Add(new EquipoVistaModelo
+                {
+                    Id = item.eq_id,
+                    TipoId = item.tp_id,
+                    DescripcionTipo = tiposEquipo.Find(t => t.tp_id == item.tp_id).tp_descripcion,
+                    MarcaId = item.ma_id,
+                    DescripcionMarca = marcas.Find(m => m.ma_id == item.ma_id).ma_descripcion,
+                    ModeloId = item.mo_id,
+                    DescripcionModelo = modelos.Find(o => o.mo_id == item.mo_id).mo_descripcion,
+                    Serie = item.eq_serie,
+                    SistemaOperativo = item.eq_so,
+                    Caracteristicas = item.eq_cartacteristicas,
+                    Observaciones = item.eq_observaciones,
+                    Estado = item.eq_estado,
+                    DescripcionEstado = item.eq_estado == 1 ? "Activo" : "Inactivo"
+                });
+            }
+            return equipoView;
+        }
     }
 }
