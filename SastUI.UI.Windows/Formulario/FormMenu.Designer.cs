@@ -33,18 +33,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.txtNombreUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlContenido = new System.Windows.Forms.Panel();
             this.pnlMenu = new System.Windows.Forms.Panel();
-            this.btnAbrirModelos = new System.Windows.Forms.Button();
-            this.btnAbrirMarcas = new System.Windows.Forms.Button();
-            this.btnAbrirTipoEquipos = new System.Windows.Forms.Button();
-            this.btnAbrirTiposTelefonos = new System.Windows.Forms.Button();
-            this.btnAbrirClientes = new System.Windows.Forms.Button();
-            this.btnAbrirEquipos = new System.Windows.Forms.Button();
-            this.btnAbrirFicha = new System.Windows.Forms.Button();
-            this.btnAbrirTelefonos = new System.Windows.Forms.Button();
-            this.btnAbrirPerfiles = new System.Windows.Forms.Button();
-            this.btnAbrirUsuarios = new System.Windows.Forms.Button();
             this.pctPerfiles = new System.Windows.Forms.PictureBox();
             this.pctUsuarios = new System.Windows.Forms.PictureBox();
             this.pctModelos = new System.Windows.Forms.PictureBox();
@@ -55,8 +46,23 @@
             this.pctTipoTelefono = new System.Windows.Forms.PictureBox();
             this.pctTelefonos = new System.Windows.Forms.PictureBox();
             this.pctClientes = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnAbrirModelos = new System.Windows.Forms.Button();
+            this.btnAbrirMarcas = new System.Windows.Forms.Button();
+            this.btnAbrirTipoEquipos = new System.Windows.Forms.Button();
+            this.btnAbrirTiposTelefonos = new System.Windows.Forms.Button();
+            this.btnAbrirClientes = new System.Windows.Forms.Button();
+            this.btnAbrirEquipos = new System.Windows.Forms.Button();
+            this.btnAbrirFicha = new System.Windows.Forms.Button();
+            this.btnAbrirTelefonos = new System.Windows.Forms.Button();
+            this.btnAbrirPerfiles = new System.Windows.Forms.Button();
+            this.btnAbrirUsuarios = new System.Windows.Forms.Button();
+            this.pctAbrirActualizarFicha = new System.Windows.Forms.PictureBox();
+            this.btnAbrirActualizarFicha = new System.Windows.Forms.Button();
+            this.pctAbrirListaFicha = new System.Windows.Forms.PictureBox();
+            this.btnAbrirListarFicha = new System.Windows.Forms.Button();
+            this.txtPermisos = new System.Windows.Forms.TextBox();
             this.pnlCabecera.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctPerfiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctUsuarios)).BeginInit();
@@ -68,12 +74,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pctTipoTelefono)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctTelefonos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctClientes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctAbrirActualizarFicha)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctAbrirListaFicha)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlCabecera
             // 
             this.pnlCabecera.AutoSize = true;
+            this.pnlCabecera.Controls.Add(this.txtPermisos);
             this.pnlCabecera.Controls.Add(this.txtIdUsuario);
             this.pnlCabecera.Controls.Add(this.button1);
             this.pnlCabecera.Controls.Add(this.txtNombreUsuario);
@@ -136,6 +144,17 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Usuario:";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SastUI.UI.Windows.Properties.Resources.Logo;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(219, 86);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
             // pnlContenido
             // 
             this.pnlContenido.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -149,6 +168,10 @@
             // 
             // pnlMenu
             // 
+            this.pnlMenu.Controls.Add(this.pctAbrirListaFicha);
+            this.pnlMenu.Controls.Add(this.btnAbrirListarFicha);
+            this.pnlMenu.Controls.Add(this.pctAbrirActualizarFicha);
+            this.pnlMenu.Controls.Add(this.btnAbrirActualizarFicha);
             this.pnlMenu.Controls.Add(this.pctPerfiles);
             this.pnlMenu.Controls.Add(this.pctUsuarios);
             this.pnlMenu.Controls.Add(this.pctModelos);
@@ -175,178 +198,26 @@
             this.pnlMenu.Size = new System.Drawing.Size(291, 818);
             this.pnlMenu.TabIndex = 14;
             // 
-            // btnAbrirModelos
-            // 
-            this.btnAbrirModelos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAbrirModelos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbrirModelos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbrirModelos.Location = new System.Drawing.Point(74, 514);
-            this.btnAbrirModelos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAbrirModelos.Name = "btnAbrirModelos";
-            this.btnAbrirModelos.Size = new System.Drawing.Size(207, 67);
-            this.btnAbrirModelos.TabIndex = 20;
-            this.btnAbrirModelos.Text = "Modelos Equipos";
-            this.btnAbrirModelos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnAbrirModelos.UseVisualStyleBackColor = true;
-            this.btnAbrirModelos.Click += new System.EventHandler(this.btnAbrirModelos_Click);
-            // 
-            // btnAbrirMarcas
-            // 
-            this.btnAbrirMarcas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAbrirMarcas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbrirMarcas.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbrirMarcas.Location = new System.Drawing.Point(74, 442);
-            this.btnAbrirMarcas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAbrirMarcas.Name = "btnAbrirMarcas";
-            this.btnAbrirMarcas.Size = new System.Drawing.Size(207, 67);
-            this.btnAbrirMarcas.TabIndex = 19;
-            this.btnAbrirMarcas.Text = "Marcas Equipos";
-            this.btnAbrirMarcas.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnAbrirMarcas.UseVisualStyleBackColor = true;
-            this.btnAbrirMarcas.Click += new System.EventHandler(this.btnAbrirMarcas_Click);
-            // 
-            // btnAbrirTipoEquipos
-            // 
-            this.btnAbrirTipoEquipos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAbrirTipoEquipos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbrirTipoEquipos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbrirTipoEquipos.Location = new System.Drawing.Point(74, 370);
-            this.btnAbrirTipoEquipos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAbrirTipoEquipos.Name = "btnAbrirTipoEquipos";
-            this.btnAbrirTipoEquipos.Size = new System.Drawing.Size(207, 67);
-            this.btnAbrirTipoEquipos.TabIndex = 18;
-            this.btnAbrirTipoEquipos.Text = "Tipos de Equipo";
-            this.btnAbrirTipoEquipos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnAbrirTipoEquipos.UseVisualStyleBackColor = true;
-            this.btnAbrirTipoEquipos.Click += new System.EventHandler(this.btnAbrirTipoEquipos_Click);
-            // 
-            // btnAbrirTiposTelefonos
-            // 
-            this.btnAbrirTiposTelefonos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAbrirTiposTelefonos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbrirTiposTelefonos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbrirTiposTelefonos.Location = new System.Drawing.Point(74, 154);
-            this.btnAbrirTiposTelefonos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAbrirTiposTelefonos.Name = "btnAbrirTiposTelefonos";
-            this.btnAbrirTiposTelefonos.Size = new System.Drawing.Size(207, 67);
-            this.btnAbrirTiposTelefonos.TabIndex = 17;
-            this.btnAbrirTiposTelefonos.Text = "Tipos de Teléfonos";
-            this.btnAbrirTiposTelefonos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnAbrirTiposTelefonos.UseVisualStyleBackColor = true;
-            this.btnAbrirTiposTelefonos.Click += new System.EventHandler(this.btnAbrirTiposTelefonos_Click);
-            // 
-            // btnAbrirClientes
-            // 
-            this.btnAbrirClientes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAbrirClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbrirClientes.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbrirClientes.Location = new System.Drawing.Point(74, 12);
-            this.btnAbrirClientes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAbrirClientes.Name = "btnAbrirClientes";
-            this.btnAbrirClientes.Size = new System.Drawing.Size(207, 67);
-            this.btnAbrirClientes.TabIndex = 16;
-            this.btnAbrirClientes.Text = "Clientes";
-            this.btnAbrirClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnAbrirClientes.UseVisualStyleBackColor = true;
-            this.btnAbrirClientes.Click += new System.EventHandler(this.btnAbrirClientes_Click);
-            // 
-            // btnAbrirEquipos
-            // 
-            this.btnAbrirEquipos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAbrirEquipos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbrirEquipos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbrirEquipos.Location = new System.Drawing.Point(74, 298);
-            this.btnAbrirEquipos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAbrirEquipos.Name = "btnAbrirEquipos";
-            this.btnAbrirEquipos.Size = new System.Drawing.Size(207, 67);
-            this.btnAbrirEquipos.TabIndex = 13;
-            this.btnAbrirEquipos.Text = "Equipos";
-            this.btnAbrirEquipos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnAbrirEquipos.UseVisualStyleBackColor = true;
-            this.btnAbrirEquipos.Click += new System.EventHandler(this.btnAbrirEquipos_Click);
-            // 
-            // btnAbrirFicha
-            // 
-            this.btnAbrirFicha.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAbrirFicha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbrirFicha.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbrirFicha.Location = new System.Drawing.Point(74, 226);
-            this.btnAbrirFicha.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAbrirFicha.Name = "btnAbrirFicha";
-            this.btnAbrirFicha.Size = new System.Drawing.Size(207, 67);
-            this.btnAbrirFicha.TabIndex = 15;
-            this.btnAbrirFicha.Text = "Ficha Técnica";
-            this.btnAbrirFicha.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnAbrirFicha.UseVisualStyleBackColor = true;
-            this.btnAbrirFicha.Click += new System.EventHandler(this.btnAbrirFicha_Click);
-            // 
-            // btnAbrirTelefonos
-            // 
-            this.btnAbrirTelefonos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAbrirTelefonos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbrirTelefonos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbrirTelefonos.Location = new System.Drawing.Point(74, 83);
-            this.btnAbrirTelefonos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAbrirTelefonos.Name = "btnAbrirTelefonos";
-            this.btnAbrirTelefonos.Size = new System.Drawing.Size(207, 67);
-            this.btnAbrirTelefonos.TabIndex = 14;
-            this.btnAbrirTelefonos.Text = "Teléfonos";
-            this.btnAbrirTelefonos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnAbrirTelefonos.UseVisualStyleBackColor = true;
-            this.btnAbrirTelefonos.Click += new System.EventHandler(this.btnAbrirTelefonos_Click);
-            // 
-            // btnAbrirPerfiles
-            // 
-            this.btnAbrirPerfiles.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAbrirPerfiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbrirPerfiles.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbrirPerfiles.Location = new System.Drawing.Point(74, 658);
-            this.btnAbrirPerfiles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAbrirPerfiles.Name = "btnAbrirPerfiles";
-            this.btnAbrirPerfiles.Size = new System.Drawing.Size(207, 67);
-            this.btnAbrirPerfiles.TabIndex = 13;
-            this.btnAbrirPerfiles.Text = "Perfiles";
-            this.btnAbrirPerfiles.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnAbrirPerfiles.UseVisualStyleBackColor = true;
-            this.btnAbrirPerfiles.Click += new System.EventHandler(this.btnAbrirPerfiles_Click);
-            // 
-            // btnAbrirUsuarios
-            // 
-            this.btnAbrirUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAbrirUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbrirUsuarios.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbrirUsuarios.Location = new System.Drawing.Point(74, 586);
-            this.btnAbrirUsuarios.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAbrirUsuarios.Name = "btnAbrirUsuarios";
-            this.btnAbrirUsuarios.Size = new System.Drawing.Size(207, 67);
-            this.btnAbrirUsuarios.TabIndex = 12;
-            this.btnAbrirUsuarios.Text = "Usuarios";
-            this.btnAbrirUsuarios.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnAbrirUsuarios.UseVisualStyleBackColor = true;
-            this.btnAbrirUsuarios.Click += new System.EventHandler(this.btnAbrirUsuarios_Click);
-            // 
             // pctPerfiles
             // 
-            this.pctPerfiles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctPerfiles.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pctPerfiles.Image = global::SastUI.UI.Windows.Properties.Resources.Perfiles;
-            this.pctPerfiles.Location = new System.Drawing.Point(8, 658);
+            this.pctPerfiles.Location = new System.Drawing.Point(8, 512);
             this.pctPerfiles.Name = "pctPerfiles";
-            this.pctPerfiles.Size = new System.Drawing.Size(67, 67);
-            this.pctPerfiles.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctPerfiles.Size = new System.Drawing.Size(40, 40);
+            this.pctPerfiles.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctPerfiles.TabIndex = 30;
             this.pctPerfiles.TabStop = false;
             this.pctPerfiles.Click += new System.EventHandler(this.pctPerfiles_Click);
             // 
             // pctUsuarios
             // 
-            this.pctUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pctUsuarios.Image = global::SastUI.UI.Windows.Properties.Resources.Usuarios;
-            this.pctUsuarios.Location = new System.Drawing.Point(8, 586);
+            this.pctUsuarios.Location = new System.Drawing.Point(8, 466);
             this.pctUsuarios.Name = "pctUsuarios";
-            this.pctUsuarios.Size = new System.Drawing.Size(67, 67);
-            this.pctUsuarios.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctUsuarios.Size = new System.Drawing.Size(40, 40);
+            this.pctUsuarios.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctUsuarios.TabIndex = 29;
             this.pctUsuarios.TabStop = false;
             this.pctUsuarios.Click += new System.EventHandler(this.pctUsuarios_Click);
@@ -356,115 +227,320 @@
             this.pctModelos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctModelos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pctModelos.Image = global::SastUI.UI.Windows.Properties.Resources.Tipos;
-            this.pctModelos.Location = new System.Drawing.Point(8, 514);
+            this.pctModelos.Location = new System.Drawing.Point(8, 420);
             this.pctModelos.Name = "pctModelos";
-            this.pctModelos.Size = new System.Drawing.Size(67, 67);
-            this.pctModelos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctModelos.Size = new System.Drawing.Size(40, 40);
+            this.pctModelos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctModelos.TabIndex = 28;
             this.pctModelos.TabStop = false;
             this.pctModelos.Click += new System.EventHandler(this.pctModelos_Click);
             // 
             // pctMarcas
             // 
-            this.pctMarcas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctMarcas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pctMarcas.Image = global::SastUI.UI.Windows.Properties.Resources.Tipos;
-            this.pctMarcas.Location = new System.Drawing.Point(8, 442);
+            this.pctMarcas.Location = new System.Drawing.Point(8, 374);
             this.pctMarcas.Name = "pctMarcas";
-            this.pctMarcas.Size = new System.Drawing.Size(67, 67);
-            this.pctMarcas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctMarcas.Size = new System.Drawing.Size(40, 40);
+            this.pctMarcas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctMarcas.TabIndex = 27;
             this.pctMarcas.TabStop = false;
             this.pctMarcas.Click += new System.EventHandler(this.pctMarcas_Click);
             // 
             // pctTipoEquipo
             // 
-            this.pctTipoEquipo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctTipoEquipo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pctTipoEquipo.Image = global::SastUI.UI.Windows.Properties.Resources.Tipos;
-            this.pctTipoEquipo.Location = new System.Drawing.Point(8, 370);
+            this.pctTipoEquipo.Location = new System.Drawing.Point(8, 328);
             this.pctTipoEquipo.Name = "pctTipoEquipo";
-            this.pctTipoEquipo.Size = new System.Drawing.Size(67, 67);
-            this.pctTipoEquipo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctTipoEquipo.Size = new System.Drawing.Size(40, 40);
+            this.pctTipoEquipo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctTipoEquipo.TabIndex = 26;
             this.pctTipoEquipo.TabStop = false;
             this.pctTipoEquipo.Click += new System.EventHandler(this.pctTipoEquipo_Click);
             // 
             // pctEquipos
             // 
-            this.pctEquipos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctEquipos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pctEquipos.Image = global::SastUI.UI.Windows.Properties.Resources.Equipos;
-            this.pctEquipos.Location = new System.Drawing.Point(8, 298);
+            this.pctEquipos.Location = new System.Drawing.Point(8, 282);
             this.pctEquipos.Name = "pctEquipos";
-            this.pctEquipos.Size = new System.Drawing.Size(67, 67);
-            this.pctEquipos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctEquipos.Size = new System.Drawing.Size(40, 40);
+            this.pctEquipos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctEquipos.TabIndex = 25;
             this.pctEquipos.TabStop = false;
             this.pctEquipos.Click += new System.EventHandler(this.pctEquipos_Click);
             // 
             // pctFicha
             // 
-            this.pctFicha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctFicha.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pctFicha.Image = global::SastUI.UI.Windows.Properties.Resources.Ficha;
-            this.pctFicha.Location = new System.Drawing.Point(8, 226);
+            this.pctFicha.Location = new System.Drawing.Point(8, 150);
             this.pctFicha.Name = "pctFicha";
-            this.pctFicha.Size = new System.Drawing.Size(67, 67);
-            this.pctFicha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctFicha.Size = new System.Drawing.Size(40, 40);
+            this.pctFicha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctFicha.TabIndex = 24;
             this.pctFicha.TabStop = false;
             this.pctFicha.Click += new System.EventHandler(this.pctFicha_Click);
             // 
             // pctTipoTelefono
             // 
-            this.pctTipoTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctTipoTelefono.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pctTipoTelefono.Image = global::SastUI.UI.Windows.Properties.Resources.Tipos;
-            this.pctTipoTelefono.Location = new System.Drawing.Point(8, 154);
+            this.pctTipoTelefono.Location = new System.Drawing.Point(8, 104);
             this.pctTipoTelefono.Name = "pctTipoTelefono";
-            this.pctTipoTelefono.Size = new System.Drawing.Size(67, 67);
-            this.pctTipoTelefono.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctTipoTelefono.Size = new System.Drawing.Size(40, 40);
+            this.pctTipoTelefono.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctTipoTelefono.TabIndex = 23;
             this.pctTipoTelefono.TabStop = false;
             this.pctTipoTelefono.Click += new System.EventHandler(this.pctTipoTelefono_Click);
             // 
             // pctTelefonos
             // 
-            this.pctTelefonos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctTelefonos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pctTelefonos.Image = global::SastUI.UI.Windows.Properties.Resources.Telefonos;
-            this.pctTelefonos.Location = new System.Drawing.Point(8, 83);
+            this.pctTelefonos.Location = new System.Drawing.Point(8, 58);
             this.pctTelefonos.Name = "pctTelefonos";
-            this.pctTelefonos.Size = new System.Drawing.Size(67, 67);
-            this.pctTelefonos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctTelefonos.Size = new System.Drawing.Size(40, 40);
+            this.pctTelefonos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctTelefonos.TabIndex = 22;
             this.pctTelefonos.TabStop = false;
             this.pctTelefonos.Click += new System.EventHandler(this.pctTelefonos_Click);
             // 
             // pctClientes
             // 
-            this.pctClientes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctClientes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pctClientes.Image = global::SastUI.UI.Windows.Properties.Resources.Clientes;
             this.pctClientes.Location = new System.Drawing.Point(8, 12);
             this.pctClientes.Name = "pctClientes";
-            this.pctClientes.Size = new System.Drawing.Size(67, 67);
-            this.pctClientes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctClientes.Size = new System.Drawing.Size(40, 40);
+            this.pctClientes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctClientes.TabIndex = 21;
             this.pctClientes.TabStop = false;
             this.pctClientes.Click += new System.EventHandler(this.pctClientes_Click);
             // 
-            // pictureBox1
+            // btnAbrirModelos
             // 
-            this.pictureBox1.Image = global::SastUI.UI.Windows.Properties.Resources.Logo;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(219, 86);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.btnAbrirModelos.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbrirModelos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbrirModelos.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAbrirModelos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrirModelos.Location = new System.Drawing.Point(54, 420);
+            this.btnAbrirModelos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAbrirModelos.Name = "btnAbrirModelos";
+            this.btnAbrirModelos.Size = new System.Drawing.Size(207, 40);
+            this.btnAbrirModelos.TabIndex = 20;
+            this.btnAbrirModelos.Text = "Modelos Equipos";
+            this.btnAbrirModelos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAbrirModelos.UseVisualStyleBackColor = false;
+            this.btnAbrirModelos.Click += new System.EventHandler(this.btnAbrirModelos_Click);
+            // 
+            // btnAbrirMarcas
+            // 
+            this.btnAbrirMarcas.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbrirMarcas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbrirMarcas.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAbrirMarcas.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrirMarcas.Location = new System.Drawing.Point(54, 374);
+            this.btnAbrirMarcas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAbrirMarcas.Name = "btnAbrirMarcas";
+            this.btnAbrirMarcas.Size = new System.Drawing.Size(207, 40);
+            this.btnAbrirMarcas.TabIndex = 19;
+            this.btnAbrirMarcas.Text = "Marcas Equipos";
+            this.btnAbrirMarcas.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAbrirMarcas.UseVisualStyleBackColor = false;
+            this.btnAbrirMarcas.Click += new System.EventHandler(this.btnAbrirMarcas_Click);
+            // 
+            // btnAbrirTipoEquipos
+            // 
+            this.btnAbrirTipoEquipos.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbrirTipoEquipos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbrirTipoEquipos.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAbrirTipoEquipos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrirTipoEquipos.Location = new System.Drawing.Point(54, 328);
+            this.btnAbrirTipoEquipos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAbrirTipoEquipos.Name = "btnAbrirTipoEquipos";
+            this.btnAbrirTipoEquipos.Size = new System.Drawing.Size(207, 40);
+            this.btnAbrirTipoEquipos.TabIndex = 18;
+            this.btnAbrirTipoEquipos.Text = "Tipos de Equipo";
+            this.btnAbrirTipoEquipos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAbrirTipoEquipos.UseVisualStyleBackColor = false;
+            this.btnAbrirTipoEquipos.Click += new System.EventHandler(this.btnAbrirTipoEquipos_Click);
+            // 
+            // btnAbrirTiposTelefonos
+            // 
+            this.btnAbrirTiposTelefonos.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbrirTiposTelefonos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbrirTiposTelefonos.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAbrirTiposTelefonos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrirTiposTelefonos.Location = new System.Drawing.Point(54, 104);
+            this.btnAbrirTiposTelefonos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAbrirTiposTelefonos.Name = "btnAbrirTiposTelefonos";
+            this.btnAbrirTiposTelefonos.Size = new System.Drawing.Size(207, 40);
+            this.btnAbrirTiposTelefonos.TabIndex = 17;
+            this.btnAbrirTiposTelefonos.Text = "Tipos de Teléfonos";
+            this.btnAbrirTiposTelefonos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAbrirTiposTelefonos.UseVisualStyleBackColor = false;
+            this.btnAbrirTiposTelefonos.Click += new System.EventHandler(this.btnAbrirTiposTelefonos_Click);
+            // 
+            // btnAbrirClientes
+            // 
+            this.btnAbrirClientes.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbrirClientes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbrirClientes.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAbrirClientes.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrirClientes.Location = new System.Drawing.Point(54, 12);
+            this.btnAbrirClientes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAbrirClientes.Name = "btnAbrirClientes";
+            this.btnAbrirClientes.Size = new System.Drawing.Size(207, 40);
+            this.btnAbrirClientes.TabIndex = 16;
+            this.btnAbrirClientes.Text = "Clientes";
+            this.btnAbrirClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAbrirClientes.UseVisualStyleBackColor = false;
+            this.btnAbrirClientes.Click += new System.EventHandler(this.btnAbrirClientes_Click);
+            // 
+            // btnAbrirEquipos
+            // 
+            this.btnAbrirEquipos.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbrirEquipos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbrirEquipos.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAbrirEquipos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrirEquipos.Location = new System.Drawing.Point(54, 282);
+            this.btnAbrirEquipos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAbrirEquipos.Name = "btnAbrirEquipos";
+            this.btnAbrirEquipos.Size = new System.Drawing.Size(207, 40);
+            this.btnAbrirEquipos.TabIndex = 13;
+            this.btnAbrirEquipos.Text = "Equipos";
+            this.btnAbrirEquipos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAbrirEquipos.UseVisualStyleBackColor = false;
+            this.btnAbrirEquipos.Click += new System.EventHandler(this.btnAbrirEquipos_Click);
+            // 
+            // btnAbrirFicha
+            // 
+            this.btnAbrirFicha.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbrirFicha.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbrirFicha.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAbrirFicha.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrirFicha.Location = new System.Drawing.Point(54, 150);
+            this.btnAbrirFicha.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAbrirFicha.Name = "btnAbrirFicha";
+            this.btnAbrirFicha.Size = new System.Drawing.Size(207, 40);
+            this.btnAbrirFicha.TabIndex = 15;
+            this.btnAbrirFicha.Text = "Ficha Técnica";
+            this.btnAbrirFicha.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAbrirFicha.UseVisualStyleBackColor = false;
+            this.btnAbrirFicha.Click += new System.EventHandler(this.btnAbrirFicha_Click);
+            // 
+            // btnAbrirTelefonos
+            // 
+            this.btnAbrirTelefonos.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbrirTelefonos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbrirTelefonos.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAbrirTelefonos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrirTelefonos.Location = new System.Drawing.Point(54, 58);
+            this.btnAbrirTelefonos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAbrirTelefonos.Name = "btnAbrirTelefonos";
+            this.btnAbrirTelefonos.Size = new System.Drawing.Size(207, 40);
+            this.btnAbrirTelefonos.TabIndex = 14;
+            this.btnAbrirTelefonos.Text = "Teléfonos";
+            this.btnAbrirTelefonos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAbrirTelefonos.UseVisualStyleBackColor = false;
+            this.btnAbrirTelefonos.Click += new System.EventHandler(this.btnAbrirTelefonos_Click);
+            // 
+            // btnAbrirPerfiles
+            // 
+            this.btnAbrirPerfiles.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbrirPerfiles.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbrirPerfiles.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAbrirPerfiles.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrirPerfiles.Location = new System.Drawing.Point(54, 512);
+            this.btnAbrirPerfiles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAbrirPerfiles.Name = "btnAbrirPerfiles";
+            this.btnAbrirPerfiles.Size = new System.Drawing.Size(207, 40);
+            this.btnAbrirPerfiles.TabIndex = 13;
+            this.btnAbrirPerfiles.Text = "Perfiles";
+            this.btnAbrirPerfiles.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAbrirPerfiles.UseVisualStyleBackColor = false;
+            this.btnAbrirPerfiles.Click += new System.EventHandler(this.btnAbrirPerfiles_Click);
+            // 
+            // btnAbrirUsuarios
+            // 
+            this.btnAbrirUsuarios.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbrirUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbrirUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAbrirUsuarios.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrirUsuarios.Location = new System.Drawing.Point(54, 466);
+            this.btnAbrirUsuarios.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAbrirUsuarios.Name = "btnAbrirUsuarios";
+            this.btnAbrirUsuarios.Size = new System.Drawing.Size(207, 40);
+            this.btnAbrirUsuarios.TabIndex = 12;
+            this.btnAbrirUsuarios.Text = "Usuarios";
+            this.btnAbrirUsuarios.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAbrirUsuarios.UseVisualStyleBackColor = false;
+            this.btnAbrirUsuarios.Click += new System.EventHandler(this.btnAbrirUsuarios_Click);
+            // 
+            // pctAbrirActualizarFicha
+            // 
+            this.pctAbrirActualizarFicha.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pctAbrirActualizarFicha.Image = global::SastUI.UI.Windows.Properties.Resources.Ficha;
+            this.pctAbrirActualizarFicha.Location = new System.Drawing.Point(8, 194);
+            this.pctAbrirActualizarFicha.Name = "pctAbrirActualizarFicha";
+            this.pctAbrirActualizarFicha.Size = new System.Drawing.Size(40, 40);
+            this.pctAbrirActualizarFicha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pctAbrirActualizarFicha.TabIndex = 32;
+            this.pctAbrirActualizarFicha.TabStop = false;
+            // 
+            // btnAbrirActualizarFicha
+            // 
+            this.btnAbrirActualizarFicha.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbrirActualizarFicha.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbrirActualizarFicha.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAbrirActualizarFicha.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrirActualizarFicha.Location = new System.Drawing.Point(54, 194);
+            this.btnAbrirActualizarFicha.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAbrirActualizarFicha.Name = "btnAbrirActualizarFicha";
+            this.btnAbrirActualizarFicha.Size = new System.Drawing.Size(207, 40);
+            this.btnAbrirActualizarFicha.TabIndex = 31;
+            this.btnAbrirActualizarFicha.Text = "Actualizar Ficha";
+            this.btnAbrirActualizarFicha.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAbrirActualizarFicha.UseVisualStyleBackColor = false;
+            // 
+            // pctAbrirListaFicha
+            // 
+            this.pctAbrirListaFicha.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pctAbrirListaFicha.Image = global::SastUI.UI.Windows.Properties.Resources.Ficha;
+            this.pctAbrirListaFicha.Location = new System.Drawing.Point(8, 238);
+            this.pctAbrirListaFicha.Name = "pctAbrirListaFicha";
+            this.pctAbrirListaFicha.Size = new System.Drawing.Size(40, 40);
+            this.pctAbrirListaFicha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pctAbrirListaFicha.TabIndex = 34;
+            this.pctAbrirListaFicha.TabStop = false;
+            // 
+            // btnAbrirListarFicha
+            // 
+            this.btnAbrirListarFicha.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbrirListarFicha.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbrirListarFicha.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAbrirListarFicha.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrirListarFicha.Location = new System.Drawing.Point(54, 238);
+            this.btnAbrirListarFicha.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAbrirListarFicha.Name = "btnAbrirListarFicha";
+            this.btnAbrirListarFicha.Size = new System.Drawing.Size(207, 40);
+            this.btnAbrirListarFicha.TabIndex = 33;
+            this.btnAbrirListarFicha.Text = "Listar Fichas";
+            this.btnAbrirListarFicha.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAbrirListarFicha.UseVisualStyleBackColor = false;
+            // 
+            // txtPermisos
+            // 
+            this.txtPermisos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPermisos.Location = new System.Drawing.Point(1339, 46);
+            this.txtPermisos.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPermisos.Name = "txtPermisos";
+            this.txtPermisos.ReadOnly = true;
+            this.txtPermisos.Size = new System.Drawing.Size(132, 22);
+            this.txtPermisos.TabIndex = 12;
+            this.txtPermisos.Visible = false;
             // 
             // FormMenu
             // 
@@ -486,6 +562,7 @@
             this.Load += new System.EventHandler(this.FormMenu_Load);
             this.pnlCabecera.ResumeLayout(false);
             this.pnlCabecera.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pctPerfiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctUsuarios)).EndInit();
@@ -497,7 +574,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pctTipoTelefono)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctTelefonos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctClientes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctAbrirActualizarFicha)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctAbrirListaFicha)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -532,5 +610,10 @@
         private PictureBox pctModelos;
         private PictureBox pctUsuarios;
         private PictureBox pctPerfiles;
+        private PictureBox pctAbrirListaFicha;
+        private Button btnAbrirListarFicha;
+        private PictureBox pctAbrirActualizarFicha;
+        private Button btnAbrirActualizarFicha;
+        private TextBox txtPermisos;
     }
 }

@@ -62,7 +62,7 @@ namespace SastUI.Infraestructura.AccesoDatos.Repositorio
             }
             catch (Exception ex)
             {
-                throw new Exception("No se puede eliminar el registro" + ex.Message);
+                throw new Exception("No se pudo guardar el cliente" + ex.Message);
             }
         }
 

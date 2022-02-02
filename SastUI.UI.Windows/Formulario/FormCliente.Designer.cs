@@ -57,6 +57,7 @@
             this.btn_limpiar = new System.Windows.Forms.Button();
             this.btnAgregarTelefono = new System.Windows.Forms.Button();
             this.btn_guardar = new System.Windows.Forms.Button();
+            this.txtPermisos = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_clientes)).BeginInit();
             this.pnlTelefono.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTelefonos)).BeginInit();
@@ -409,6 +410,17 @@
             this.btn_guardar.UseVisualStyleBackColor = true;
             this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
+            // txtPermisos
+            // 
+            this.txtPermisos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPermisos.Location = new System.Drawing.Point(1176, 20);
+            this.txtPermisos.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPermisos.Name = "txtPermisos";
+            this.txtPermisos.ReadOnly = true;
+            this.txtPermisos.Size = new System.Drawing.Size(36, 32);
+            this.txtPermisos.TabIndex = 43;
+            this.txtPermisos.Visible = false;
+            // 
             // FormCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -416,6 +428,7 @@
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1375, 889);
             this.ControlBox = false;
+            this.Controls.Add(this.txtPermisos);
             this.Controls.Add(this.dgvTelefonos);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtNombreUsuario);
@@ -485,5 +498,6 @@
         private Button btnCancelarTelefono;
         private Label label8;
         private DataGridView dgvTelefonos;
+        private TextBox txtPermisos;
     }
 }

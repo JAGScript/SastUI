@@ -72,5 +72,23 @@ namespace SastUI.UI.Windows.ControladorAplicacion
             }
             return cabeceraFichaView;
         }
+
+        public int GuardarConId(CabeceraFichaVistaModelo cabecera)
+        {
+            try
+            {
+                TBL_CABECERA_FICHA nuevo = new TBL_CABECERA_FICHA();
+                nuevo.cl_id = cabecera.IdCliente;
+                nuevo.us_id = cabecera.IdUsuario;
+                nuevo.cf_fecha = cabecera.Fecha;
+                nuevo.cf_codigo = cabecera.Codigo;
+                nuevo.cf_estado = cabecera.Estado;
+                return new CabeceraFichaServicio().GuardarConId(nuevo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

@@ -14,11 +14,12 @@ namespace SastUI.UI.Windows.Formulario
 {
     public partial class FormPerfil : Form
     {
-        public FormPerfil(int idUsuario, string nombreUsuario)
+        public FormPerfil(int idUsuario, string nombreUsuario, int permisos)
         {
             InitializeComponent();
             txtIdUsuario.Text = idUsuario.ToString();
             txtNombreUsuario.Text = nombreUsuario.ToString();
+            txtPermisos.Text = permisos.ToString();
         }
 
         public void ListarPerfiles()
@@ -35,25 +36,37 @@ namespace SastUI.UI.Windows.Formulario
 
         private void btnGuardar_Click_1(object sender, EventArgs e)
         {
-            PerfilVistaModelo perfilView = new PerfilVistaModelo();
-            perfilView.Nombre = txtNombre.Text.ToUpper().Trim();
-            perfilView.Estado = int.Parse(cmbEstado.SelectedValue.ToString());
+            var nombre = txtNombre.Text.ToUpper().Trim();
+            var estado = int.Parse(cmbEstado.SelectedValue.ToString());
 
-            if (!string.IsNullOrEmpty(txtId.Text))
-            {
-                perfilView.Id = int.Parse(txtId.Text);
-                new PerfilControlador().ActualizarPerfil(perfilView);
-            }
+            if (string.IsNullOrEmpty(nombre) || estado <= 0)
+                MessageBox.Show("Existen campos vacios!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                if (new PerfilControlador().InsertarPerfil(perfilView))
-                    MessageBox.Show("Perfil Agregado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                PerfilVistaModelo perfilView = new PerfilVistaModelo();
+                perfilView.Nombre = nombre.ToUpper().Trim();
+                perfilView.Estado = estado;
+                if (chkPermisos.Checked)
+                    perfilView.Permisos = 1;
                 else
-                    MessageBox.Show("No es posible guardar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                    perfilView.Permisos = 0;
 
-            ListarPerfiles();
-            Limpiar();
+                if (!string.IsNullOrEmpty(txtId.Text))
+                {
+                    perfilView.Id = int.Parse(txtId.Text);
+                    new PerfilControlador().ActualizarPerfil(perfilView);
+                }
+                else
+                {
+                    if (new PerfilControlador().InsertarPerfil(perfilView))
+                        MessageBox.Show("Perfil Agregado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    else
+                        MessageBox.Show("No es posible guardar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                ListarPerfiles();
+                Limpiar();
+            }
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -85,7 +98,8 @@ namespace SastUI.UI.Windows.Formulario
             cmbEstado.SelectedIndex = 0;
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormMenu menu = new FormMenu(idUsuario, nombreUsuario);
+            var permisos = int.Parse(txtPermisos.Text);
+            FormMenu menu = new FormMenu(idUsuario, nombreUsuario, permisos);
             menu.Show();
         }
 

@@ -43,6 +43,8 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.txtPermisos = new System.Windows.Forms.TextBox();
+            this.chkPermisos = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_perfiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctCerrar)).BeginInit();
             this.SuspendLayout();
@@ -73,7 +75,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(149, 92);
+            this.label10.Location = new System.Drawing.Point(146, 92);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(33, 24);
@@ -229,6 +231,28 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click_1);
             // 
+            // txtPermisos
+            // 
+            this.txtPermisos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPermisos.Location = new System.Drawing.Point(1183, 20);
+            this.txtPermisos.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPermisos.Name = "txtPermisos";
+            this.txtPermisos.ReadOnly = true;
+            this.txtPermisos.Size = new System.Drawing.Size(36, 32);
+            this.txtPermisos.TabIndex = 35;
+            this.txtPermisos.Visible = false;
+            // 
+            // chkPermisos
+            // 
+            this.chkPermisos.AutoSize = true;
+            this.chkPermisos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPermisos.Location = new System.Drawing.Point(195, 231);
+            this.chkPermisos.Name = "chkPermisos";
+            this.chkPermisos.Size = new System.Drawing.Size(257, 28);
+            this.chkPermisos.TabIndex = 37;
+            this.chkPermisos.Text = "Perfil Tipo Administrador";
+            this.chkPermisos.UseVisualStyleBackColor = true;
+            // 
             // FormPerfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -236,6 +260,8 @@
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1375, 806);
             this.ControlBox = false;
+            this.Controls.Add(this.chkPermisos);
+            this.Controls.Add(this.txtPermisos);
             this.Controls.Add(this.txtNombreUsuario);
             this.Controls.Add(this.txtIdUsuario);
             this.Controls.Add(this.pctCerrar);
@@ -280,5 +306,7 @@
         private PictureBox pctCerrar;
         private TextBox txtNombreUsuario;
         private TextBox txtIdUsuario;
+        private TextBox txtPermisos;
+        private CheckBox chkPermisos;
     }
 }

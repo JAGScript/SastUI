@@ -17,11 +17,12 @@ namespace SastUI.UI.Windows.Formulario
     {
         bool equipoNuevo = false;
 
-        public FormFicha(int idUsuario, string nombreUsuario)
+        public FormFicha(int idUsuario, string nombreUsuario, int permisos)
         {
             InitializeComponent();
             txtIdUsuario.Text = idUsuario.ToString();
             txtNombreUsuario.Text = nombreUsuario.ToString();
+            txtPermisos.Text = permisos.ToString();
         }
 
         public void CargarTiposTelefono()
@@ -73,6 +74,25 @@ namespace SastUI.UI.Windows.Formulario
             txtNombreCliente.Text = "";
             txtFecha.Text = "";
             txtSecuencial.Text = "";
+
+            dgvEquiposDetalle.Rows.Clear();
+
+            pnlEquiposExistentes.Visible = false;
+            pnlEquiposExistentes.SendToBack();
+            btnAbrirEquiposExistentes.Enabled = true;
+            btnAbrirEquipoNuevo.Enabled = true;
+
+            pnlNuevoEquipo.Visible = false;
+            pnlNuevoEquipo.SendToBack();
+            btnAbrirEquiposExistentes.Enabled = true;
+            btnAbrirEquipoNuevo.Enabled = true;
+            equipoNuevo = false;
+
+            ListarEquipos();
+            int numeroFichas = 0;
+
+            numeroFichas = new CabeceraFichaControlador().ObtenerCabeceraFichas().ToList().Count + 1;
+            txtSecuencial.Text = string.Format("{0:000000}", numeroFichas);
         }
 
         private void txtFecha_Click(object sender, EventArgs e)
@@ -211,6 +231,7 @@ namespace SastUI.UI.Windows.Formulario
             if (equiposRegistrados <= 0)
                 btnAbrirEquiposExistentes.Enabled = false;
 
+            dgvEquiposDetalle.Columns.Add("EquipoId", "EquipoId");
             dgvEquiposDetalle.Columns.Add("TipoId", "TipoId");
             dgvEquiposDetalle.Columns.Add("DescripcionTipo", "DescripcionTipo");
             dgvEquiposDetalle.Columns.Add("MarcaId", "MarcaId");
@@ -263,7 +284,8 @@ namespace SastUI.UI.Windows.Formulario
             Limpiar();
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormMenu menu = new FormMenu(idUsuario, nombreUsuario);
+            var permisos = int.Parse(txtPermisos.Text);
+            FormMenu menu = new FormMenu(idUsuario, nombreUsuario, permisos);
             menu.Show();
         }
 
@@ -296,8 +318,8 @@ namespace SastUI.UI.Windows.Formulario
 
         private void pctCerrarNuevoEquipo_Click(object sender, EventArgs e)
         {
-            pnlEquiposExistentes.Visible = false;
-            pnlEquiposExistentes.SendToBack();
+            pnlNuevoEquipo.Visible = false;
+            pnlNuevoEquipo.SendToBack();
             btnAbrirEquiposExistentes.Enabled = true;
             btnAbrirEquipoNuevo.Enabled = true;
             equipoNuevo = false;
@@ -410,7 +432,7 @@ namespace SastUI.UI.Windows.Formulario
                     MessageBox.Show("Existen campos vacios!, llenelos para continuar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {
-                    dgvEquiposDetalle.Rows.Add(false, idTipo, nombreTipo, idMarca, nombreMarca, idModelo, nombreModelo,
+                    dgvEquiposDetalle.Rows.Add(false, 0, idTipo, nombreTipo, idMarca, nombreMarca, idModelo, nombreModelo,
                         serie, so, caracteristicas, observaciones);
 
                     cmbTipoEquipo.SelectedIndex = 0;
@@ -439,6 +461,7 @@ namespace SastUI.UI.Windows.Formulario
                 foreach (DataGridViewRow row in rowSelected)
                 {
                     dgvEquiposDetalle.Rows.Add(new object[] {false,
+                                            row.Cells["Id"].Value,
                                             row.Cells["TipoId"].Value,
                                             row.Cells["DescripcionTipo"].Value,
                                             row.Cells["MarcaId"].Value,
@@ -475,6 +498,77 @@ namespace SastUI.UI.Windows.Formulario
                     dgvEquiposDetalle.Rows.Remove(row);
                 }
             }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            var idCliente = int.Parse(txtIdCliente.Text);
+            var fecha = txtFecha.Text;
+            var secuencial = txtSecuencial.Text;
+            int idUsuario = int.Parse(txtIdUsuario.Text);
+            List<DataGridViewRow> rowInsertada = new List<DataGridViewRow>();
+            int idCabecera = 0;
+
+            foreach (DataGridViewRow row in dgvEquiposDetalle.Rows)
+            {
+                if (row.Cells["EquipoId"].Value != null)
+                    rowInsertada.Add(row);
+            }
+
+            if (idCliente <= 0 || string.IsNullOrEmpty(fecha) || string.IsNullOrEmpty(secuencial) || rowInsertada.Count <= 0)
+                MessageBox.Show("Existen campos vacios!, llenelos para continuar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                CabeceraFichaVistaModelo cabecera = new CabeceraFichaVistaModelo();
+                cabecera.IdCliente = idCliente;
+                cabecera.IdUsuario = idUsuario;
+                cabecera.Fecha = Convert.ToDateTime(fecha);
+                cabecera.Codigo = secuencial;
+                cabecera.Estado = 1;
+
+                idCabecera = new CabeceraFichaControlador().GuardarConId(cabecera);
+
+                foreach (DataGridViewRow row in rowInsertada)
+                {
+                    int idEquipoRegistrado = 0;
+                    int idEquipo = int.Parse(row.Cells["EquipoId"].Value.ToString());
+
+                    if (idEquipo == 0)
+                    {
+                        EquipoVistaModelo equipo = new EquipoVistaModelo();
+                        equipo.TipoId = int.Parse(row.Cells["TipoId"].Value.ToString());
+                        equipo.MarcaId = int.Parse(row.Cells["MarcaId"].Value.ToString());
+                        equipo.ModeloId = int.Parse(row.Cells["ModeloId"].Value.ToString());
+                        equipo.Serie = row.Cells["Serie"].Value.ToString();
+                        equipo.SistemaOperativo = row.Cells["SistemaOperativo"].Value.ToString();
+                        equipo.Caracteristicas = row.Cells["Caracteristicas"].Value.ToString();
+                        equipo.Observaciones = row.Cells["Observaciones"].Value.ToString();
+                        equipo.Estado = 1;
+
+                        idEquipoRegistrado = new EquipoControlador().GuardarConId(equipo);
+                    }
+                    else
+                        idEquipoRegistrado = idEquipo;
+
+                    DetalleFichaVistaModelo detalle = new DetalleFichaVistaModelo();
+                    detalle.CabeceraFichaId = idCabecera;
+                    detalle.EquipoId = idEquipoRegistrado;
+                    detalle.Observaciones = "SN";
+                    detalle.Proceso = "INGRESADO";
+                    detalle.Estado = "INGRESADO";
+
+                    new DetalleFichaControlador().InsertarDetalleFicha(detalle);
+                }
+
+                MessageBox.Show("Ficha ingresada correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                Limpiar();
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
         }
     }
 }

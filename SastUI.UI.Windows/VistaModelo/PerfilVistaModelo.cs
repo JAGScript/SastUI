@@ -12,5 +12,6 @@ namespace SastUI.UI.Windows.VistaModelo
         public string Nombre { get; set; }
         public int Estado { get; set; }
         public string EstadoDescripcion { get; set; }
+        public int Permisos { get; set; }
     }
 }

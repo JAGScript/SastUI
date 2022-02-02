@@ -50,5 +50,23 @@ namespace SastUI.Infraestructura.AccesoDatos.Repositorio
                 throw new Exception("Error al consultar equipo, ", ex);
             }
         }
+
+        public int GuardarConId(TBL_EQUIPO equipo)
+        {
+            try
+            {
+                using (var context = new SASTEntities())
+                {
+                    context.Set<TBL_EQUIPO>().Add(equipo);
+                    context.SaveChanges();
+
+                    return equipo.eq_id;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se pudo registrar el equipo" + ex.Message);
+            }
+        }
     }
 }

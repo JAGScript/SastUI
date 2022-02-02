@@ -21,18 +21,18 @@ namespace SastUI.UI.Windows.Formulario
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            var user = txtUsuario.Text.ToLower();
-            var pass = txtUsuario.Text.ToLower();
+            var user = txtUsuario.Text;
+            var pass = txtPass.Text;
             pass = Encrypt.Encriptar(pass);
 
             var usuario = new UsuarioControlador().ValidarUsuario(user, pass);
 
-            if (!string.IsNullOrEmpty(usuario.us_login))
+            if (!string.IsNullOrEmpty(usuario.Login))
             {
-                DialogResult result = MessageBox.Show("Bienvenido! " + usuario.us_nombre, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                DialogResult result = MessageBox.Show("Bienvenido! " + usuario.Nombre, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 if (result == DialogResult.OK)
                 {
-                    FormMenu menu = new FormMenu(usuario.us_id, usuario.us_nombre);
+                    FormMenu menu = new FormMenu(usuario.Id, usuario.Nombre, usuario.Permisos);
                     menu.TopLevel = false;
                     pnlContenido.Controls.Add(menu);
                     pnlContenido.Visible = true;

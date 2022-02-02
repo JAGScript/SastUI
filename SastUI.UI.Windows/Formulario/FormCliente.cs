@@ -14,13 +14,12 @@ namespace SastUI.UI.Windows.Formulario
 {
     public partial class FormCliente : Form
     {
-        private ClienteVistaModelo clienteView;
-
-        public FormCliente(int idUsuario, string nombreUsuario)
+        public FormCliente(int idUsuario, string nombreUsuario, int permisos)
         {
             InitializeComponent();
             txtIdUsuario.Text = idUsuario.ToString();
             txtNombreUsuario.Text = nombreUsuario.ToString();
+            txtPermisos.Text = permisos.ToString();
         }
 
         private void FormCliente_Load(object sender, EventArgs e)
@@ -69,7 +68,8 @@ namespace SastUI.UI.Windows.Formulario
             cmbEstado.SelectedIndex = 0;
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormMenu menu = new FormMenu(idUsuario, nombreUsuario);
+            var permisos = int.Parse(txtPermisos.Text.ToString());
+            FormMenu menu = new FormMenu(idUsuario, nombreUsuario, permisos);
             menu.Show();
         }
 
@@ -122,7 +122,7 @@ namespace SastUI.UI.Windows.Formulario
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
-            clienteView = new ClienteVistaModelo();
+            ClienteVistaModelo clienteView = new ClienteVistaModelo();
             clienteView.Identificacion = txtIdentificacion.Text;
             clienteView.Nombre = txtNombre.Text.ToUpper();
             clienteView.Correo = txtCorreo.Text.ToLower();

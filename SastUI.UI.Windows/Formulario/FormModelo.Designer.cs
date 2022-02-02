@@ -43,6 +43,7 @@
             this.txtNombreUsuario = new System.Windows.Forms.TextBox();
             this.txtIdUsuario = new System.Windows.Forms.TextBox();
             this.pctCerrar = new System.Windows.Forms.PictureBox();
+            this.txtPermisos = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModelos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctCerrar)).BeginInit();
             this.SuspendLayout();
@@ -220,6 +221,18 @@
             this.pctCerrar.TabStop = false;
             this.pctCerrar.Click += new System.EventHandler(this.pctCerrar_Click);
             // 
+            // txtPermisos
+            // 
+            this.txtPermisos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPermisos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPermisos.Location = new System.Drawing.Point(1182, 20);
+            this.txtPermisos.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPermisos.Name = "txtPermisos";
+            this.txtPermisos.ReadOnly = true;
+            this.txtPermisos.Size = new System.Drawing.Size(36, 32);
+            this.txtPermisos.TabIndex = 55;
+            this.txtPermisos.Visible = false;
+            // 
             // FormModelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -227,6 +240,7 @@
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1375, 719);
             this.ControlBox = false;
+            this.Controls.Add(this.txtPermisos);
             this.Controls.Add(this.txtNombreUsuario);
             this.Controls.Add(this.txtIdUsuario);
             this.Controls.Add(this.pctCerrar);
@@ -270,5 +284,6 @@
         private TextBox txtNombreUsuario;
         private TextBox txtIdUsuario;
         private PictureBox pctCerrar;
+        private TextBox txtPermisos;
     }
 }

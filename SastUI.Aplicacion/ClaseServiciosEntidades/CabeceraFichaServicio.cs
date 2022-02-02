@@ -77,5 +77,17 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
                 throw new Exception("Error: " + ex.Message);
             }
         }
+
+        public int GuardarConId(TBL_CABECERA_FICHA cabecera)
+        {
+            try
+            {
+                return cabeceraFichaRepositorio.GuardarConId(cabecera);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
     }
 }

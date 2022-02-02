@@ -38,11 +38,15 @@
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.pnlBusquedaCliente = new System.Windows.Forms.Panel();
+            this.btnCancelarBusqueda = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.txtInformacion = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cmbTipoBusqueda = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pnlNuevoCliente = new System.Windows.Forms.Panel();
+            this.btnCancelarNuevoCliente = new System.Windows.Forms.Button();
+            this.btnGuardarNuevoCliente = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.cmbNuevoTipo = new System.Windows.Forms.ComboBox();
             this.txtNuevoNumero = new System.Windows.Forms.TextBox();
@@ -61,19 +65,19 @@
             this.btnAgregarCliente = new System.Windows.Forms.Button();
             this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.pct_cerrar = new System.Windows.Forms.PictureBox();
-            this.btnCancelarBusqueda = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnCancelarNuevoCliente = new System.Windows.Forms.Button();
-            this.btnGuardarNuevoCliente = new System.Windows.Forms.Button();
             this.dgvEquiposDetalle = new System.Windows.Forms.DataGridView();
+            this.chkDetalle = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.pnlEquiposExistentes = new System.Windows.Forms.Panel();
+            this.pctCerrarEquiposExistentes = new System.Windows.Forms.PictureBox();
+            this.dgvEquiposExistentes = new System.Windows.Forms.DataGridView();
+            this.chkExistente = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.btnAbrirEquiposExistentes = new System.Windows.Forms.Button();
             this.btnAbrirEquipoNuevo = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.dgvEquiposExistentes = new System.Windows.Forms.DataGridView();
-            this.pctCerrarEquiposExistentes = new System.Windows.Forms.PictureBox();
             this.pnlNuevoEquipo = new System.Windows.Forms.Panel();
+            this.pctCerrarNuevoEquipo = new System.Windows.Forms.PictureBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.txtSO = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.btnAgregarModelo = new System.Windows.Forms.Button();
@@ -91,10 +95,8 @@
             this.label22 = new System.Windows.Forms.Label();
             this.cmbTipoEquipo = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
             this.btnRemoveFila = new System.Windows.Forms.Button();
             this.btnAddFila = new System.Windows.Forms.Button();
-            this.pctCerrarNuevoEquipo = new System.Windows.Forms.PictureBox();
             this.pnlTipoEquipo = new System.Windows.Forms.Panel();
             this.btnCancelarTipo = new System.Windows.Forms.Button();
             this.btnGuardarTipo = new System.Windows.Forms.Button();
@@ -113,15 +115,16 @@
             this.txtNuevoModelo = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.chkDetalle = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.chkExistente = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.txtPermisos = new System.Windows.Forms.TextBox();
             this.pnlBusquedaCliente.SuspendLayout();
             this.pnlNuevoCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pct_cerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEquiposDetalle)).BeginInit();
             this.pnlEquiposExistentes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEquiposExistentes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctCerrarEquiposExistentes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEquiposExistentes)).BeginInit();
             this.pnlNuevoEquipo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctCerrarNuevoEquipo)).BeginInit();
             this.pnlTipoEquipo.SuspendLayout();
@@ -245,6 +248,34 @@
             this.pnlBusquedaCliente.TabIndex = 51;
             this.pnlBusquedaCliente.Visible = false;
             // 
+            // btnCancelarBusqueda
+            // 
+            this.btnCancelarBusqueda.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarBusqueda.Image = global::SastUI.UI.Windows.Properties.Resources.Cancelar;
+            this.btnCancelarBusqueda.Location = new System.Drawing.Point(223, 193);
+            this.btnCancelarBusqueda.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelarBusqueda.Name = "btnCancelarBusqueda";
+            this.btnCancelarBusqueda.Size = new System.Drawing.Size(176, 54);
+            this.btnCancelarBusqueda.TabIndex = 37;
+            this.btnCancelarBusqueda.Text = "Cancelar";
+            this.btnCancelarBusqueda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancelarBusqueda.UseVisualStyleBackColor = true;
+            this.btnCancelarBusqueda.Click += new System.EventHandler(this.btnCancelarBusqueda_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Image = global::SastUI.UI.Windows.Properties.Resources.Buscar;
+            this.btnBuscar.Location = new System.Drawing.Point(39, 193);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(176, 54);
+            this.btnBuscar.TabIndex = 34;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // txtInformacion
             // 
             this.txtInformacion.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -310,6 +341,34 @@
             this.pnlNuevoCliente.Size = new System.Drawing.Size(698, 372);
             this.pnlNuevoCliente.TabIndex = 52;
             this.pnlNuevoCliente.Visible = false;
+            // 
+            // btnCancelarNuevoCliente
+            // 
+            this.btnCancelarNuevoCliente.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarNuevoCliente.Image = global::SastUI.UI.Windows.Properties.Resources.Cancelar;
+            this.btnCancelarNuevoCliente.Location = new System.Drawing.Point(496, 204);
+            this.btnCancelarNuevoCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelarNuevoCliente.Name = "btnCancelarNuevoCliente";
+            this.btnCancelarNuevoCliente.Size = new System.Drawing.Size(176, 54);
+            this.btnCancelarNuevoCliente.TabIndex = 45;
+            this.btnCancelarNuevoCliente.Text = "Cancelar";
+            this.btnCancelarNuevoCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancelarNuevoCliente.UseVisualStyleBackColor = true;
+            this.btnCancelarNuevoCliente.Click += new System.EventHandler(this.btnCancelarNuevoCliente_Click);
+            // 
+            // btnGuardarNuevoCliente
+            // 
+            this.btnGuardarNuevoCliente.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarNuevoCliente.Image = global::SastUI.UI.Windows.Properties.Resources.Guardar;
+            this.btnGuardarNuevoCliente.Location = new System.Drawing.Point(496, 125);
+            this.btnGuardarNuevoCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGuardarNuevoCliente.Name = "btnGuardarNuevoCliente";
+            this.btnGuardarNuevoCliente.Size = new System.Drawing.Size(176, 54);
+            this.btnGuardarNuevoCliente.TabIndex = 44;
+            this.btnGuardarNuevoCliente.Text = "Guardar";
+            this.btnGuardarNuevoCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardarNuevoCliente.UseVisualStyleBackColor = true;
+            this.btnGuardarNuevoCliente.Click += new System.EventHandler(this.btnGuardarNuevoCliente_Click);
             // 
             // label12
             // 
@@ -520,62 +579,6 @@
             this.pct_cerrar.TabStop = false;
             this.pct_cerrar.Click += new System.EventHandler(this.pct_cerrar_Click);
             // 
-            // btnCancelarBusqueda
-            // 
-            this.btnCancelarBusqueda.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarBusqueda.Image = global::SastUI.UI.Windows.Properties.Resources.Cancelar;
-            this.btnCancelarBusqueda.Location = new System.Drawing.Point(223, 193);
-            this.btnCancelarBusqueda.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCancelarBusqueda.Name = "btnCancelarBusqueda";
-            this.btnCancelarBusqueda.Size = new System.Drawing.Size(176, 54);
-            this.btnCancelarBusqueda.TabIndex = 37;
-            this.btnCancelarBusqueda.Text = "Cancelar";
-            this.btnCancelarBusqueda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancelarBusqueda.UseVisualStyleBackColor = true;
-            this.btnCancelarBusqueda.Click += new System.EventHandler(this.btnCancelarBusqueda_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Image = global::SastUI.UI.Windows.Properties.Resources.Buscar;
-            this.btnBuscar.Location = new System.Drawing.Point(39, 193);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(176, 54);
-            this.btnBuscar.TabIndex = 34;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // btnCancelarNuevoCliente
-            // 
-            this.btnCancelarNuevoCliente.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarNuevoCliente.Image = global::SastUI.UI.Windows.Properties.Resources.Cancelar;
-            this.btnCancelarNuevoCliente.Location = new System.Drawing.Point(496, 204);
-            this.btnCancelarNuevoCliente.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCancelarNuevoCliente.Name = "btnCancelarNuevoCliente";
-            this.btnCancelarNuevoCliente.Size = new System.Drawing.Size(176, 54);
-            this.btnCancelarNuevoCliente.TabIndex = 45;
-            this.btnCancelarNuevoCliente.Text = "Cancelar";
-            this.btnCancelarNuevoCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancelarNuevoCliente.UseVisualStyleBackColor = true;
-            this.btnCancelarNuevoCliente.Click += new System.EventHandler(this.btnCancelarNuevoCliente_Click);
-            // 
-            // btnGuardarNuevoCliente
-            // 
-            this.btnGuardarNuevoCliente.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardarNuevoCliente.Image = global::SastUI.UI.Windows.Properties.Resources.Guardar;
-            this.btnGuardarNuevoCliente.Location = new System.Drawing.Point(496, 125);
-            this.btnGuardarNuevoCliente.Margin = new System.Windows.Forms.Padding(4);
-            this.btnGuardarNuevoCliente.Name = "btnGuardarNuevoCliente";
-            this.btnGuardarNuevoCliente.Size = new System.Drawing.Size(176, 54);
-            this.btnGuardarNuevoCliente.TabIndex = 44;
-            this.btnGuardarNuevoCliente.Text = "Guardar";
-            this.btnGuardarNuevoCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardarNuevoCliente.UseVisualStyleBackColor = true;
-            this.btnGuardarNuevoCliente.Click += new System.EventHandler(this.btnGuardarNuevoCliente_Click);
-            // 
             // dgvEquiposDetalle
             // 
             this.dgvEquiposDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -588,6 +591,13 @@
             this.dgvEquiposDetalle.Size = new System.Drawing.Size(633, 201);
             this.dgvEquiposDetalle.TabIndex = 60;
             // 
+            // chkDetalle
+            // 
+            this.chkDetalle.HeaderText = "Seleccionar";
+            this.chkDetalle.MinimumWidth = 6;
+            this.chkDetalle.Name = "chkDetalle";
+            this.chkDetalle.Width = 90;
+            // 
             // pnlEquiposExistentes
             // 
             this.pnlEquiposExistentes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -599,6 +609,50 @@
             this.pnlEquiposExistentes.Size = new System.Drawing.Size(659, 272);
             this.pnlEquiposExistentes.TabIndex = 61;
             this.pnlEquiposExistentes.Visible = false;
+            // 
+            // pctCerrarEquiposExistentes
+            // 
+            this.pctCerrarEquiposExistentes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pctCerrarEquiposExistentes.Image = global::SastUI.UI.Windows.Properties.Resources.Cerrar;
+            this.pctCerrarEquiposExistentes.Location = new System.Drawing.Point(626, -1);
+            this.pctCerrarEquiposExistentes.Margin = new System.Windows.Forms.Padding(4);
+            this.pctCerrarEquiposExistentes.Name = "pctCerrarEquiposExistentes";
+            this.pctCerrarEquiposExistentes.Size = new System.Drawing.Size(32, 32);
+            this.pctCerrarEquiposExistentes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pctCerrarEquiposExistentes.TabIndex = 62;
+            this.pctCerrarEquiposExistentes.TabStop = false;
+            this.pctCerrarEquiposExistentes.Click += new System.EventHandler(this.pctCerrarEquiposExistentes_Click);
+            // 
+            // dgvEquiposExistentes
+            // 
+            this.dgvEquiposExistentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEquiposExistentes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.chkExistente});
+            this.dgvEquiposExistentes.Location = new System.Drawing.Point(3, 56);
+            this.dgvEquiposExistentes.Name = "dgvEquiposExistentes";
+            this.dgvEquiposExistentes.RowHeadersWidth = 51;
+            this.dgvEquiposExistentes.RowTemplate.Height = 24;
+            this.dgvEquiposExistentes.Size = new System.Drawing.Size(633, 201);
+            this.dgvEquiposExistentes.TabIndex = 59;
+            // 
+            // chkExistente
+            // 
+            this.chkExistente.HeaderText = "Seleccionar";
+            this.chkExistente.MinimumWidth = 6;
+            this.chkExistente.Name = "chkExistente";
+            this.chkExistente.Width = 90;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(4, 15);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(261, 24);
+            this.label15.TabIndex = 58;
+            this.label15.Text = "Lista de Equipos Existentes:";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label16
             // 
@@ -634,43 +688,6 @@
             this.btnAbrirEquipoNuevo.UseVisualStyleBackColor = true;
             this.btnAbrirEquipoNuevo.Click += new System.EventHandler(this.btnAbrirEquipoNuevo_Click);
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(4, 15);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(261, 24);
-            this.label15.TabIndex = 58;
-            this.label15.Text = "Lista de Equipos Existentes:";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dgvEquiposExistentes
-            // 
-            this.dgvEquiposExistentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEquiposExistentes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.chkExistente});
-            this.dgvEquiposExistentes.Location = new System.Drawing.Point(3, 56);
-            this.dgvEquiposExistentes.Name = "dgvEquiposExistentes";
-            this.dgvEquiposExistentes.RowHeadersWidth = 51;
-            this.dgvEquiposExistentes.RowTemplate.Height = 24;
-            this.dgvEquiposExistentes.Size = new System.Drawing.Size(633, 201);
-            this.dgvEquiposExistentes.TabIndex = 59;
-            // 
-            // pctCerrarEquiposExistentes
-            // 
-            this.pctCerrarEquiposExistentes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pctCerrarEquiposExistentes.Image = global::SastUI.UI.Windows.Properties.Resources.Cerrar;
-            this.pctCerrarEquiposExistentes.Location = new System.Drawing.Point(626, -1);
-            this.pctCerrarEquiposExistentes.Margin = new System.Windows.Forms.Padding(4);
-            this.pctCerrarEquiposExistentes.Name = "pctCerrarEquiposExistentes";
-            this.pctCerrarEquiposExistentes.Size = new System.Drawing.Size(32, 32);
-            this.pctCerrarEquiposExistentes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pctCerrarEquiposExistentes.TabIndex = 62;
-            this.pctCerrarEquiposExistentes.TabStop = false;
-            this.pctCerrarEquiposExistentes.Click += new System.EventHandler(this.pctCerrarEquiposExistentes_Click);
-            // 
             // pnlNuevoEquipo
             // 
             this.pnlNuevoEquipo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -698,6 +715,31 @@
             this.pnlNuevoEquipo.Size = new System.Drawing.Size(659, 301);
             this.pnlNuevoEquipo.TabIndex = 65;
             this.pnlNuevoEquipo.Visible = false;
+            // 
+            // pctCerrarNuevoEquipo
+            // 
+            this.pctCerrarNuevoEquipo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pctCerrarNuevoEquipo.Image = global::SastUI.UI.Windows.Properties.Resources.Cerrar;
+            this.pctCerrarNuevoEquipo.Location = new System.Drawing.Point(626, 0);
+            this.pctCerrarNuevoEquipo.Margin = new System.Windows.Forms.Padding(4);
+            this.pctCerrarNuevoEquipo.Name = "pctCerrarNuevoEquipo";
+            this.pctCerrarNuevoEquipo.Size = new System.Drawing.Size(32, 32);
+            this.pctCerrarNuevoEquipo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pctCerrarNuevoEquipo.TabIndex = 72;
+            this.pctCerrarNuevoEquipo.TabStop = false;
+            this.pctCerrarNuevoEquipo.Click += new System.EventHandler(this.pctCerrarNuevoEquipo_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(4, 0);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(133, 24);
+            this.label24.TabIndex = 71;
+            this.label24.Text = "Nuevo Equipo";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtSO
             // 
@@ -878,18 +920,6 @@
             this.label23.Text = "Tipo Equipo:";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(4, 0);
-            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(133, 24);
-            this.label24.TabIndex = 71;
-            this.label24.Text = "Nuevo Equipo";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // btnRemoveFila
             // 
             this.btnRemoveFila.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -911,19 +941,6 @@
             this.btnAddFila.TabIndex = 66;
             this.btnAddFila.UseVisualStyleBackColor = true;
             this.btnAddFila.Click += new System.EventHandler(this.btnAddFila_Click);
-            // 
-            // pctCerrarNuevoEquipo
-            // 
-            this.pctCerrarNuevoEquipo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pctCerrarNuevoEquipo.Image = global::SastUI.UI.Windows.Properties.Resources.Cerrar;
-            this.pctCerrarNuevoEquipo.Location = new System.Drawing.Point(626, 0);
-            this.pctCerrarNuevoEquipo.Margin = new System.Windows.Forms.Padding(4);
-            this.pctCerrarNuevoEquipo.Name = "pctCerrarNuevoEquipo";
-            this.pctCerrarNuevoEquipo.Size = new System.Drawing.Size(32, 32);
-            this.pctCerrarNuevoEquipo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pctCerrarNuevoEquipo.TabIndex = 72;
-            this.pctCerrarNuevoEquipo.TabStop = false;
-            this.pctCerrarNuevoEquipo.Click += new System.EventHandler(this.pctCerrarNuevoEquipo_Click);
             // 
             // pnlTipoEquipo
             // 
@@ -1141,19 +1158,42 @@
             this.label30.Text = "Modelo";
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // chkDetalle
+            // btnGuardar
             // 
-            this.chkDetalle.HeaderText = "Seleccionar";
-            this.chkDetalle.MinimumWidth = 6;
-            this.chkDetalle.Name = "chkDetalle";
-            this.chkDetalle.Width = 90;
+            this.btnGuardar.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Image = global::SastUI.UI.Windows.Properties.Resources.Guardar;
+            this.btnGuardar.Location = new System.Drawing.Point(1137, 142);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(176, 54);
+            this.btnGuardar.TabIndex = 70;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // chkExistente
+            // btnLimpiar
             // 
-            this.chkExistente.HeaderText = "Seleccionar";
-            this.chkExistente.MinimumWidth = 6;
-            this.chkExistente.Name = "chkExistente";
-            this.chkExistente.Width = 90;
+            this.btnLimpiar.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Image = global::SastUI.UI.Windows.Properties.Resources.Limpiar;
+            this.btnLimpiar.Location = new System.Drawing.Point(1137, 209);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(176, 54);
+            this.btnLimpiar.TabIndex = 71;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // txtPermisos
+            // 
+            this.txtPermisos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPermisos.Location = new System.Drawing.Point(1276, 20);
+            this.txtPermisos.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPermisos.Name = "txtPermisos";
+            this.txtPermisos.ReadOnly = true;
+            this.txtPermisos.Size = new System.Drawing.Size(36, 32);
+            this.txtPermisos.TabIndex = 72;
+            this.txtPermisos.Visible = false;
             // 
             // FormFicha
             // 
@@ -1162,6 +1202,9 @@
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1475, 752);
             this.ControlBox = false;
+            this.Controls.Add(this.txtPermisos);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnRemoveFila);
             this.Controls.Add(this.btnAddFila);
             this.Controls.Add(this.btnAbrirEquipoNuevo);
@@ -1202,8 +1245,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvEquiposDetalle)).EndInit();
             this.pnlEquiposExistentes.ResumeLayout(false);
             this.pnlEquiposExistentes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEquiposExistentes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctCerrarEquiposExistentes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEquiposExistentes)).EndInit();
             this.pnlNuevoEquipo.ResumeLayout(false);
             this.pnlNuevoEquipo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctCerrarNuevoEquipo)).EndInit();
@@ -1307,5 +1350,8 @@
         private Label label30;
         private DataGridViewCheckBoxColumn chkDetalle;
         private DataGridViewCheckBoxColumn chkExistente;
+        private Button btnGuardar;
+        private Button btnLimpiar;
+        private TextBox txtPermisos;
     }
 }

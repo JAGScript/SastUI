@@ -76,18 +76,39 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                     Correo = item.us_correo,
                     Identificacion = item.us_identificacion,
                     Estado = item.us_estado,
-                    EstadoDescripcion = item.us_estado == 1 ? "Activo" : "Inactivo"
-                        
+                    EstadoDescripcion = item.us_estado == 1 ? "Activo" : "Inactivo",
+                    Permisos = perfiles.Find(p => p.pe_id == item.pe_id).pe_permisos
                 });
             }
             return usuarioView;
         }
 
-        public TBL_USUARIO ValidarUsuario(string strUsuario, string strPass)
+        public UsuarioVistaModelo ValidarUsuario(string strUsuario, string strPass)
         {
             try
             {
-                return new UsuarioServicio().ValidarUsuario(strUsuario, strPass);
+                var respuesta = new UsuarioServicio().ValidarUsuario(strUsuario, strPass);
+
+                UsuarioVistaModelo usuario = new UsuarioVistaModelo();
+
+                var perfiles = new PerfilServicio().ListarPerfil().ToList();
+
+                if (!string.IsNullOrEmpty(respuesta.us_login))
+                {
+                    usuario.Id = respuesta.us_id;
+                    usuario.PerfilId = respuesta.pe_id;
+                    usuario.DescripcionPerfil = perfiles.Find(p => p.pe_id == respuesta.pe_id).pe_nombre.ToString();
+                    usuario.Login = respuesta.us_login;
+                    usuario.Pass = respuesta.us_pass;
+                    usuario.Nombre = respuesta.us_nombre;
+                    usuario.Correo = respuesta.us_correo;
+                    usuario.Identificacion = respuesta.us_identificacion;
+                    usuario.Estado = respuesta.us_estado;
+                    usuario.EstadoDescripcion = respuesta.us_estado == 1 ? "Activo" : "Inactivo";
+                    usuario.Permisos = perfiles.Find(p => p.pe_id == respuesta.pe_id).pe_permisos;
+                }
+
+                return usuario;
             }
             catch (Exception ex)
             {

@@ -12,11 +12,12 @@ namespace SastUI.UI.Windows.Formulario
 {
     public partial class FormConstruccion : Form
     {
-        public FormConstruccion(int idUsuario, string nombreUsuario)
+        public FormConstruccion(int idUsuario, string nombreUsuario, int permisos)
         {
             InitializeComponent();
             txtIdUsuario.Text = idUsuario.ToString();
             txtNombreUsuario.Text = nombreUsuario.ToString();
+            txtPermisos.Text = permisos.ToString();
         }
 
         private void FormConstruccion_Load(object sender, EventArgs e)
@@ -28,7 +29,8 @@ namespace SastUI.UI.Windows.Formulario
         {
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormMenu menu = new FormMenu(idUsuario, nombreUsuario);
+            var permisos = int.Parse(txtPermisos.Text.ToString());
+            FormMenu menu = new FormMenu(idUsuario, nombreUsuario, permisos);
             menu.Show();
         }
     }

@@ -12,5 +12,7 @@ namespace SastUI.Dominio.Modelo.Abstracciones
         bool DesactivarEquipo(int idEquipo);
 
         IEnumerable<TBL_EQUIPO> ListarEquiposActivos();
+
+        int GuardarConId(TBL_EQUIPO equipo);
     }
 }

@@ -12,11 +12,12 @@ namespace SastUI.UI.Windows.Formulario
 {
     public partial class FormMenu : Form
     {
-        public FormMenu(int idUsuario, string nombreUsuario)
+        public FormMenu(int idUsuario, string nombreUsuario, int permisos)
         {
             InitializeComponent();
             txtIdUsuario.Text = idUsuario.ToString();
             txtNombreUsuario.Text = nombreUsuario.ToString();
+            txtPermisos.Text = permisos.ToString();
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -33,6 +34,7 @@ namespace SastUI.UI.Windows.Formulario
         {
             txtIdUsuario.Text = "";
             txtNombreUsuario.Text = "";
+            txtPermisos.Text = "";
             FormIngreso login = new FormIngreso();
             login.Show();
         }
@@ -41,7 +43,8 @@ namespace SastUI.UI.Windows.Formulario
         {
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormConstruccion constr = new FormConstruccion(idUsuario, nombreUsuario);
+            var permisos = int.Parse(txtPermisos.Text);
+            FormConstruccion constr = new FormConstruccion(idUsuario, nombreUsuario, permisos);
             constr.TopLevel = false;
             pnlContenido.Controls.Add(constr);
             pnlContenido.Visible = true;
@@ -53,7 +56,8 @@ namespace SastUI.UI.Windows.Formulario
         {
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormCliente cliente = new FormCliente(idUsuario, nombreUsuario);
+            var permisos = int.Parse(txtPermisos.Text);
+            FormCliente cliente = new FormCliente(idUsuario, nombreUsuario, permisos);
             cliente.TopLevel = false;
             pnlContenido.Controls.Add(cliente);
             pnlContenido.Visible = true;
@@ -65,7 +69,8 @@ namespace SastUI.UI.Windows.Formulario
         {
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormTelefono telefono = new FormTelefono(idUsuario, nombreUsuario);
+            var permisos = int.Parse(txtPermisos.Text);
+            FormTelefono telefono = new FormTelefono(idUsuario, nombreUsuario, permisos);
             telefono.TopLevel = false;
             pnlContenido.Controls.Add(telefono);
             pnlContenido.Visible = true;
@@ -77,7 +82,8 @@ namespace SastUI.UI.Windows.Formulario
         {
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormTipoTelefono tipo = new FormTipoTelefono(idUsuario, nombreUsuario);
+            var permisos = int.Parse(txtPermisos.Text);
+            FormTipoTelefono tipo = new FormTipoTelefono(idUsuario, nombreUsuario, permisos);
             tipo.TopLevel = false;
             pnlContenido.Controls.Add(tipo);
             pnlContenido.Visible = true;
@@ -89,7 +95,8 @@ namespace SastUI.UI.Windows.Formulario
         {
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormFicha ficha = new FormFicha(idUsuario, nombreUsuario);
+            var permisos = int.Parse(txtPermisos.Text);
+            FormFicha ficha = new FormFicha(idUsuario, nombreUsuario, permisos);
             ficha.TopLevel = false;
             pnlContenido.Controls.Add(ficha);
             pnlContenido.Visible = true;
@@ -101,7 +108,8 @@ namespace SastUI.UI.Windows.Formulario
         {
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormEquipo equipo = new FormEquipo(idUsuario, nombreUsuario);
+            var permisos = int.Parse(txtPermisos.Text);
+            FormEquipo equipo = new FormEquipo(idUsuario, nombreUsuario, permisos);
             equipo.TopLevel = false;
             pnlContenido.Controls.Add(equipo);
             pnlContenido.Visible = true;
@@ -113,7 +121,8 @@ namespace SastUI.UI.Windows.Formulario
         {
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormTipoEquipo tipoEquipo = new FormTipoEquipo(idUsuario, nombreUsuario);
+            var permisos = int.Parse(txtPermisos.Text);
+            FormTipoEquipo tipoEquipo = new FormTipoEquipo(idUsuario, nombreUsuario, permisos);
             tipoEquipo.TopLevel = false;
             pnlContenido.Controls.Add(tipoEquipo);
             pnlContenido.Visible = true;
@@ -125,7 +134,8 @@ namespace SastUI.UI.Windows.Formulario
         {
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormMarca marca = new FormMarca(idUsuario, nombreUsuario);
+            var permisos = int.Parse(txtPermisos.Text);
+            FormMarca marca = new FormMarca(idUsuario, nombreUsuario, permisos);
             marca.TopLevel = false;
             pnlContenido.Controls.Add(marca);
             pnlContenido.Visible = true;
@@ -137,7 +147,8 @@ namespace SastUI.UI.Windows.Formulario
         {
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormModelo modelo = new FormModelo(idUsuario, nombreUsuario);
+            var permisos = int.Parse(txtPermisos.Text);
+            FormModelo modelo = new FormModelo(idUsuario, nombreUsuario, permisos);
             modelo.TopLevel = false;
             pnlContenido.Controls.Add(modelo);
             pnlContenido.Visible = true;
@@ -149,7 +160,8 @@ namespace SastUI.UI.Windows.Formulario
         {
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormUsuario usuario = new FormUsuario(idUsuario, nombreUsuario);
+            var permisos = int.Parse(txtPermisos.Text);
+            FormUsuario usuario = new FormUsuario(idUsuario, nombreUsuario, permisos);
             usuario.TopLevel = false;
             pnlContenido.Controls.Add(usuario);
             pnlContenido.Visible = true;
@@ -161,7 +173,8 @@ namespace SastUI.UI.Windows.Formulario
         {
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormPerfil perfil = new FormPerfil(idUsuario, nombreUsuario);
+            var permisos = int.Parse(txtPermisos.Text);
+            FormPerfil perfil = new FormPerfil(idUsuario, nombreUsuario, permisos);
             perfil.TopLevel = false;
             pnlContenido.Controls.Add(perfil);
             pnlContenido.Visible = true;

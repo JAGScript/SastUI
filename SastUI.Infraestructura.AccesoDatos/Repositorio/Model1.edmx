@@ -28,7 +28,7 @@
         </EntityType>
         <EntityType Name="TBL_DETALLE_FICHA">
           <Key>
-            <PropertyRef Name="cf_id" />
+            <PropertyRef Name="df_id" />
           </Key>
           <Property Name="df_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cf_id" Type="int" Nullable="false" />
@@ -74,6 +74,7 @@
           <Property Name="pe_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="pe_nombre" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="pe_estado" Type="int" Nullable="false" />
+          <Property Name="pe_permisos" Type="int" />
         </EntityType>
         <EntityType Name="TBL_TELEFONO">
           <Key>
@@ -140,7 +141,7 @@
         </Association>
         <Association Name="FK_DetalleFicha_CabeceraFicha">
           <End Role="TBL_CABECERA_FICHA" Type="Self.TBL_CABECERA_FICHA" Multiplicity="1" />
-          <End Role="TBL_DETALLE_FICHA" Type="Self.TBL_DETALLE_FICHA" Multiplicity="0..1" />
+          <End Role="TBL_DETALLE_FICHA" Type="Self.TBL_DETALLE_FICHA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_CABECERA_FICHA">
               <PropertyRef Name="cf_id" />
@@ -319,7 +320,7 @@
         </EntityType>
         <EntityType Name="TBL_DETALLE_FICHA">
           <Key>
-            <PropertyRef Name="cf_id" />
+            <PropertyRef Name="df_id" />
           </Key>
           <Property Name="df_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cf_id" Type="Int32" Nullable="false" />
@@ -374,6 +375,7 @@
           <Property Name="pe_nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="TBL_USUARIO" Relationship="Self.FK_Usuario_Perfil" FromRole="TBL_PERFIL" ToRole="TBL_USUARIO" />
           <Property Name="pe_estado" Type="Int32" Nullable="false" />
+          <Property Name="pe_permisos" Type="Int32" />
         </EntityType>
         <EntityType Name="TBL_TELEFONO">
           <Key>
@@ -415,7 +417,7 @@
           <Property Name="us_pass" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="us_nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="us_correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="us_identificacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="us_identificacion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="us_estado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TBL_CABECERA_FICHA" Relationship="Self.FK_CabeceraFicha_Usuario" FromRole="TBL_USUARIO" ToRole="TBL_CABECERA_FICHA" />
           <NavigationProperty Name="TBL_PERFIL" Relationship="Self.FK_Usuario_Perfil" FromRole="TBL_USUARIO" ToRole="TBL_PERFIL" />
@@ -446,7 +448,7 @@
         </Association>
         <Association Name="FK_DetalleFicha_CabeceraFicha">
           <End Role="TBL_CABECERA_FICHA" Type="Self.TBL_CABECERA_FICHA" Multiplicity="1" />
-          <End Role="TBL_DETALLE_FICHA" Type="Self.TBL_DETALLE_FICHA" Multiplicity="0..1" />
+          <End Role="TBL_DETALLE_FICHA" Type="Self.TBL_DETALLE_FICHA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_CABECERA_FICHA">
               <PropertyRef Name="cf_id" />
@@ -670,6 +672,7 @@
           <EntitySetMapping Name="TBL_PERFIL">
             <EntityTypeMapping TypeName="SASTModel.TBL_PERFIL">
               <MappingFragment StoreEntitySet="TBL_PERFIL">
+                <ScalarProperty Name="pe_permisos" ColumnName="pe_permisos" />
                 <ScalarProperty Name="pe_estado" ColumnName="pe_estado" />
                 <ScalarProperty Name="pe_id" ColumnName="pe_id" />
                 <ScalarProperty Name="pe_nombre" ColumnName="pe_nombre" />

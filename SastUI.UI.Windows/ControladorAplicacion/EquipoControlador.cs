@@ -130,5 +130,26 @@ namespace SastUI.UI.Windows.ControladorAplicacion
             }
             return equipoView;
         }
+
+        public int GuardarConId(EquipoVistaModelo equipo)
+        {
+            try
+            {
+                TBL_EQUIPO nuevo = new TBL_EQUIPO();
+                nuevo.tp_id = equipo.TipoId;
+                nuevo.ma_id = equipo.MarcaId;
+                nuevo.mo_id = equipo.ModeloId;
+                nuevo.eq_serie = equipo.Serie;
+                nuevo.eq_so = equipo.SistemaOperativo;
+                nuevo.eq_cartacteristicas = equipo.Caracteristicas;
+                nuevo.eq_observaciones = equipo.Observaciones;
+                nuevo.eq_estado = equipo.Estado;
+                return new EquipoServicio().GuardarConId(nuevo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

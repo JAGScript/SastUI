@@ -18,6 +18,7 @@ namespace SastUI.UI.Windows.ControladorAplicacion
             {
                 nuevoPerfil.pe_nombre = perfilView.Nombre;
                 nuevoPerfil.pe_estado = perfilView.Estado;
+                nuevoPerfil.pe_permisos = perfilView.Permisos;
                 new PerfilServicio().InsertarPerfil(nuevoPerfil);
                 return true;
             }
@@ -36,6 +37,7 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                 perfil.pe_id = perfilView.Id;
                 perfil.pe_nombre = perfilView.Nombre;
                 perfil.pe_estado = perfilView.Estado;
+                perfil.pe_permisos = perfilView.Permisos;
                 new PerfilServicio().ModificarPerfil(perfil);
                 return true;
             }
@@ -58,7 +60,8 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                     Id = item.pe_id,
                     Nombre = item.pe_nombre,
                     Estado = item.pe_estado,
-                    EstadoDescripcion = item.pe_estado == 1 ? "Activo" : "Inactivo"
+                    EstadoDescripcion = item.pe_estado == 1 ? "Activo" : "Inactivo",
+                    Permisos = item.pe_permisos
                 });
             }
             return perfilView;

@@ -63,6 +63,7 @@
             this.btnGuardarNuevoTipo = new System.Windows.Forms.Button();
             this.txtNuevoTipo = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.txtPermisos = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTelefonos)).BeginInit();
             this.pnlBusquedaCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctCerrar)).BeginInit();
@@ -491,6 +492,17 @@
             this.label8.Text = "Descripción:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // txtPermisos
+            // 
+            this.txtPermisos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPermisos.Location = new System.Drawing.Point(1179, 20);
+            this.txtPermisos.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPermisos.Name = "txtPermisos";
+            this.txtPermisos.ReadOnly = true;
+            this.txtPermisos.Size = new System.Drawing.Size(36, 32);
+            this.txtPermisos.TabIndex = 45;
+            this.txtPermisos.Visible = false;
+            // 
             // FormTelefono
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -498,6 +510,7 @@
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1375, 860);
             this.ControlBox = false;
+            this.Controls.Add(this.txtPermisos);
             this.Controls.Add(this.txtNombreUsuario);
             this.Controls.Add(this.txtIdUsuario);
             this.Controls.Add(this.pctCerrar);
@@ -575,5 +588,6 @@
         private Button btnCancelarNuevoTipo;
         private Button btnGuardarNuevoTipo;
         private Button btnCancelarBusqueda;
+        private TextBox txtPermisos;
     }
 }

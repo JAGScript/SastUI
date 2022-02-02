@@ -14,11 +14,12 @@ namespace SastUI.UI.Windows.Formulario
 {
     public partial class FormEquipo : Form
     {
-        public FormEquipo(int idUsuario, string nombreUsuario)
+        public FormEquipo(int idUsuario, string nombreUsuario, int permisos)
         {
             InitializeComponent();
             txtIdUsuario.Text = idUsuario.ToString();
             txtNombreUsuario.Text = nombreUsuario.ToString();
+            txtPermisos.Text = permisos.ToString();
         }
 
         public void CargarTipoEquipo()
@@ -178,7 +179,8 @@ namespace SastUI.UI.Windows.Formulario
             Limpiar();
             var idUsuario = int.Parse(txtIdUsuario.Text);
             var nombreUsuario = txtNombreUsuario.Text.ToString();
-            FormMenu menu = new FormMenu(idUsuario, nombreUsuario);
+            var permisos = int.Parse(txtPermisos.Text);
+            FormMenu menu = new FormMenu(idUsuario, nombreUsuario, permisos);
             menu.Show();
         }
 

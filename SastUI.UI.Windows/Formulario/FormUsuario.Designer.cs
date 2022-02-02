@@ -48,6 +48,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.pnlNuevoPerfil = new System.Windows.Forms.Panel();
+            this.chkPermisos = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.btnCancelarNuevoPerfil = new System.Windows.Forms.Button();
             this.btnGuardarNuevoPerfil = new System.Windows.Forms.Button();
@@ -60,6 +61,7 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.bntAgregarPerfil = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.txtPermisos = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_usuarios)).BeginInit();
             this.pnlNuevoPerfil.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctCerrar)).BeginInit();
@@ -153,7 +155,7 @@
             // 
             this.txtIdentificacion.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdentificacion.Location = new System.Drawing.Point(204, 117);
-            this.txtIdentificacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIdentificacion.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdentificacion.Name = "txtIdentificacion";
             this.txtIdentificacion.Size = new System.Drawing.Size(415, 32);
             this.txtIdentificacion.TabIndex = 7;
@@ -162,7 +164,7 @@
             // 
             this.txtNombre.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.Location = new System.Drawing.Point(204, 161);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(415, 32);
             this.txtNombre.TabIndex = 8;
@@ -171,7 +173,7 @@
             // 
             this.txtCorreo.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCorreo.Location = new System.Drawing.Point(204, 208);
-            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(415, 32);
             this.txtCorreo.TabIndex = 9;
@@ -180,7 +182,7 @@
             // 
             this.txtUsuario.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.Location = new System.Drawing.Point(204, 251);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(415, 32);
             this.txtUsuario.TabIndex = 10;
@@ -189,7 +191,7 @@
             // 
             this.txtPass.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPass.Location = new System.Drawing.Point(204, 295);
-            this.txtPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPass.Margin = new System.Windows.Forms.Padding(4);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(415, 32);
@@ -201,7 +203,7 @@
             this.cmbPerfiles.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPerfiles.FormattingEnabled = true;
             this.cmbPerfiles.Location = new System.Drawing.Point(204, 341);
-            this.cmbPerfiles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbPerfiles.Margin = new System.Windows.Forms.Padding(4);
             this.cmbPerfiles.Name = "cmbPerfiles";
             this.cmbPerfiles.Size = new System.Drawing.Size(415, 32);
             this.cmbPerfiles.TabIndex = 12;
@@ -213,7 +215,7 @@
             this.dgv_usuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_usuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_usuarios.Location = new System.Drawing.Point(53, 490);
-            this.dgv_usuarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgv_usuarios.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_usuarios.Name = "dgv_usuarios";
             this.dgv_usuarios.RowHeadersWidth = 51;
             this.dgv_usuarios.Size = new System.Drawing.Size(1303, 306);
@@ -237,7 +239,7 @@
             this.cmbEstado.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Location = new System.Drawing.Point(204, 384);
-            this.cmbEstado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(415, 32);
             this.cmbEstado.TabIndex = 18;
@@ -271,7 +273,7 @@
             // 
             this.txtId.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtId.Location = new System.Drawing.Point(204, 71);
-            this.txtId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtId.Margin = new System.Windows.Forms.Padding(4);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(415, 32);
@@ -280,17 +282,29 @@
             // pnlNuevoPerfil
             // 
             this.pnlNuevoPerfil.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlNuevoPerfil.Controls.Add(this.chkPermisos);
             this.pnlNuevoPerfil.Controls.Add(this.label12);
             this.pnlNuevoPerfil.Controls.Add(this.btnCancelarNuevoPerfil);
             this.pnlNuevoPerfil.Controls.Add(this.btnGuardarNuevoPerfil);
             this.pnlNuevoPerfil.Controls.Add(this.txtNuevoPerfil);
             this.pnlNuevoPerfil.Controls.Add(this.label11);
-            this.pnlNuevoPerfil.Location = new System.Drawing.Point(544, 158);
-            this.pnlNuevoPerfil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlNuevoPerfil.Location = new System.Drawing.Point(545, 111);
+            this.pnlNuevoPerfil.Margin = new System.Windows.Forms.Padding(4);
             this.pnlNuevoPerfil.Name = "pnlNuevoPerfil";
-            this.pnlNuevoPerfil.Size = new System.Drawing.Size(475, 233);
+            this.pnlNuevoPerfil.Size = new System.Drawing.Size(475, 265);
             this.pnlNuevoPerfil.TabIndex = 23;
             this.pnlNuevoPerfil.Visible = false;
+            // 
+            // chkPermisos
+            // 
+            this.chkPermisos.AutoSize = true;
+            this.chkPermisos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPermisos.Location = new System.Drawing.Point(32, 146);
+            this.chkPermisos.Name = "chkPermisos";
+            this.chkPermisos.Size = new System.Drawing.Size(257, 28);
+            this.chkPermisos.TabIndex = 38;
+            this.chkPermisos.Text = "Perfil Tipo Administrador";
+            this.chkPermisos.UseVisualStyleBackColor = true;
             // 
             // label12
             // 
@@ -308,8 +322,8 @@
             // 
             this.btnCancelarNuevoPerfil.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarNuevoPerfil.Image = global::SastUI.UI.Windows.Properties.Resources.Cancelar;
-            this.btnCancelarNuevoPerfil.Location = new System.Drawing.Point(259, 156);
-            this.btnCancelarNuevoPerfil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelarNuevoPerfil.Location = new System.Drawing.Point(258, 193);
+            this.btnCancelarNuevoPerfil.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelarNuevoPerfil.Name = "btnCancelarNuevoPerfil";
             this.btnCancelarNuevoPerfil.Size = new System.Drawing.Size(156, 53);
             this.btnCancelarNuevoPerfil.TabIndex = 15;
@@ -322,8 +336,8 @@
             // 
             this.btnGuardarNuevoPerfil.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarNuevoPerfil.Image = global::SastUI.UI.Windows.Properties.Resources.Guardar;
-            this.btnGuardarNuevoPerfil.Location = new System.Drawing.Point(83, 156);
-            this.btnGuardarNuevoPerfil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardarNuevoPerfil.Location = new System.Drawing.Point(82, 193);
+            this.btnGuardarNuevoPerfil.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardarNuevoPerfil.Name = "btnGuardarNuevoPerfil";
             this.btnGuardarNuevoPerfil.Size = new System.Drawing.Size(155, 53);
             this.btnGuardarNuevoPerfil.TabIndex = 14;
@@ -336,7 +350,7 @@
             // 
             this.txtNuevoPerfil.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNuevoPerfil.Location = new System.Drawing.Point(33, 96);
-            this.txtNuevoPerfil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNuevoPerfil.Margin = new System.Windows.Forms.Padding(4);
             this.txtNuevoPerfil.Name = "txtNuevoPerfil";
             this.txtNuevoPerfil.Size = new System.Drawing.Size(415, 32);
             this.txtNuevoPerfil.TabIndex = 9;
@@ -357,7 +371,7 @@
             // 
             this.txtIdUsuario.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdUsuario.Location = new System.Drawing.Point(1223, 20);
-            this.txtIdUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIdUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdUsuario.Name = "txtIdUsuario";
             this.txtIdUsuario.ReadOnly = true;
             this.txtIdUsuario.Size = new System.Drawing.Size(36, 32);
@@ -368,7 +382,7 @@
             // 
             this.txtNombreUsuario.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombreUsuario.Location = new System.Drawing.Point(1269, 20);
-            this.txtNombreUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombreUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.ReadOnly = true;
             this.txtNombreUsuario.Size = new System.Drawing.Size(37, 32);
@@ -381,7 +395,7 @@
             this.pctCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pctCerrar.Image = global::SastUI.UI.Windows.Properties.Resources.Cerrar;
             this.pctCerrar.Location = new System.Drawing.Point(1315, 15);
-            this.pctCerrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pctCerrar.Margin = new System.Windows.Forms.Padding(4);
             this.pctCerrar.Name = "pctCerrar";
             this.pctCerrar.Size = new System.Drawing.Size(47, 37);
             this.pctCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -394,7 +408,7 @@
             this.btnLimpiar.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.Image = global::SastUI.UI.Windows.Properties.Resources.Limpiar;
             this.btnLimpiar.Location = new System.Drawing.Point(676, 242);
-            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(152, 74);
             this.btnLimpiar.TabIndex = 25;
@@ -408,7 +422,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.Image = global::SastUI.UI.Windows.Properties.Resources.Eliminar;
             this.btnEliminar.Location = new System.Drawing.Point(676, 332);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(152, 74);
             this.btnEliminar.TabIndex = 24;
@@ -422,7 +436,7 @@
             this.bntAgregarPerfil.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntAgregarPerfil.Image = global::SastUI.UI.Windows.Properties.Resources.Agregar;
             this.bntAgregarPerfil.Location = new System.Drawing.Point(676, 161);
-            this.bntAgregarPerfil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntAgregarPerfil.Margin = new System.Windows.Forms.Padding(4);
             this.bntAgregarPerfil.Name = "bntAgregarPerfil";
             this.bntAgregarPerfil.Size = new System.Drawing.Size(152, 74);
             this.bntAgregarPerfil.TabIndex = 22;
@@ -436,7 +450,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Image = global::SastUI.UI.Windows.Properties.Resources.Guardar;
             this.btnGuardar.Location = new System.Drawing.Point(676, 71);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(152, 74);
             this.btnGuardar.TabIndex = 13;
@@ -445,6 +459,17 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // txtPermisos
+            // 
+            this.txtPermisos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPermisos.Location = new System.Drawing.Point(1179, 20);
+            this.txtPermisos.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPermisos.Name = "txtPermisos";
+            this.txtPermisos.ReadOnly = true;
+            this.txtPermisos.Size = new System.Drawing.Size(36, 32);
+            this.txtPermisos.TabIndex = 29;
+            this.txtPermisos.Visible = false;
+            // 
             // FormUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -452,6 +477,7 @@
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1375, 806);
             this.ControlBox = false;
+            this.Controls.Add(this.txtPermisos);
             this.Controls.Add(this.txtNombreUsuario);
             this.Controls.Add(this.txtIdUsuario);
             this.Controls.Add(this.pctCerrar);
@@ -479,7 +505,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlNuevoPerfil);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormUsuario";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -529,5 +555,7 @@
         private PictureBox pctCerrar;
         private TextBox txtIdUsuario;
         private TextBox txtNombreUsuario;
+        private TextBox txtPermisos;
+        private CheckBox chkPermisos;
     }
 }
