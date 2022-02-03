@@ -59,7 +59,7 @@ namespace SastUI.UI.Windows.ControladorAplicacion
 
         public IEnumerable<EquipoVistaModelo> ObtenerEquipos()
         {
-            var lista = new EquipoServicio().ListaridEquipos();
+            var lista = new EquipoServicio().ListarEquipos();
             List<EquipoVistaModelo> equipoView = new List<EquipoVistaModelo>();
 
             var tiposEquipo = new TipoEquipoServicio().ListarTipoEquipos().ToList();

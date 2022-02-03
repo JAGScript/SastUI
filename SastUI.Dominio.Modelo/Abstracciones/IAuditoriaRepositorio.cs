@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace SastUI.Dominio.Modelo.Abstracciones
 {
-    public interface IDetalleFichaRepositorio : IBaseRepositorio<TBL_DETALLE_FICHA>
+    public interface IAuditoriaRepositorio : IBaseRepositorio<TBL_AUDITORIA>
     {
-        IEnumerable<TBL_DETALLE_FICHA> BuscarDetallePorIdCabecera(int idCabecera);
     }
 }

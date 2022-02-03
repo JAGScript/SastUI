@@ -62,9 +62,6 @@
             this.txtSecuencial = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.btnAgregarCliente = new System.Windows.Forms.Button();
-            this.btnBuscarCliente = new System.Windows.Forms.Button();
-            this.pct_cerrar = new System.Windows.Forms.PictureBox();
             this.dgvEquiposDetalle = new System.Windows.Forms.DataGridView();
             this.chkDetalle = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.pnlEquiposExistentes = new System.Windows.Forms.Panel();
@@ -95,8 +92,6 @@
             this.label22 = new System.Windows.Forms.Label();
             this.cmbTipoEquipo = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.btnRemoveFila = new System.Windows.Forms.Button();
-            this.btnAddFila = new System.Windows.Forms.Button();
             this.pnlTipoEquipo = new System.Windows.Forms.Panel();
             this.btnCancelarTipo = new System.Windows.Forms.Button();
             this.btnGuardarTipo = new System.Windows.Forms.Button();
@@ -115,12 +110,16 @@
             this.txtNuevoModelo = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
+            this.txtPermisos = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
-            this.txtPermisos = new System.Windows.Forms.TextBox();
+            this.btnRemoveFila = new System.Windows.Forms.Button();
+            this.btnAddFila = new System.Windows.Forms.Button();
+            this.btnAgregarCliente = new System.Windows.Forms.Button();
+            this.btnBuscarCliente = new System.Windows.Forms.Button();
+            this.pct_cerrar = new System.Windows.Forms.PictureBox();
             this.pnlBusquedaCliente.SuspendLayout();
             this.pnlNuevoCliente.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pct_cerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEquiposDetalle)).BeginInit();
             this.pnlEquiposExistentes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctCerrarEquiposExistentes)).BeginInit();
@@ -130,6 +129,7 @@
             this.pnlTipoEquipo.SuspendLayout();
             this.pnlMarca.SuspendLayout();
             this.pnlModelo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pct_cerrar)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNombreUsuario
@@ -434,7 +434,7 @@
             this.txtNuevoCorreo.Name = "txtNuevoCorreo";
             this.txtNuevoCorreo.Size = new System.Drawing.Size(289, 32);
             this.txtNuevoCorreo.TabIndex = 38;
-            this.txtNuevoCorreo.TextChanged += new System.EventHandler(this.txtNuevoCorreo_TextChanged);
+            this.txtNuevoCorreo.Leave += new System.EventHandler(this.txtNuevoCorreo_Leave);
             // 
             // label9
             // 
@@ -539,45 +539,6 @@
             this.label14.Size = new System.Drawing.Size(266, 33);
             this.label14.TabIndex = 55;
             this.label14.Text = "Detalle Ficha Técnica";
-            // 
-            // btnAgregarCliente
-            // 
-            this.btnAgregarCliente.Font = new System.Drawing.Font("Bahnschrift", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarCliente.Image = global::SastUI.UI.Windows.Properties.Resources.Agregar;
-            this.btnAgregarCliente.Location = new System.Drawing.Point(721, 64);
-            this.btnAgregarCliente.Name = "btnAgregarCliente";
-            this.btnAgregarCliente.Size = new System.Drawing.Size(53, 48);
-            this.btnAgregarCliente.TabIndex = 47;
-            this.btnAgregarCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAgregarCliente.UseVisualStyleBackColor = true;
-            this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);
-            // 
-            // btnBuscarCliente
-            // 
-            this.btnBuscarCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscarCliente.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarCliente.Image = global::SastUI.UI.Windows.Properties.Resources.Buscar;
-            this.btnBuscarCliente.Location = new System.Drawing.Point(661, 64);
-            this.btnBuscarCliente.Margin = new System.Windows.Forms.Padding(4);
-            this.btnBuscarCliente.Name = "btnBuscarCliente";
-            this.btnBuscarCliente.Size = new System.Drawing.Size(53, 48);
-            this.btnBuscarCliente.TabIndex = 46;
-            this.btnBuscarCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnBuscarCliente.UseVisualStyleBackColor = true;
-            this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
-            // 
-            // pct_cerrar
-            // 
-            this.pct_cerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pct_cerrar.Image = global::SastUI.UI.Windows.Properties.Resources.Cerrar;
-            this.pct_cerrar.Location = new System.Drawing.Point(1415, 15);
-            this.pct_cerrar.Margin = new System.Windows.Forms.Padding(4);
-            this.pct_cerrar.Name = "pct_cerrar";
-            this.pct_cerrar.Size = new System.Drawing.Size(47, 37);
-            this.pct_cerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pct_cerrar.TabIndex = 38;
-            this.pct_cerrar.TabStop = false;
-            this.pct_cerrar.Click += new System.EventHandler(this.pct_cerrar_Click);
             // 
             // dgvEquiposDetalle
             // 
@@ -920,28 +881,6 @@
             this.label23.Text = "Tipo Equipo:";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnRemoveFila
-            // 
-            this.btnRemoveFila.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveFila.Image = global::SastUI.UI.Windows.Properties.Resources.Remove;
-            this.btnRemoveFila.Location = new System.Drawing.Point(721, 536);
-            this.btnRemoveFila.Name = "btnRemoveFila";
-            this.btnRemoveFila.Size = new System.Drawing.Size(75, 67);
-            this.btnRemoveFila.TabIndex = 67;
-            this.btnRemoveFila.UseVisualStyleBackColor = true;
-            this.btnRemoveFila.Click += new System.EventHandler(this.btnRemoveFila_Click);
-            // 
-            // btnAddFila
-            // 
-            this.btnAddFila.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddFila.Image = global::SastUI.UI.Windows.Properties.Resources.Add;
-            this.btnAddFila.Location = new System.Drawing.Point(721, 461);
-            this.btnAddFila.Name = "btnAddFila";
-            this.btnAddFila.Size = new System.Drawing.Size(75, 67);
-            this.btnAddFila.TabIndex = 66;
-            this.btnAddFila.UseVisualStyleBackColor = true;
-            this.btnAddFila.Click += new System.EventHandler(this.btnAddFila_Click);
-            // 
             // pnlTipoEquipo
             // 
             this.pnlTipoEquipo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -1158,6 +1097,17 @@
             this.label30.Text = "Modelo";
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // txtPermisos
+            // 
+            this.txtPermisos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPermisos.Location = new System.Drawing.Point(1276, 20);
+            this.txtPermisos.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPermisos.Name = "txtPermisos";
+            this.txtPermisos.ReadOnly = true;
+            this.txtPermisos.Size = new System.Drawing.Size(36, 32);
+            this.txtPermisos.TabIndex = 72;
+            this.txtPermisos.Visible = false;
+            // 
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1184,16 +1134,66 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
-            // txtPermisos
+            // btnRemoveFila
             // 
-            this.txtPermisos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPermisos.Location = new System.Drawing.Point(1276, 20);
-            this.txtPermisos.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPermisos.Name = "txtPermisos";
-            this.txtPermisos.ReadOnly = true;
-            this.txtPermisos.Size = new System.Drawing.Size(36, 32);
-            this.txtPermisos.TabIndex = 72;
-            this.txtPermisos.Visible = false;
+            this.btnRemoveFila.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveFila.Image = global::SastUI.UI.Windows.Properties.Resources.Remove;
+            this.btnRemoveFila.Location = new System.Drawing.Point(721, 536);
+            this.btnRemoveFila.Name = "btnRemoveFila";
+            this.btnRemoveFila.Size = new System.Drawing.Size(75, 67);
+            this.btnRemoveFila.TabIndex = 67;
+            this.btnRemoveFila.UseVisualStyleBackColor = true;
+            this.btnRemoveFila.Click += new System.EventHandler(this.btnRemoveFila_Click);
+            // 
+            // btnAddFila
+            // 
+            this.btnAddFila.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddFila.Image = global::SastUI.UI.Windows.Properties.Resources.Add;
+            this.btnAddFila.Location = new System.Drawing.Point(721, 461);
+            this.btnAddFila.Name = "btnAddFila";
+            this.btnAddFila.Size = new System.Drawing.Size(75, 67);
+            this.btnAddFila.TabIndex = 66;
+            this.btnAddFila.UseVisualStyleBackColor = true;
+            this.btnAddFila.Click += new System.EventHandler(this.btnAddFila_Click);
+            // 
+            // btnAgregarCliente
+            // 
+            this.btnAgregarCliente.Font = new System.Drawing.Font("Bahnschrift", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarCliente.Image = global::SastUI.UI.Windows.Properties.Resources.Agregar;
+            this.btnAgregarCliente.Location = new System.Drawing.Point(721, 64);
+            this.btnAgregarCliente.Name = "btnAgregarCliente";
+            this.btnAgregarCliente.Size = new System.Drawing.Size(53, 48);
+            this.btnAgregarCliente.TabIndex = 47;
+            this.btnAgregarCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAgregarCliente.UseVisualStyleBackColor = true;
+            this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);
+            // 
+            // btnBuscarCliente
+            // 
+            this.btnBuscarCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscarCliente.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarCliente.Image = global::SastUI.UI.Windows.Properties.Resources.Buscar;
+            this.btnBuscarCliente.Location = new System.Drawing.Point(661, 64);
+            this.btnBuscarCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscarCliente.Name = "btnBuscarCliente";
+            this.btnBuscarCliente.Size = new System.Drawing.Size(53, 48);
+            this.btnBuscarCliente.TabIndex = 46;
+            this.btnBuscarCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBuscarCliente.UseVisualStyleBackColor = true;
+            this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
+            // 
+            // pct_cerrar
+            // 
+            this.pct_cerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pct_cerrar.Image = global::SastUI.UI.Windows.Properties.Resources.Cerrar;
+            this.pct_cerrar.Location = new System.Drawing.Point(1415, 15);
+            this.pct_cerrar.Margin = new System.Windows.Forms.Padding(4);
+            this.pct_cerrar.Name = "pct_cerrar";
+            this.pct_cerrar.Size = new System.Drawing.Size(47, 37);
+            this.pct_cerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pct_cerrar.TabIndex = 38;
+            this.pct_cerrar.TabStop = false;
+            this.pct_cerrar.Click += new System.EventHandler(this.pct_cerrar_Click);
             // 
             // FormFicha
             // 
@@ -1229,10 +1229,10 @@
             this.Controls.Add(this.pnlBusquedaCliente);
             this.Controls.Add(this.pnlEquiposExistentes);
             this.Controls.Add(this.pnlNuevoEquipo);
-            this.Controls.Add(this.pnlNuevoCliente);
             this.Controls.Add(this.pnlTipoEquipo);
             this.Controls.Add(this.pnlModelo);
             this.Controls.Add(this.pnlMarca);
+            this.Controls.Add(this.pnlNuevoCliente);
             this.Name = "FormFicha";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -1241,7 +1241,6 @@
             this.pnlBusquedaCliente.PerformLayout();
             this.pnlNuevoCliente.ResumeLayout(false);
             this.pnlNuevoCliente.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pct_cerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEquiposDetalle)).EndInit();
             this.pnlEquiposExistentes.ResumeLayout(false);
             this.pnlEquiposExistentes.PerformLayout();
@@ -1256,6 +1255,7 @@
             this.pnlMarca.PerformLayout();
             this.pnlModelo.ResumeLayout(false);
             this.pnlModelo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pct_cerrar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

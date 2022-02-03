@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="SASTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBL_AUDITORIA">
+          <Key>
+            <PropertyRef Name="au_id" />
+          </Key>
+          <Property Name="au_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="us_id" Type="int" Nullable="false" />
+          <Property Name="au_modulo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="au_accion" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="au_valor" Type="varchar(max)" Nullable="false" />
+          <Property Name="au_fecha" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="TBL_CABECERA_FICHA">
           <Key>
             <PropertyRef Name="cf_id" />
@@ -236,6 +247,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="SASTModelStoreContainer">
+          <EntitySet Name="TBL_AUDITORIA" EntityType="Self.TBL_AUDITORIA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_CABECERA_FICHA" EntityType="Self.TBL_CABECERA_FICHA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_CLIENTE" EntityType="Self.TBL_CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_DETALLE_FICHA" EntityType="Self.TBL_DETALLE_FICHA" Schema="dbo" store:Type="Tables" />
@@ -594,7 +606,19 @@
             <End Role="TBL_TIPO_TELEFONO" EntitySet="TBL_TIPO_TELEFONO" />
             <End Role="TBL_TELEFONO" EntitySet="TBL_TELEFONO" />
           </AssociationSet>
+          <EntitySet Name="TBL_AUDITORIA" EntityType="SASTModel.TBL_AUDITORIA" />
         </EntityContainer>
+        <EntityType Name="TBL_AUDITORIA">
+          <Key>
+            <PropertyRef Name="au_id" />
+          </Key>
+          <Property Name="au_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="us_id" Type="Int32" Nullable="false" />
+          <Property Name="au_modulo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="au_accion" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="au_valor" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="au_fecha" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -719,6 +743,18 @@
                 <ScalarProperty Name="us_correo" ColumnName="us_correo" />
                 <ScalarProperty Name="us_identificacion" ColumnName="us_identificacion" />
                 <ScalarProperty Name="us_estado" ColumnName="us_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_AUDITORIA">
+            <EntityTypeMapping TypeName="SASTModel.TBL_AUDITORIA">
+              <MappingFragment StoreEntitySet="TBL_AUDITORIA">
+                <ScalarProperty Name="au_fecha" ColumnName="au_fecha" />
+                <ScalarProperty Name="au_valor" ColumnName="au_valor" />
+                <ScalarProperty Name="au_accion" ColumnName="au_accion" />
+                <ScalarProperty Name="au_modulo" ColumnName="au_modulo" />
+                <ScalarProperty Name="us_id" ColumnName="us_id" />
+                <ScalarProperty Name="au_id" ColumnName="au_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

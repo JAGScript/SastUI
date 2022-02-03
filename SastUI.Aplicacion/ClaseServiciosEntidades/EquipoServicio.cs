@@ -42,7 +42,7 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
             }
         }
 
-        public IEnumerable<TBL_EQUIPO> ListaridEquipos()
+        public IEnumerable<TBL_EQUIPO> ListarEquipos()
         {
             try
             {
@@ -54,7 +54,7 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
             }
         }
 
-        public void EliminaridEquipo(int idEquipo)
+        public void EliminarEquipo(int idEquipo)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
             }
         }
 
-        public TBL_EQUIPO ObteneridEquipo(int idEquipo)
+        public TBL_EQUIPO ObtenerEquipo(int idEquipo)
         {
             try
             {

@@ -89,5 +89,29 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
                 throw new Exception("Error: " + ex.Message);
             }
         }
+
+        public IEnumerable<TBL_CABECERA_FICHA> ListarFichasActivas()
+        {
+            try
+            {
+                return cabeceraFichaRepositorio.ListarFichasActivas();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
+        public IEnumerable<TBL_CABECERA_FICHA> BuscarFichasPorCliente(int idCliente)
+        {
+            try
+            {
+                return cabeceraFichaRepositorio.BuscarFichasPorCliente(idCliente);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
     }
 }

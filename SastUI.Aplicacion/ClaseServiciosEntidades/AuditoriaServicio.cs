@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace SastUI.Aplicacion.ClaseServiciosEntidades
 {
-    public class DetalleFichaServicio
+    public class AuditoriaServicio
     {
-        readonly IDetalleFichaRepositorio detalleFichaRepositorio;
+        readonly IAuditoriaRepositorio auditoriaRepositorio;
 
-        public DetalleFichaServicio()
+        public AuditoriaServicio()
         {
-            detalleFichaRepositorio = new DetalleFichaRepositorio();
+            auditoriaRepositorio = new AuditoriaRepositorio();
         }
 
-        public void InsertarDetalleFicha(TBL_DETALLE_FICHA datosDetalleFicha)
+        public void InsertarAuditoria(TBL_AUDITORIA datosAuditoria)
         {
             try
             {
-                detalleFichaRepositorio.Guardar(datosDetalleFicha);
+                auditoriaRepositorio.Guardar(datosAuditoria);
             }
             catch (Exception ex)
             {
@@ -30,11 +30,11 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
             }
         }
 
-        public void ModificarDetalleFicha(TBL_DETALLE_FICHA datosDetalleFicha)
+        public void ModificarAuditoria(TBL_AUDITORIA datosAuditoria)
         {
             try
             {
-                detalleFichaRepositorio.Modificar(datosDetalleFicha);
+                auditoriaRepositorio.Modificar(datosAuditoria);
             }
             catch (Exception ex)
             {
@@ -42,11 +42,11 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
             }
         }
 
-        public IEnumerable<TBL_DETALLE_FICHA> ListarDetalleFichas()
+        public IEnumerable<TBL_AUDITORIA> ListarAuditorias()
         {
             try
             {
-                return detalleFichaRepositorio.Listar();
+                return auditoriaRepositorio.Listar();
             }
             catch (Exception ex)
             {
@@ -54,11 +54,11 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
             }
         }
 
-        public void EliminarDetalleFicha(int idDetalleFicha)
+        public void EliminarAuditoria(int idAuditoria)
         {
             try
             {
-                detalleFichaRepositorio.Borrar(idDetalleFicha);
+                auditoriaRepositorio.Borrar(idAuditoria);
             }
             catch (Exception ex)
             {
@@ -66,23 +66,11 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
             }
         }
 
-        public TBL_DETALLE_FICHA ObtenerDetalleFicha(int idDetalleFicha)
+        public TBL_AUDITORIA ObtenerAuditoria(int idAuditoria)
         {
             try
             {
-                return detalleFichaRepositorio.Obtener(idDetalleFicha);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error: " + ex.Message);
-            }
-        }
-
-        public IEnumerable<TBL_DETALLE_FICHA> BuscarDetallePorIdCabecera(int idCabecera)
-        {
-            try
-            {
-                return detalleFichaRepositorio.BuscarDetallePorIdCabecera(idCabecera);
+                return auditoriaRepositorio.Obtener(idAuditoria);
             }
             catch (Exception ex)
             {

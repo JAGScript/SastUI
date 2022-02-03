@@ -27,7 +27,21 @@ namespace SastUI.UI.Windows.Formulario
 
         private void FormMenu_Load(object sender, EventArgs e)
         {
-
+            int permisos = int.Parse(txtPermisos.Text);
+            if (permisos == 0)
+            {
+                pctUsuarios.Visible = false;
+                btnAbrirUsuarios.Visible = false;
+                pctPerfiles.Visible = false;
+                btnAbrirPerfiles.Visible = false;
+            }
+            else
+            {
+                pctUsuarios.Visible = true;
+                btnAbrirUsuarios.Visible = true;
+                pctPerfiles.Visible = true;
+                btnAbrirPerfiles.Visible = true;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -182,6 +196,19 @@ namespace SastUI.UI.Windows.Formulario
             perfil.Show();
         }
 
+        public void AbrirActFicha()
+        {
+            var idUsuario = int.Parse(txtIdUsuario.Text);
+            var nombreUsuario = txtNombreUsuario.Text.ToString();
+            var permisos = int.Parse(txtPermisos.Text);
+            FormActFicha actFicha = new FormActFicha(idUsuario, nombreUsuario, permisos);
+            actFicha.TopLevel = false;
+            pnlContenido.Controls.Add(actFicha);
+            pnlContenido.Visible = true;
+            pnlContenido.BringToFront();
+            actFicha.Show();
+        }
+
         private void pctClientes_Click(object sender, EventArgs e)
         {
             AbrirClientes();
@@ -280,6 +307,16 @@ namespace SastUI.UI.Windows.Formulario
         private void btnAbrirPerfiles_Click(object sender, EventArgs e)
         {
             AbrirPerfiles();
+        }
+
+        private void btnAbrirActualizarFicha_Click(object sender, EventArgs e)
+        {
+            AbrirActFicha();
+        }
+
+        private void pctAbrirActualizarFicha_Click(object sender, EventArgs e)
+        {
+            AbrirActFicha();
         }
     }
 }

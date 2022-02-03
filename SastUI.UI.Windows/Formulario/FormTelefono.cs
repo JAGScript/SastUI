@@ -70,7 +70,6 @@ namespace SastUI.UI.Windows.Formulario
 
             dtBusqueda.Rows.Add(0, "Busar");
             dtBusqueda.Rows.Add(1, "Cédula");
-            dtBusqueda.Rows.Add(2, "Nombre");
 
             cmbTipoBusqueda.Items.Clear();
             cmbTipoBusqueda.DataSource = dtBusqueda;
@@ -198,10 +197,10 @@ namespace SastUI.UI.Windows.Formulario
             if(!string.IsNullOrEmpty(tipoBusqueda) && !string.IsNullOrEmpty(info))
             {
                 var cliente = new ClienteControlador().BuscarClientePorCriterio(int.Parse(tipoBusqueda), info);
-                if(cliente != null && !string.IsNullOrEmpty(cliente.cl_identificacion))
+                if(cliente != null && !string.IsNullOrEmpty(cliente.ToList()[0].Identificacion))
                 {
-                    txtIdCliente.Text = cliente.cl_id.ToString();
-                    txtNombreCliente.Text = cliente.cl_nombre.ToString();
+                    txtIdCliente.Text = cliente.ToList()[0].Id.ToString();
+                    txtNombreCliente.Text = cliente.ToList()[0].Nombre.ToString();
                     pnlBusquedaCliente.Visible = false;
                     cmbTipoBusqueda.SelectedIndex = 0;
                     txtInformacion.Text = "";

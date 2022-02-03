@@ -83,11 +83,26 @@ namespace SastUI.UI.Windows.ControladorAplicacion
             }
         }
 
-        public TBL_CLIENTE BuscarClientePorCriterio(int tipoBusqueda, string info)
+        public IEnumerable<ClienteVistaModelo> BuscarClientePorCriterio(int tipoBusqueda, string info)
         {
             try
             {
-                return new ClienteServicio().BuscarClientePorCriterio(tipoBusqueda, info);
+                var lista = new ClienteServicio().BuscarClientePorCriterio(tipoBusqueda, info);
+                List<ClienteVistaModelo> clienteView = new List<ClienteVistaModelo>();
+
+                foreach (TBL_CLIENTE item in lista)
+                {
+                    clienteView.Add(new ClienteVistaModelo
+                    {
+                        Id = item.cl_id,
+                        Identificacion = item.cl_identificacion,
+                        Nombre = item.cl_nombre,
+                        Correo = item.cl_correo,
+                        Estado = item.cl_estado,
+                        EstadoDescripcion = item.cl_estado == 1 ? "Activo" : "Inactivo"
+                    });
+                }
+                return clienteView;
             }
             catch (Exception ex)
             {
@@ -105,6 +120,18 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                 nuevoCliente.cl_correo = cliente.Correo;
                 nuevoCliente.cl_estado = cliente.Estado;
                 return new ClienteServicio().GuardarConId(nuevoCliente);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool ValidarDuplicados(string cedula)
+        {
+            try
+            {
+                return new ClienteServicio().ValidarDuplicados(cedula);
             }
             catch (Exception ex)
             {

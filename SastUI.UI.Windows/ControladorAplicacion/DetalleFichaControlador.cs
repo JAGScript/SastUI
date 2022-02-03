@@ -72,5 +72,36 @@ namespace SastUI.UI.Windows.ControladorAplicacion
             }
             return detalleFichaView;
         }
+
+        public IEnumerable<DetalleFichaVistaModelo> BuscarDetallePorIdCabecera(int idCabecera)
+        {
+            var lista = new DetalleFichaServicio().BuscarDetallePorIdCabecera(idCabecera);
+            List<DetalleFichaVistaModelo> detalleFichaView = new List<DetalleFichaVistaModelo>();
+
+            var equipos = new EquipoServicio().ListarEquipos().ToList();
+            var tipoEquipos = new TipoEquipoServicio().ListarTipoEquipos().ToList();
+            var marcas = new MarcaServicio().ListarMarcas().ToList();
+            var modelos = new ModeloServicio().ListarModelos().ToList();
+
+            foreach (TBL_DETALLE_FICHA item in lista)
+            {
+                var equipo = equipos.Find(e => e.eq_id == item.eq_id);
+                var tipoEquipo = tipoEquipos.Find(t => t.tp_id == equipo.tp_id);
+                var marca = marcas.Find(m => m.ma_id == equipo.ma_id);
+                var modelo = modelos.Find(mo => mo.mo_id == equipo.mo_id);
+
+                detalleFichaView.Add(new DetalleFichaVistaModelo
+                {
+                    Id = item.df_id,
+                    CabeceraFichaId = item.cf_id,
+                    EquipoId = item.eq_id,
+                    DescripcionEquipo = tipoEquipo.tp_descripcion + "|" + marca.ma_descripcion + "|" + modelo.mo_descripcion,
+                    Observaciones = item.df_observaciones,
+                    Proceso = item.df_proceso,
+                    Estado = item.df_estado
+                });
+            }
+            return detalleFichaView;
+        }
     }
 }

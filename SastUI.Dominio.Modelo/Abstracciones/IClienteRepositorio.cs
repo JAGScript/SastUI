@@ -11,8 +11,10 @@ namespace SastUI.Dominio.Modelo.Abstracciones
     {
         bool DesactivarCliente(int idCliente);
 
-        TBL_CLIENTE BuscarClientePorCriterio(int tipoBusqueda, string info);
+        IEnumerable<TBL_CLIENTE> BuscarClientePorCriterio(int tipoBusqueda, string info);
 
         int GuardarConId(TBL_CLIENTE cliente);
+
+        bool ValidarDuplicados(string cedula);
     }
 }

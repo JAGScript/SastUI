@@ -14,6 +14,12 @@ namespace SastUI.Dominio.Modelo.Entidades
     
     public partial class TBL_CABECERA_FICHA
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TBL_CABECERA_FICHA()
+        {
+            this.TBL_DETALLE_FICHA = new HashSet<TBL_DETALLE_FICHA>();
+        }
+    
         public int cf_id { get; set; }
         public int cl_id { get; set; }
         public int us_id { get; set; }
@@ -23,6 +29,7 @@ namespace SastUI.Dominio.Modelo.Entidades
     
         public virtual TBL_CLIENTE TBL_CLIENTE { get; set; }
         public virtual TBL_USUARIO TBL_USUARIO { get; set; }
-        public virtual TBL_DETALLE_FICHA TBL_DETALLE_FICHA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBL_DETALLE_FICHA> TBL_DETALLE_FICHA { get; set; }
     }
 }

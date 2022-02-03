@@ -16,5 +16,6 @@ namespace SastUI.UI.Windows.VistaModelo
         public System.DateTime Fecha { get; set; }
         public string Codigo { get; set; }
         public int Estado { get; set; }
+        public string DescripcionEstado { get; set; }
     }
 }

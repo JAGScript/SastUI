@@ -61,7 +61,7 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                     Nombre = item.pe_nombre,
                     Estado = item.pe_estado,
                     EstadoDescripcion = item.pe_estado == 1 ? "Activo" : "Inactivo",
-                    Permisos = item.pe_permisos
+                    Permisos = item.pe_permisos.GetValueOrDefault()
                 });
             }
             return perfilView;

@@ -33,16 +33,16 @@ namespace SastUI.Infraestructura.AccesoDatos.Repositorio
             }
         }
 
-        public TBL_CLIENTE BuscarClientePorCriterio(int tipoBusqueda, string info)
+        public IEnumerable<TBL_CLIENTE> BuscarClientePorCriterio(int tipoBusqueda, string info)
         {
-            TBL_CLIENTE cliente = new TBL_CLIENTE();
+            IEnumerable<TBL_CLIENTE> cliente = new List<TBL_CLIENTE>();
             if (tipoBusqueda == 1)//Por cedula
             {
                 cliente = BuscarPorCedula(info);
             }
             else if (tipoBusqueda == 2)//Por Nombre
             {
-                cliente =  BuscarPorNombre(info);
+                cliente = BuscarPorNombre(info);
             }
 
             return cliente;
@@ -66,9 +66,7 @@ namespace SastUI.Infraestructura.AccesoDatos.Repositorio
             }
         }
 
-        #region Métodos privados
-
-        private TBL_CLIENTE BuscarPorCedula(string cedula)
+        public bool ValidarDuplicados(string cedula)
         {
             try
             {
@@ -78,7 +76,30 @@ namespace SastUI.Infraestructura.AccesoDatos.Repositorio
                                  where cliente1.cl_identificacion == cedula
                                  select cliente1).FirstOrDefault();
 
-                    return query;
+                    if (query == null)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al consultar cliente, ", ex);
+            }
+        }
+        #region Métodos privados
+
+        private IEnumerable<TBL_CLIENTE> BuscarPorCedula(string cedula)
+        {
+            try
+            {
+                using (var contexto = new SASTEntities())
+                {
+                    var query = from cliente1 in contexto.TBL_CLIENTE
+                                 where cliente1.cl_identificacion == cedula
+                                 select cliente1;
+
+                    return query.ToList();
                 }
             }
             catch (Exception ex)
@@ -87,17 +108,17 @@ namespace SastUI.Infraestructura.AccesoDatos.Repositorio
             }
         }
 
-        private TBL_CLIENTE BuscarPorNombre(string nombre)
+        private IEnumerable<TBL_CLIENTE> BuscarPorNombre(string nombre)
         {
             try
             {
                 using (var contexto = new SASTEntities())
                 {
-                    var query = (from cliente2 in contexto.TBL_CLIENTE
-                                where SqlMethods.Like(cliente2.cl_nombre, "%" + nombre + "%")
-                                select cliente2).FirstOrDefault();
+                    var query = from cliente2 in contexto.TBL_CLIENTE
+                                where cliente2.cl_nombre.Contains(nombre)
+                                select cliente2;
 
-                    return query;
+                    return query.ToList();
                 }
             }
             catch (Exception ex)

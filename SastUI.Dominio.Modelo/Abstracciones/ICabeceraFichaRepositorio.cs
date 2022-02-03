@@ -10,5 +10,9 @@ namespace SastUI.Dominio.Modelo.Abstracciones
     public interface ICabeceraFichaRepositorio : IBaseRepositorio<TBL_CABECERA_FICHA>
     {
         int GuardarConId(TBL_CABECERA_FICHA cabecera);
+
+        IEnumerable<TBL_CABECERA_FICHA> ListarFichasActivas();
+
+        IEnumerable<TBL_CABECERA_FICHA> BuscarFichasPorCliente(int idCliente);
     }
 }

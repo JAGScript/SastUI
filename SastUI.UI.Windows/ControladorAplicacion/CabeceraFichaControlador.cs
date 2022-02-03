@@ -90,5 +90,57 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                 throw new Exception(ex.Message);
             }
         }
+
+        public IEnumerable<CabeceraFichaVistaModelo> ListarFichasActivas()
+        {
+            var lista = new CabeceraFichaServicio().ListarFichasActivas();
+            List<CabeceraFichaVistaModelo> cabeceraView = new List<CabeceraFichaVistaModelo>();
+
+            var clientes = new ClienteServicio().ListarClientes().ToList();
+            var usuarios = new UsuarioServicio().ListarUsuarios().ToList();
+
+            foreach (TBL_CABECERA_FICHA item in lista)
+            {
+                cabeceraView.Add(new CabeceraFichaVistaModelo
+                {
+                    Id = item.cf_id,
+                    IdCliente = item.cl_id,
+                    NombreCliente = clientes.Find(c => c.cl_id == item.cl_id).cl_nombre,
+                    IdUsuario = item.us_id,
+                    NombreUsuario = usuarios.Find(u => u.us_id == item.us_id).us_nombre,
+                    Fecha = item.cf_fecha,
+                    Codigo = item.cf_codigo,
+                    Estado = item.cf_estado,
+                    DescripcionEstado = item.us_id == 1 ? "Activo" : "Inactivo"
+                });
+            }
+            return cabeceraView;
+        }
+
+        public IEnumerable<CabeceraFichaVistaModelo> BuscarFichasPorCliente(int idCliente)
+        {
+            var lista = new CabeceraFichaServicio().BuscarFichasPorCliente(idCliente);
+            List<CabeceraFichaVistaModelo> cabeceraView = new List<CabeceraFichaVistaModelo>();
+
+            var clientes = new ClienteServicio().ListarClientes().ToList();
+            var usuarios = new UsuarioServicio().ListarUsuarios().ToList();
+
+            foreach (TBL_CABECERA_FICHA item in lista)
+            {
+                cabeceraView.Add(new CabeceraFichaVistaModelo
+                {
+                    Id = item.cf_id,
+                    IdCliente = item.cl_id,
+                    NombreCliente = clientes.Find(c => c.cl_id == item.cl_id).cl_nombre,
+                    IdUsuario = item.us_id,
+                    NombreUsuario = usuarios.Find(u => u.us_id == item.us_id).us_nombre,
+                    Fecha = item.cf_fecha,
+                    Codigo = item.cf_codigo,
+                    Estado = item.cf_estado,
+                    DescripcionEstado = item.us_id == 1 ? "Activo" : "Inactivo"
+                });
+            }
+            return cabeceraView;
+        }
     }
 }

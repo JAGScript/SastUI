@@ -77,7 +77,7 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                     Identificacion = item.us_identificacion,
                     Estado = item.us_estado,
                     EstadoDescripcion = item.us_estado == 1 ? "Activo" : "Inactivo",
-                    Permisos = perfiles.Find(p => p.pe_id == item.pe_id).pe_permisos
+                    Permisos = perfiles.Find(p => p.pe_id == item.pe_id).pe_permisos.GetValueOrDefault()
                 });
             }
             return usuarioView;
@@ -105,7 +105,7 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                     usuario.Identificacion = respuesta.us_identificacion;
                     usuario.Estado = respuesta.us_estado;
                     usuario.EstadoDescripcion = respuesta.us_estado == 1 ? "Activo" : "Inactivo";
-                    usuario.Permisos = perfiles.Find(p => p.pe_id == respuesta.pe_id).pe_permisos;
+                    usuario.Permisos = perfiles.Find(p => p.pe_id == respuesta.pe_id).pe_permisos.GetValueOrDefault();
                 }
 
                 return usuario;

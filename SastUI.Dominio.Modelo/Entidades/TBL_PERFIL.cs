@@ -23,8 +23,8 @@ namespace SastUI.Dominio.Modelo.Entidades
         public int pe_id { get; set; }
         public string pe_nombre { get; set; }
         public int pe_estado { get; set; }
-        public int pe_permisos { get; set; }
-
+        public Nullable<int> pe_permisos { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_USUARIO> TBL_USUARIO { get; set; }
     }

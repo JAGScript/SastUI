@@ -90,7 +90,7 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
             }
         }
 
-        public TBL_CLIENTE BuscarClientePorCriterio(int tipoBusqueda, string info)
+        public IEnumerable<TBL_CLIENTE> BuscarClientePorCriterio(int tipoBusqueda, string info)
         {
             try
             {
@@ -107,6 +107,18 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
             try
             {
                 return clienteRepositorio.GuardarConId(cliente);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
+        public bool ValidarDuplicados(string cedula)
+        {
+            try
+            {
+                return clienteRepositorio.ValidarDuplicados(cedula);
             }
             catch (Exception ex)
             {
