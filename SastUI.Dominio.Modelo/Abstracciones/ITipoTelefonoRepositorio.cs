@@ -12,5 +12,9 @@ namespace SastUI.Dominio.Modelo.Abstracciones
         IEnumerable<TBL_TIPO_TELEFONO> ListarTiposActivos();
 
         bool DesactivarTipoTelefono(int idTipo);
+
+        bool ValidarDuplicado(string descripcion);
+
+        IEnumerable<TBL_TIPO_TELEFONO> BuscarTipoTelefonoPorCriterio(int tipoBusqueda, string info);
     }
 }

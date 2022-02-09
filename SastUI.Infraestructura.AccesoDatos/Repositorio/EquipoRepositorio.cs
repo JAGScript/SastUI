@@ -68,5 +68,57 @@ namespace SastUI.Infraestructura.AccesoDatos.Repositorio
                 throw new Exception("No se pudo registrar el equipo" + ex.Message);
             }
         }
+
+        public bool ValidarDuplicado(string serie)
+        {
+            try
+            {
+                using (var contexto = new SASTEntities())
+                {
+                    var query = from equipo in contexto.TBL_EQUIPO
+                                where equipo.eq_serie == serie
+                                select equipo;
+
+                    if (query.ToList().Count >= 1)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al consultar equipo, ", ex);
+            }
+        }
+
+        public IEnumerable<TBL_EQUIPO> BuscarEquipoPorCriterio(int tipoBusqueda, string info)
+        {
+            IEnumerable<TBL_EQUIPO> equipo = new List<TBL_EQUIPO>();
+            if (tipoBusqueda == 1)//Por serie
+            {
+                equipo = BuscarPorSerie(info);
+            }
+
+            return equipo;
+        }
+
+        private IEnumerable<TBL_EQUIPO> BuscarPorSerie(string info)
+        {
+            try
+            {
+                using (var contexto = new SASTEntities())
+                {
+                    var query = from equipo in contexto.TBL_EQUIPO
+                                where equipo.eq_serie == info
+                                select equipo;
+
+                    return query.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al consultar equipo, ", ex);
+            }
+        }
     }
 }

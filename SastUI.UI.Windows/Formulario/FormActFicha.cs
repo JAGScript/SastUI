@@ -99,7 +99,7 @@ namespace SastUI.UI.Windows.Formulario
             if (int.Parse(tipoBusqueda) > 0 && !string.IsNullOrEmpty(info))
             {
                 var cliente = new ClienteControlador().BuscarClientePorCriterio(int.Parse(tipoBusqueda), info);
-                if (cliente != null && !string.IsNullOrEmpty(cliente.ToList()[0].Identificacion))
+                if (cliente != null && cliente.ToList().Count > 0)
                 {
                     dgvListaFichas.DataSource = new CabeceraFichaControlador().BuscarFichasPorCliente(cliente.ToList()[0].Id);
                 }

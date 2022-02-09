@@ -99,5 +99,35 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                 throw new Exception(ex.Message);
             }
         }
+
+        public bool ValidarDuplicado(string marca)
+        {
+            try
+            {
+                return new MarcaServicio().ValidarDuplicado(marca);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public IEnumerable<MarcaVistaModelo> BuscarMarcaPorCriterio(int tipoBusqueda, string info)
+        {
+            var lista = new MarcaServicio().BuscarMarcaPorCriterio(tipoBusqueda, info);
+            List<MarcaVistaModelo> marcaView = new List<MarcaVistaModelo>();
+
+            foreach (TBL_MARCA item in lista)
+            {
+                marcaView.Add(new MarcaVistaModelo
+                {
+                    Id = item.ma_id,
+                    Descripcion = item.ma_descripcion,
+                    Estado = item.ma_estado,
+                    DescripcionEstado = item.ma_estado == 1 ? "Activo" : "Inactivo"
+                });
+            }
+            return marcaView;
+        }
     }
 }

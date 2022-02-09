@@ -101,5 +101,29 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
                 throw new Exception("Error: " + ex.Message);
             }
         }
+
+        public bool ValidarDuplicado(string tipoEquipo)
+        {
+            try
+            {
+                return tipoEquipoRepositorio.ValidarDuplicado(tipoEquipo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
+        public IEnumerable<TBL_TIPO_EQUIPO> BuscarTipoEquipoPorCriterio(int tipoBusqueda, string info)
+        {
+            try
+            {
+                return tipoEquipoRepositorio.BuscarTipoEquipoPorCriterio(tipoBusqueda, info);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
     }
 }

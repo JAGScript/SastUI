@@ -50,5 +50,57 @@ namespace SastUI.Infraestructura.AccesoDatos.Repositorio
                 throw new Exception("Error al desactviar marca, ", ex);
             }
         }
+
+        public bool ValidarDuplicado(string marcaDes)
+        {
+            try
+            {
+                using (var contexto = new SASTEntities())
+                {
+                    var query = from marca in contexto.TBL_MARCA
+                                where marca.ma_descripcion == marcaDes
+                                select marca;
+
+                    if (query.ToList().Count >= 1)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al consultar marca, ", ex);
+            }
+        }
+
+        public IEnumerable<TBL_MARCA> BuscarMarcaPorCriterio(int tipoBusqueda, string info)
+        {
+            IEnumerable<TBL_MARCA> marca = new List<TBL_MARCA>();
+            if (tipoBusqueda == 1)//Por descripcion
+            {
+                marca = BuscarPorDescripcion(info);
+            }
+
+            return marca;
+        }
+
+        private IEnumerable<TBL_MARCA> BuscarPorDescripcion(string info)
+        {
+            try
+            {
+                using (var contexto = new SASTEntities())
+                {
+                    var query = from marca in contexto.TBL_MARCA
+                                where marca.ma_descripcion == info
+                                select marca;
+
+                    return query.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al consultar marca, ", ex);
+            }
+        }
     }
 }

@@ -78,11 +78,11 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
             }
         }
 
-        public IEnumerable<TBL_MODELO> ListarModelosActivos()
+        public IEnumerable<TBL_MODELO> ListarModelosActivos(int idMarca)
         {
             try
             {
-                return modeloRepositorio.ListarModelosActivos();
+                return modeloRepositorio.ListarModelosActivos(idMarca);
             }
             catch (Exception ex)
             {
@@ -95,6 +95,30 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
             try
             {
                 return modeloRepositorio.DesactivarModelo(idModelo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
+        public bool ValidarDuplicado(string modelo, int idMarca)
+        {
+            try
+            {
+                return modeloRepositorio.ValidarDuplicado(modelo, idMarca);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
+        public IEnumerable<TBL_MODELO> BuscarTipoEquipoPorCriterio(int tipoBusqueda, string info)
+        {
+            try
+            {
+                return modeloRepositorio.BuscarTipoEquipoPorCriterio(tipoBusqueda, info);
             }
             catch (Exception ex)
             {

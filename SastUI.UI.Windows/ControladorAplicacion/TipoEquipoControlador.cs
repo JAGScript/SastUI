@@ -100,5 +100,35 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                 throw new Exception(ex.Message);
             }
         }
+
+        public bool ValidarDuplicado(string tipoEquipo)
+        {
+            try
+            {
+                return new TipoEquipoServicio().ValidarDuplicado(tipoEquipo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public IEnumerable<TipoEquipoVistaModelo> BuscarTipoEquipoPorCriterio(int tipoBusqueda, string info)
+        {
+            var lista = new TipoEquipoServicio().BuscarTipoEquipoPorCriterio(tipoBusqueda, info);
+            List<TipoEquipoVistaModelo> tipoEquipoView = new List<TipoEquipoVistaModelo>();
+
+            foreach (TBL_TIPO_EQUIPO item in lista)
+            {
+                tipoEquipoView.Add(new TipoEquipoVistaModelo
+                {
+                    Id = item.tp_id,
+                    Descripcion = item.tp_descripcion,
+                    Estado = item.tp_estado,
+                    EstadoDescripcion = item.tp_estado == 1 ? "Activo" : "Inactivo"
+                });
+            }
+            return tipoEquipoView;
+        }
     }
 }

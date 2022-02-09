@@ -72,11 +72,11 @@ namespace SastUI.Infraestructura.AccesoDatos.Repositorio
             {
                 using (var contexto = new SASTEntities())
                 {
-                    var query = (from cliente1 in contexto.TBL_CLIENTE
+                    var query = from cliente1 in contexto.TBL_CLIENTE
                                  where cliente1.cl_identificacion == cedula
-                                 select cliente1).FirstOrDefault();
+                                 select cliente1;
 
-                    if (query == null)
+                    if (query.ToList().Count >= 1)
                         return true;
                     else
                         return false;

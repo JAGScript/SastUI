@@ -64,6 +64,11 @@
             this.txtNuevoTipo = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtPermisos = new System.Windows.Forms.TextBox();
+            this.btnCancelarBusqTelefono = new System.Windows.Forms.Button();
+            this.btnBuscarTelefono = new System.Windows.Forms.Button();
+            this.txtInfoBusquedaTel = new System.Windows.Forms.TextBox();
+            this.cmbBusquedaTelefono = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTelefonos)).BeginInit();
             this.pnlBusquedaCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctCerrar)).BeginInit();
@@ -132,6 +137,7 @@
             this.txtNombreCliente.Location = new System.Drawing.Point(256, 123);
             this.txtNombreCliente.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreCliente.Name = "txtNombreCliente";
+            this.txtNombreCliente.ReadOnly = true;
             this.txtNombreCliente.Size = new System.Drawing.Size(385, 32);
             this.txtNombreCliente.TabIndex = 26;
             // 
@@ -165,6 +171,7 @@
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(476, 32);
             this.txtNumero.TabIndex = 30;
+            this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
             // 
             // label4
             // 
@@ -230,9 +237,10 @@
             // dgvTelefonos
             // 
             this.dgvTelefonos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTelefonos.Location = new System.Drawing.Point(55, 425);
+            this.dgvTelefonos.Location = new System.Drawing.Point(54, 474);
             this.dgvTelefonos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvTelefonos.Name = "dgvTelefonos";
+            this.dgvTelefonos.ReadOnly = true;
             this.dgvTelefonos.RowHeadersWidth = 51;
             this.dgvTelefonos.Size = new System.Drawing.Size(1255, 364);
             this.dgvTelefonos.TabIndex = 35;
@@ -479,6 +487,7 @@
             this.txtNuevoTipo.Name = "txtNuevoTipo";
             this.txtNuevoTipo.Size = new System.Drawing.Size(353, 32);
             this.txtNuevoTipo.TabIndex = 32;
+            this.txtNuevoTipo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNuevoTipo_KeyPress);
             // 
             // label8
             // 
@@ -503,6 +512,69 @@
             this.txtPermisos.TabIndex = 45;
             this.txtPermisos.Visible = false;
             // 
+            // btnCancelarBusqTelefono
+            // 
+            this.btnCancelarBusqTelefono.Font = new System.Drawing.Font("Bahnschrift", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarBusqTelefono.Image = global::SastUI.UI.Windows.Properties.Resources.Cancelar;
+            this.btnCancelarBusqTelefono.Location = new System.Drawing.Point(961, 422);
+            this.btnCancelarBusqTelefono.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelarBusqTelefono.Name = "btnCancelarBusqTelefono";
+            this.btnCancelarBusqTelefono.Size = new System.Drawing.Size(144, 44);
+            this.btnCancelarBusqTelefono.TabIndex = 92;
+            this.btnCancelarBusqTelefono.Text = "Cancelar";
+            this.btnCancelarBusqTelefono.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancelarBusqTelefono.UseVisualStyleBackColor = true;
+            this.btnCancelarBusqTelefono.Visible = false;
+            this.btnCancelarBusqTelefono.Click += new System.EventHandler(this.btnCancelarBusqTelefono_Click);
+            // 
+            // btnBuscarTelefono
+            // 
+            this.btnBuscarTelefono.Font = new System.Drawing.Font("Bahnschrift", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarTelefono.Image = global::SastUI.UI.Windows.Properties.Resources.Buscar;
+            this.btnBuscarTelefono.Location = new System.Drawing.Point(809, 422);
+            this.btnBuscarTelefono.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscarTelefono.Name = "btnBuscarTelefono";
+            this.btnBuscarTelefono.Size = new System.Drawing.Size(144, 44);
+            this.btnBuscarTelefono.TabIndex = 91;
+            this.btnBuscarTelefono.Text = "Buscar";
+            this.btnBuscarTelefono.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBuscarTelefono.UseVisualStyleBackColor = true;
+            this.btnBuscarTelefono.Visible = false;
+            this.btnBuscarTelefono.Click += new System.EventHandler(this.btnBuscarTelefono_Click);
+            // 
+            // txtInfoBusquedaTel
+            // 
+            this.txtInfoBusquedaTel.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInfoBusquedaTel.Location = new System.Drawing.Point(586, 428);
+            this.txtInfoBusquedaTel.Margin = new System.Windows.Forms.Padding(4);
+            this.txtInfoBusquedaTel.Name = "txtInfoBusquedaTel";
+            this.txtInfoBusquedaTel.Size = new System.Drawing.Size(206, 32);
+            this.txtInfoBusquedaTel.TabIndex = 90;
+            this.txtInfoBusquedaTel.Visible = false;
+            // 
+            // cmbBusquedaTelefono
+            // 
+            this.cmbBusquedaTelefono.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBusquedaTelefono.FormattingEnabled = true;
+            this.cmbBusquedaTelefono.Location = new System.Drawing.Point(392, 428);
+            this.cmbBusquedaTelefono.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbBusquedaTelefono.Name = "cmbBusquedaTelefono";
+            this.cmbBusquedaTelefono.Size = new System.Drawing.Size(186, 32);
+            this.cmbBusquedaTelefono.TabIndex = 89;
+            this.cmbBusquedaTelefono.SelectionChangeCommitted += new System.EventHandler(this.cmbBusquedaTelefono_SelectionChangeCommitted);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(270, 436);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(114, 24);
+            this.label12.TabIndex = 88;
+            this.label12.Text = "Buscar por:";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FormTelefono
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -510,6 +582,11 @@
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1375, 860);
             this.ControlBox = false;
+            this.Controls.Add(this.btnCancelarBusqTelefono);
+            this.Controls.Add(this.btnBuscarTelefono);
+            this.Controls.Add(this.txtInfoBusquedaTel);
+            this.Controls.Add(this.cmbBusquedaTelefono);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.txtPermisos);
             this.Controls.Add(this.txtNombreUsuario);
             this.Controls.Add(this.txtIdUsuario);
@@ -589,5 +666,10 @@
         private Button btnGuardarNuevoTipo;
         private Button btnCancelarBusqueda;
         private TextBox txtPermisos;
+        private Button btnCancelarBusqTelefono;
+        private Button btnBuscarTelefono;
+        private TextBox txtInfoBusquedaTel;
+        private ComboBox cmbBusquedaTelefono;
+        private Label label12;
     }
 }

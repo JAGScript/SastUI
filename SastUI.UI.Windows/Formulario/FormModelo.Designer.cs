@@ -44,6 +44,13 @@
             this.txtIdUsuario = new System.Windows.Forms.TextBox();
             this.pctCerrar = new System.Windows.Forms.PictureBox();
             this.txtPermisos = new System.Windows.Forms.TextBox();
+            this.cmbMarca = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnCancelarBusqueda = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.txtInformacion = new System.Windows.Forms.TextBox();
+            this.cmbTipoBusqueda = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModelos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctCerrar)).BeginInit();
             this.SuspendLayout();
@@ -51,12 +58,13 @@
             // dgvModelos
             // 
             this.dgvModelos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvModelos.Location = new System.Drawing.Point(53, 391);
+            this.dgvModelos.Location = new System.Drawing.Point(53, 434);
             this.dgvModelos.Name = "dgvModelos";
             this.dgvModelos.RowHeadersWidth = 51;
             this.dgvModelos.RowTemplate.Height = 24;
-            this.dgvModelos.Size = new System.Drawing.Size(903, 278);
+            this.dgvModelos.Size = new System.Drawing.Size(1117, 278);
             this.dgvModelos.TabIndex = 48;
+            this.dgvModelos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvModelos_CellClick);
             // 
             // label4
             // 
@@ -74,7 +82,7 @@
             // 
             this.cmbEstado.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Location = new System.Drawing.Point(197, 192);
+            this.cmbEstado.Location = new System.Drawing.Point(197, 247);
             this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(415, 32);
@@ -84,7 +92,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescripcion.Location = new System.Drawing.Point(197, 140);
+            this.txtDescripcion.Location = new System.Drawing.Point(197, 195);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(415, 32);
             this.txtDescripcion.TabIndex = 45;
@@ -102,7 +110,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(107, 195);
+            this.label3.Location = new System.Drawing.Point(107, 250);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 24);
@@ -114,7 +122,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(63, 143);
+            this.label2.Location = new System.Drawing.Point(63, 198);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(121, 24);
@@ -233,13 +241,105 @@
             this.txtPermisos.TabIndex = 55;
             this.txtPermisos.Visible = false;
             // 
+            // cmbMarca
+            // 
+            this.cmbMarca.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbMarca.FormattingEnabled = true;
+            this.cmbMarca.Location = new System.Drawing.Point(197, 140);
+            this.cmbMarca.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbMarca.Name = "cmbMarca";
+            this.cmbMarca.Size = new System.Drawing.Size(415, 32);
+            this.cmbMarca.TabIndex = 57;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(107, 143);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 24);
+            this.label5.TabIndex = 56;
+            this.label5.Text = "Estado:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnCancelarBusqueda
+            // 
+            this.btnCancelarBusqueda.Font = new System.Drawing.Font("Bahnschrift", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarBusqueda.Image = global::SastUI.UI.Windows.Properties.Resources.Cancelar;
+            this.btnCancelarBusqueda.Location = new System.Drawing.Point(781, 377);
+            this.btnCancelarBusqueda.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelarBusqueda.Name = "btnCancelarBusqueda";
+            this.btnCancelarBusqueda.Size = new System.Drawing.Size(144, 44);
+            this.btnCancelarBusqueda.TabIndex = 97;
+            this.btnCancelarBusqueda.Text = "Cancelar";
+            this.btnCancelarBusqueda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancelarBusqueda.UseVisualStyleBackColor = true;
+            this.btnCancelarBusqueda.Visible = false;
+            this.btnCancelarBusqueda.Click += new System.EventHandler(this.btnCancelarBusqueda_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Font = new System.Drawing.Font("Bahnschrift", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Image = global::SastUI.UI.Windows.Properties.Resources.Buscar;
+            this.btnBuscar.Location = new System.Drawing.Point(629, 377);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(144, 44);
+            this.btnBuscar.TabIndex = 96;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Visible = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // txtInformacion
+            // 
+            this.txtInformacion.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInformacion.Location = new System.Drawing.Point(406, 383);
+            this.txtInformacion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtInformacion.Name = "txtInformacion";
+            this.txtInformacion.Size = new System.Drawing.Size(206, 32);
+            this.txtInformacion.TabIndex = 95;
+            this.txtInformacion.Visible = false;
+            // 
+            // cmbTipoBusqueda
+            // 
+            this.cmbTipoBusqueda.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTipoBusqueda.FormattingEnabled = true;
+            this.cmbTipoBusqueda.Location = new System.Drawing.Point(212, 383);
+            this.cmbTipoBusqueda.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbTipoBusqueda.Name = "cmbTipoBusqueda";
+            this.cmbTipoBusqueda.Size = new System.Drawing.Size(186, 32);
+            this.cmbTipoBusqueda.TabIndex = 94;
+            this.cmbTipoBusqueda.SelectionChangeCommitted += new System.EventHandler(this.cmbTipoBusqueda_SelectionChangeCommitted);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(90, 391);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(114, 24);
+            this.label11.TabIndex = 93;
+            this.label11.Text = "Buscar por:";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FormModelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(1375, 719);
+            this.ClientSize = new System.Drawing.Size(1375, 757);
             this.ControlBox = false;
+            this.Controls.Add(this.btnCancelarBusqueda);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.txtInformacion);
+            this.Controls.Add(this.cmbTipoBusqueda);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.cmbMarca);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtPermisos);
             this.Controls.Add(this.txtNombreUsuario);
             this.Controls.Add(this.txtIdUsuario);
@@ -285,5 +385,12 @@
         private TextBox txtIdUsuario;
         private PictureBox pctCerrar;
         private TextBox txtPermisos;
+        private ComboBox cmbMarca;
+        private Label label5;
+        private Button btnCancelarBusqueda;
+        private Button btnBuscar;
+        private TextBox txtInformacion;
+        private ComboBox cmbTipoBusqueda;
+        private Label label11;
     }
 }

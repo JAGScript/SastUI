@@ -101,5 +101,29 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
                 throw new Exception("Error: " + ex.Message);
             }
         }
+
+        public bool ValidarDuplicado(string marca)
+        {
+            try
+            {
+                return marcaRepositorio.ValidarDuplicado(marca);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
+        public IEnumerable<TBL_MARCA> BuscarMarcaPorCriterio(int tipoBusqueda, string info)
+        {
+            try
+            {
+                return marcaRepositorio.BuscarMarcaPorCriterio(tipoBusqueda, info);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
     }
 }

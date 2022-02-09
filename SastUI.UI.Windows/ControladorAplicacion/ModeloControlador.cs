@@ -18,6 +18,7 @@ namespace SastUI.UI.Windows.ControladorAplicacion
             {
                 nuevoModelo.mo_descripcion = modeloView.Descripcion;
                 nuevoModelo.mo_estado = modeloView.Estado;
+                nuevoModelo.ma_id = modeloView.MarcaId;
                 new ModeloServicio().InsertarModelo(nuevoModelo);
                 return true;
             }
@@ -36,6 +37,7 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                 modelo.mo_id = modeloView.Id;
                 modelo.mo_descripcion = modeloView.Descripcion;
                 modelo.mo_estado = modeloView.Estado;
+                modelo.ma_id = modeloView.MarcaId;
                 new ModeloServicio().ModificarModelo(modelo);
                 return true;
             }
@@ -51,6 +53,8 @@ namespace SastUI.UI.Windows.ControladorAplicacion
             var lista = new ModeloServicio().ListarModelos();
             List<ModeloVistaModelo> modeloView = new List<ModeloVistaModelo>();
 
+            var marcas = new MarcaControlador().ObtenerMarcas().ToList();
+
             foreach (TBL_MODELO item in lista)
             {
                 modeloView.Add(new ModeloVistaModelo
@@ -58,15 +62,17 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                     Id = item.mo_id,
                     Descripcion = item.mo_descripcion,
                     Estado = item.mo_estado,
-                    DescripcionEstado = item.mo_estado == 1 ? "Activo" : "Inactivo"
+                    DescripcionEstado = item.mo_estado == 1 ? "Activo" : "Inactivo",
+                    MarcaId = item.ma_id,
+                    MarcaDescripcion = marcas.Find(m => m.Id == item.ma_id).Descripcion
                 });
             }
             return modeloView;
         }
 
-        public IEnumerable<ModeloVistaModelo> ListarModelosActivos()
+        public IEnumerable<ModeloVistaModelo> ListarModelosActivos(int idMarca)
         {
-            var lista = new ModeloServicio().ListarModelosActivos();
+            var lista = new ModeloServicio().ListarModelosActivos(idMarca);
             List<ModeloVistaModelo> modeloView = new List<ModeloVistaModelo>();
 
             modeloView.Add(new ModeloVistaModelo
@@ -98,6 +104,40 @@ namespace SastUI.UI.Windows.ControladorAplicacion
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        public bool ValidarDuplicado(string modelo, int idMarca)
+        {
+            try
+            {
+                return new ModeloServicio().ValidarDuplicado(modelo, idMarca);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public IEnumerable<ModeloVistaModelo> BuscarTipoEquipoPorCriterio(int tipoBusqueda, string info)
+        {
+            var lista = new ModeloServicio().BuscarTipoEquipoPorCriterio(tipoBusqueda, info);
+            List<ModeloVistaModelo> modeloView = new List<ModeloVistaModelo>();
+
+            var marcas = new MarcaControlador().ObtenerMarcas().ToList();
+
+            foreach (TBL_MODELO item in lista)
+            {
+                modeloView.Add(new ModeloVistaModelo
+                {
+                    Id = item.mo_id,
+                    Descripcion = item.mo_descripcion,
+                    Estado = item.mo_estado,
+                    DescripcionEstado = item.mo_estado == 1 ? "Activo" : "Inactivo",
+                    MarcaId = item.ma_id,
+                    MarcaDescripcion = marcas.Find(m => m.Id == item.ma_id).Descripcion
+                });
+            }
+            return modeloView;
         }
     }
 }

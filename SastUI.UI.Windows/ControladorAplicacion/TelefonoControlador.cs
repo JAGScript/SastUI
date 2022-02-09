@@ -106,5 +106,42 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                 throw new Exception(ex.Message);
             }
         }
+
+        public IEnumerable<TelefonoVistaModelo> BuscarTelefonoPorCriterio(int tipoBusqueda, string info)
+        {
+            var lista = new TelefonoServicio().BuscarTelefonoPorCriterio(tipoBusqueda, info);
+            List<TelefonoVistaModelo> telefonoView = new List<TelefonoVistaModelo>();
+
+            var tiposTelefono = new TipoTelefonoServicio().ListarTipoTelefonos().ToList();
+            var clientes = new ClienteServicio().ListarClientes().ToList();
+
+            foreach (TBL_TELEFONO item in lista)
+            {
+                telefonoView.Add(new TelefonoVistaModelo
+                {
+                    Id = item.te_id,
+                    IdTipoTelefono = item.tt_id,
+                    DescripcionTipo = tiposTelefono.Find(t => t.tt_id == item.tt_id).tt_descripcion.ToString(),
+                    ClienteId = item.cl_id,
+                    NombreCliente = clientes.Find(c => c.cl_id == item.cl_id).cl_nombre.ToString(),
+                    Numero = item.te_numero,
+                    Estado = item.te_estado,
+                    EstadoDescripcion = item.te_estado == 1 ? "Activo" : "Inactivo"
+                });
+            }
+            return telefonoView;
+        }
+
+        public bool ValidarDuplicados(string numero, int idCliente)
+        {
+            try
+            {
+                return new TelefonoServicio().ValidarDuplicados(numero, idCliente);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

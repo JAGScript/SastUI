@@ -32,7 +32,7 @@
             <PropertyRef Name="cl_id" />
           </Key>
           <Property Name="cl_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="cl_identificacion" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="cl_identificacion" Type="varchar" MaxLength="13" />
           <Property Name="cl_nombre" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="cl_correo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="cl_estado" Type="int" Nullable="false" />
@@ -77,6 +77,7 @@
           <Property Name="mo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="mo_descripcion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="mo_estado" Type="int" Nullable="false" />
+          <Property Name="ma_id" Type="int" />
         </EntityType>
         <EntityType Name="TBL_PERFIL">
           <Key>
@@ -323,7 +324,7 @@
             <PropertyRef Name="cl_id" />
           </Key>
           <Property Name="cl_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cl_identificacion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cl_identificacion" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
           <Property Name="cl_nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cl_correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cl_estado" Type="Int32" Nullable="false" />
@@ -378,6 +379,7 @@
           <Property Name="mo_descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="mo_estado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TBL_EQUIPO" Relationship="Self.FK_Equipo_Modelo" FromRole="TBL_MODELO" ToRole="TBL_EQUIPO" />
+          <Property Name="ma_id" Type="Int32" />
         </EntityType>
         <EntityType Name="TBL_PERFIL">
           <Key>
@@ -687,6 +689,7 @@
           <EntitySetMapping Name="TBL_MODELO">
             <EntityTypeMapping TypeName="SASTModel.TBL_MODELO">
               <MappingFragment StoreEntitySet="TBL_MODELO">
+                <ScalarProperty Name="ma_id" ColumnName="ma_id" />
                 <ScalarProperty Name="mo_id" ColumnName="mo_id" />
                 <ScalarProperty Name="mo_descripcion" ColumnName="mo_descripcion" />
                 <ScalarProperty Name="mo_estado" ColumnName="mo_estado" />

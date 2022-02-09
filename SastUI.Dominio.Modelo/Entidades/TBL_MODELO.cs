@@ -23,6 +23,7 @@ namespace SastUI.Dominio.Modelo.Entidades
         public int mo_id { get; set; }
         public string mo_descripcion { get; set; }
         public int mo_estado { get; set; }
+        public Nullable<int> ma_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_EQUIPO> TBL_EQUIPO { get; set; }

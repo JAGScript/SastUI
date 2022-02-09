@@ -100,5 +100,35 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                 throw new Exception(ex.Message);
             }
         }
+
+        public bool ValidarDuplicado(string descripcion)
+        {
+            try
+            {
+                return new TipoTelefonoServicio().ValidarDuplicado(descripcion);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public IEnumerable<TipoTelefonoVistaModelo> BuscarTipoTelefonoPorCriterio(int tipoBusqueda, string info)
+        {
+            var lista = new TipoTelefonoServicio().BuscarTipoTelefonoPorCriterio(tipoBusqueda, info);
+            List<TipoTelefonoVistaModelo> tipoTelefonoView = new List<TipoTelefonoVistaModelo>();
+
+            foreach (TBL_TIPO_TELEFONO item in lista)
+            {
+                tipoTelefonoView.Add(new TipoTelefonoVistaModelo
+                {
+                    Id = item.tt_id,
+                    Descripcion = item.tt_descripcion,
+                    Estado = item.tt_estado,
+                    EstadoDescripcion = item.tt_estado == 1 ? "Activo" : "Inactivo"
+                });
+            }
+            return tipoTelefonoView;
+        }
     }
 }

@@ -101,5 +101,29 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
                 throw new Exception("Error: " + ex.Message);
             }
         }
+
+        public IEnumerable<TBL_TELEFONO> BuscarTelefonoPorCriterio(int tipoBusqueda, string info)
+        {
+            try
+            {
+                return telefonoRepositorio.BuscarTelefonoPorCriterio(tipoBusqueda, info);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
+        public bool ValidarDuplicados(string numero, int idCliente)
+        {
+            try
+            {
+                return telefonoRepositorio.ValidarDuplicados(numero, idCliente);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
     }
 }

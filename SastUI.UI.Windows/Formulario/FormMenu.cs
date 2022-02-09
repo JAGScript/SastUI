@@ -34,6 +34,8 @@ namespace SastUI.UI.Windows.Formulario
                 btnAbrirUsuarios.Visible = false;
                 pctPerfiles.Visible = false;
                 btnAbrirPerfiles.Visible = false;
+                pctAbrirAuditoria.Visible = false;
+                btnAbrirAuditoria.Visible = false;
             }
             else
             {
@@ -41,6 +43,8 @@ namespace SastUI.UI.Windows.Formulario
                 btnAbrirUsuarios.Visible = true;
                 pctPerfiles.Visible = true;
                 btnAbrirPerfiles.Visible = true;
+                pctAbrirAuditoria.Visible = true;
+                btnAbrirAuditoria.Visible = true;
             }
         }
 
@@ -209,6 +213,11 @@ namespace SastUI.UI.Windows.Formulario
             actFicha.Show();
         }
 
+        public void AbrirAuditoria()
+        {
+
+        }
+
         private void pctClientes_Click(object sender, EventArgs e)
         {
             AbrirClientes();
@@ -317,6 +326,16 @@ namespace SastUI.UI.Windows.Formulario
         private void pctAbrirActualizarFicha_Click(object sender, EventArgs e)
         {
             AbrirActFicha();
+        }
+
+        private void btnAbrirAuditoria_Click(object sender, EventArgs e)
+        {
+            AbrirAuditoria();
+        }
+
+        private void pctAbrirAuditoria_Click(object sender, EventArgs e)
+        {
+            AbrirAuditoria();
         }
     }
 }

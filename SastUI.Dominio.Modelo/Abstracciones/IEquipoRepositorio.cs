@@ -14,5 +14,9 @@ namespace SastUI.Dominio.Modelo.Abstracciones
         IEnumerable<TBL_EQUIPO> ListarEquiposActivos();
 
         int GuardarConId(TBL_EQUIPO equipo);
+
+        bool ValidarDuplicado(string serie);
+
+        IEnumerable<TBL_EQUIPO> BuscarEquipoPorCriterio(int tipoBusqueda, string info);
     }
 }

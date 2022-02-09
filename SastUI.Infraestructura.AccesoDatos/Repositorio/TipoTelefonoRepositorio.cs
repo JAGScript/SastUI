@@ -25,7 +25,7 @@ namespace SastUI.Infraestructura.AccesoDatos.Repositorio
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al consultar perfil, ", ex);
+                throw new Exception("Error al consultar tipo telefono, ", ex);
             }
         }
 
@@ -48,6 +48,58 @@ namespace SastUI.Infraestructura.AccesoDatos.Repositorio
             catch (Exception ex)
             {
                 throw new Exception("Error al desactviar tipo teléfono, ", ex);
+            }
+        }
+
+        public bool ValidarDuplicado(string descripcion)
+        {
+            try
+            {
+                using (var contexto = new SASTEntities())
+                {
+                    var query = from tipo in contexto.TBL_TIPO_TELEFONO
+                                where tipo.tt_descripcion == descripcion
+                                select tipo;
+
+                    if (query.ToList().Count >= 1)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al consultar tipo telefono, ", ex);
+            }
+        }
+
+        public IEnumerable<TBL_TIPO_TELEFONO> BuscarTipoTelefonoPorCriterio(int tipoBusqueda, string info)
+        {
+            IEnumerable<TBL_TIPO_TELEFONO> tipo = new List<TBL_TIPO_TELEFONO>();
+            if (tipoBusqueda == 1)//Por descripcion
+            {
+                tipo = BuscarPorDescripcion(info);
+            }
+
+            return tipo;
+        }
+
+        private IEnumerable<TBL_TIPO_TELEFONO> BuscarPorDescripcion(string info)
+        {
+            try
+            {
+                using (var contexto = new SASTEntities())
+                {
+                    var query = from tipo in contexto.TBL_TIPO_TELEFONO
+                                where tipo.tt_descripcion == info
+                                select tipo;
+
+                    return query.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al consultar tipo telefono, ", ex);
             }
         }
     }

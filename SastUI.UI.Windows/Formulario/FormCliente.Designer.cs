@@ -108,11 +108,10 @@
             this.txtIdentificacion.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdentificacion.Location = new System.Drawing.Point(204, 118);
             this.txtIdentificacion.Margin = new System.Windows.Forms.Padding(4);
-            this.txtIdentificacion.MaxLength = 10;
+            this.txtIdentificacion.MaxLength = 15;
             this.txtIdentificacion.Name = "txtIdentificacion";
             this.txtIdentificacion.Size = new System.Drawing.Size(415, 32);
             this.txtIdentificacion.TabIndex = 24;
-            this.txtIdentificacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdentificacion_KeyPress);
             this.txtIdentificacion.Leave += new System.EventHandler(this.txtIdentificacion_Leave);
             // 
             // label2
@@ -212,6 +211,7 @@
             this.dgv_clientes.Location = new System.Drawing.Point(55, 422);
             this.dgv_clientes.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_clientes.Name = "dgv_clientes";
+            this.dgv_clientes.ReadOnly = true;
             this.dgv_clientes.RowHeadersWidth = 51;
             this.dgv_clientes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgv_clientes.Size = new System.Drawing.Size(1275, 181);
@@ -348,6 +348,7 @@
             this.dgvTelefonos.Location = new System.Drawing.Point(56, 666);
             this.dgvTelefonos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvTelefonos.Name = "dgvTelefonos";
+            this.dgvTelefonos.ReadOnly = true;
             this.dgvTelefonos.RowHeadersWidth = 51;
             this.dgvTelefonos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvTelefonos.Size = new System.Drawing.Size(1273, 198);

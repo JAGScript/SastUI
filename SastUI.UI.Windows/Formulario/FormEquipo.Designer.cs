@@ -77,6 +77,11 @@
             this.txtSO = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txtPermisos = new System.Windows.Forms.TextBox();
+            this.btnCancelarBusqueda = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.txtInformacion = new System.Windows.Forms.TextBox();
+            this.cmbTipoBusqueda = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEquipos)).BeginInit();
             this.pnlTipoEquipo.SuspendLayout();
             this.pnlMarca.SuspendLayout();
@@ -146,6 +151,7 @@
             this.cmbMarcas.Name = "cmbMarcas";
             this.cmbMarcas.Size = new System.Drawing.Size(415, 32);
             this.cmbMarcas.TabIndex = 27;
+            this.cmbMarcas.SelectionChangeCommitted += new System.EventHandler(this.cmbMarcas_SelectionChangeCommitted);
             // 
             // label3
             // 
@@ -278,11 +284,12 @@
             // dgvEquipos
             // 
             this.dgvEquipos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEquipos.Location = new System.Drawing.Point(54, 585);
+            this.dgvEquipos.Location = new System.Drawing.Point(54, 616);
             this.dgvEquipos.Name = "dgvEquipos";
+            this.dgvEquipos.ReadOnly = true;
             this.dgvEquipos.RowHeadersWidth = 51;
             this.dgvEquipos.RowTemplate.Height = 24;
-            this.dgvEquipos.Size = new System.Drawing.Size(1268, 263);
+            this.dgvEquipos.Size = new System.Drawing.Size(1268, 341);
             this.dgvEquipos.TabIndex = 39;
             this.dgvEquipos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEquipos_CellClick);
             // 
@@ -645,13 +652,81 @@
             this.txtPermisos.TabIndex = 54;
             this.txtPermisos.Visible = false;
             // 
+            // btnCancelarBusqueda
+            // 
+            this.btnCancelarBusqueda.Font = new System.Drawing.Font("Bahnschrift", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarBusqueda.Image = global::SastUI.UI.Windows.Properties.Resources.Cancelar;
+            this.btnCancelarBusqueda.Location = new System.Drawing.Point(970, 565);
+            this.btnCancelarBusqueda.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelarBusqueda.Name = "btnCancelarBusqueda";
+            this.btnCancelarBusqueda.Size = new System.Drawing.Size(144, 44);
+            this.btnCancelarBusqueda.TabIndex = 92;
+            this.btnCancelarBusqueda.Text = "Cancelar";
+            this.btnCancelarBusqueda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancelarBusqueda.UseVisualStyleBackColor = true;
+            this.btnCancelarBusqueda.Visible = false;
+            this.btnCancelarBusqueda.Click += new System.EventHandler(this.btnCancelarBusqueda_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Font = new System.Drawing.Font("Bahnschrift", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Image = global::SastUI.UI.Windows.Properties.Resources.Buscar;
+            this.btnBuscar.Location = new System.Drawing.Point(818, 565);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(144, 44);
+            this.btnBuscar.TabIndex = 91;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Visible = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // txtInformacion
+            // 
+            this.txtInformacion.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInformacion.Location = new System.Drawing.Point(595, 571);
+            this.txtInformacion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtInformacion.Name = "txtInformacion";
+            this.txtInformacion.Size = new System.Drawing.Size(206, 32);
+            this.txtInformacion.TabIndex = 90;
+            this.txtInformacion.Visible = false;
+            // 
+            // cmbTipoBusqueda
+            // 
+            this.cmbTipoBusqueda.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTipoBusqueda.FormattingEnabled = true;
+            this.cmbTipoBusqueda.Location = new System.Drawing.Point(401, 571);
+            this.cmbTipoBusqueda.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbTipoBusqueda.Name = "cmbTipoBusqueda";
+            this.cmbTipoBusqueda.Size = new System.Drawing.Size(186, 32);
+            this.cmbTipoBusqueda.TabIndex = 89;
+            this.cmbTipoBusqueda.SelectionChangeCommitted += new System.EventHandler(this.cmbTipoBusqueda_SelectionChangeCommitted);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(279, 579);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(114, 24);
+            this.label18.TabIndex = 88;
+            this.label18.Text = "Buscar por:";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FormEquipo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(1375, 860);
+            this.ClientSize = new System.Drawing.Size(1375, 969);
             this.ControlBox = false;
+            this.Controls.Add(this.btnCancelarBusqueda);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.txtInformacion);
+            this.Controls.Add(this.cmbTipoBusqueda);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.txtPermisos);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnEliminar);
@@ -754,5 +829,10 @@
         private TextBox txtSO;
         private Label label17;
         private TextBox txtPermisos;
+        private Button btnCancelarBusqueda;
+        private Button btnBuscar;
+        private TextBox txtInformacion;
+        private ComboBox cmbTipoBusqueda;
+        private Label label18;
     }
 }

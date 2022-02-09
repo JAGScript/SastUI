@@ -46,6 +46,8 @@
             this.btnAbrirTelefonos = new System.Windows.Forms.Button();
             this.btnAbrirPerfiles = new System.Windows.Forms.Button();
             this.btnAbrirUsuarios = new System.Windows.Forms.Button();
+            this.btnAbrirAuditoria = new System.Windows.Forms.Button();
+            this.pctAbrirAuditoria = new System.Windows.Forms.PictureBox();
             this.pctAbrirActualizarFicha = new System.Windows.Forms.PictureBox();
             this.pctPerfiles = new System.Windows.Forms.PictureBox();
             this.pctUsuarios = new System.Windows.Forms.PictureBox();
@@ -61,6 +63,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlCabecera.SuspendLayout();
             this.pnlMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctAbrirAuditoria)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctAbrirActualizarFicha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctPerfiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctUsuarios)).BeginInit();
@@ -148,6 +151,8 @@
             // 
             // pnlMenu
             // 
+            this.pnlMenu.Controls.Add(this.pctAbrirAuditoria);
+            this.pnlMenu.Controls.Add(this.btnAbrirAuditoria);
             this.pnlMenu.Controls.Add(this.pctAbrirActualizarFicha);
             this.pnlMenu.Controls.Add(this.btnAbrirActualizarFicha);
             this.pnlMenu.Controls.Add(this.pctPerfiles);
@@ -352,6 +357,34 @@
             this.btnAbrirUsuarios.UseVisualStyleBackColor = false;
             this.btnAbrirUsuarios.Click += new System.EventHandler(this.btnAbrirUsuarios_Click);
             // 
+            // btnAbrirAuditoria
+            // 
+            this.btnAbrirAuditoria.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbrirAuditoria.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbrirAuditoria.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAbrirAuditoria.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrirAuditoria.Location = new System.Drawing.Point(54, 512);
+            this.btnAbrirAuditoria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAbrirAuditoria.Name = "btnAbrirAuditoria";
+            this.btnAbrirAuditoria.Size = new System.Drawing.Size(207, 40);
+            this.btnAbrirAuditoria.TabIndex = 33;
+            this.btnAbrirAuditoria.Text = "Auditoria";
+            this.btnAbrirAuditoria.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAbrirAuditoria.UseVisualStyleBackColor = false;
+            this.btnAbrirAuditoria.Click += new System.EventHandler(this.btnAbrirAuditoria_Click);
+            // 
+            // pctAbrirAuditoria
+            // 
+            this.pctAbrirAuditoria.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pctAbrirAuditoria.Image = global::SastUI.UI.Windows.Properties.Resources.Auditoria;
+            this.pctAbrirAuditoria.Location = new System.Drawing.Point(8, 512);
+            this.pctAbrirAuditoria.Name = "pctAbrirAuditoria";
+            this.pctAbrirAuditoria.Size = new System.Drawing.Size(40, 40);
+            this.pctAbrirAuditoria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pctAbrirAuditoria.TabIndex = 34;
+            this.pctAbrirAuditoria.TabStop = false;
+            this.pctAbrirAuditoria.Click += new System.EventHandler(this.pctAbrirAuditoria_Click);
+            // 
             // pctAbrirActualizarFicha
             // 
             this.pctAbrirActualizarFicha.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -390,7 +423,6 @@
             // 
             // pctModelos
             // 
-            this.pctModelos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctModelos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pctModelos.Image = global::SastUI.UI.Windows.Properties.Resources.Tipos;
             this.pctModelos.Location = new System.Drawing.Point(8, 376);
@@ -534,6 +566,7 @@
             this.pnlCabecera.ResumeLayout(false);
             this.pnlCabecera.PerformLayout();
             this.pnlMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pctAbrirAuditoria)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctAbrirActualizarFicha)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctPerfiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctUsuarios)).EndInit();
@@ -583,5 +616,7 @@
         private PictureBox pctAbrirActualizarFicha;
         private Button btnAbrirActualizarFicha;
         private TextBox txtPermisos;
+        private PictureBox pctAbrirAuditoria;
+        private Button btnAbrirAuditoria;
     }
 }

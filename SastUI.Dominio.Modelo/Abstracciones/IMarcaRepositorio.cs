@@ -12,5 +12,9 @@ namespace SastUI.Dominio.Modelo.Abstracciones
         IEnumerable<TBL_MARCA> ListarMarcasActivas();
 
         bool DesactivarMarca(int idMarca);
+
+        bool ValidarDuplicado(string marca);
+
+        IEnumerable<TBL_MARCA> BuscarMarcaPorCriterio(int tipoBusqueda, string info);
     }
 }

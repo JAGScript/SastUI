@@ -12,5 +12,9 @@ namespace SastUI.Dominio.Modelo.Abstracciones
         IEnumerable<TBL_TIPO_EQUIPO> ListarTiposActivos();
 
         bool DesactivarTipoEquipo(int idTipo);
+
+        bool ValidarDuplicado(string tipoEquipo);
+
+        public IEnumerable<TBL_TIPO_EQUIPO> BuscarTipoEquipoPorCriterio(int tipoBusqueda, string info);
     }
 }

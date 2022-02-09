@@ -61,7 +61,7 @@ namespace SastUI.UI.Windows.Formulario
             dtBusqueda.Columns.Add("Id");
             dtBusqueda.Columns.Add("Nombre");
 
-            dtBusqueda.Rows.Add(0, "Busar");
+            dtBusqueda.Rows.Add(0, "Buscar");
             dtBusqueda.Rows.Add(1, "Cédula");
             dtBusqueda.Rows.Add(2, "Nombre");
 
@@ -113,7 +113,17 @@ namespace SastUI.UI.Windows.Formulario
             {
                 var idCliente = int.Parse(txtId.Text.ToString());
                 if (new ClienteControlador().DesactivarCliente(idCliente))
+                {
                     MessageBox.Show("Cliente Desactivado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
+                    auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
+                    auditoria.Modulo = "CLIENTE";
+                    auditoria.Accion = "ELIMINAR";
+                    auditoria.Valor = "INACTIVO | " + idCliente.ToString();
+                    auditoria.Fecha = DateTime.Now;
+                    new AuditoriaControlador().InsertarAuditoria(auditoria);
+                }
                 else
                     MessageBox.Show("Error al desactivar cliente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -136,7 +146,9 @@ namespace SastUI.UI.Windows.Formulario
             int estado = int.Parse(seleccionado.Cells[4].Value.ToString());
             cmbEstado.SelectedValue = estado;
 
-            cmbEstado.Enabled = true;
+            int permisos = int.Parse(txtPermisos.Text);
+            if (permisos == 1)
+                cmbEstado.Enabled = true;
             ConsultarTelefonosCliente(idCliente);
         }
 
@@ -172,55 +184,54 @@ namespace SastUI.UI.Windows.Formulario
                 clienteView.Correo = correo;
                 clienteView.Estado = estado;
 
-                if (!string.IsNullOrEmpty(txtId.Text))
+                if (new ClienteControlador().ValidarDuplicados(identificacion))
                 {
-                    clienteView.Id = int.Parse(txtId.Text);
-                    new ClienteControlador().ActualizarCliente(clienteView);
-
-                    DataGridViewRow rowSlt = new DataGridViewRow();
-
-                    foreach (DataGridViewRow row in dgv_clientes.Rows)
-                    {
-                        if (int.Parse(row.Cells["Id"].Value.ToString()) == clienteView.Id)
-                            rowSlt = row;
-                    }
-
-                    AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
-                    auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
-                    auditoria.Modulo = "CLIENTE";
-                    auditoria.Accion = "ACTUALIZAR";
-                    auditoria.Valor = rowSlt.Cells["Id"].Value.ToString() + "|" + rowSlt.Cells["Identificacion"].Value.ToString() + "|" + rowSlt.Cells["Nombre"].Value.ToString() + "|" + rowSlt.Cells["Correo"].Value.ToString() + "|" + rowSlt.Cells["Estado"].Value.ToString();
-                    auditoria.Fecha = DateTime.Now;
-                    new AuditoriaControlador().InsertarAuditoria(auditoria);
-
-                    ListarClientes();
-                    Limpiar();
+                    MessageBox.Show("Ya existe un cliente registrado con esta cédula", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtIdentificacion.Text = "";
                 }
                 else
                 {
-                    if (new ClienteControlador().ValidarDuplicados(identificacion))
+                    if (!string.IsNullOrEmpty(txtId.Text))
                     {
-                        if (new ClienteControlador().InsertarCliente(clienteView))
-                            MessageBox.Show("Cliente Agregado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        else
-                            MessageBox.Show("No es posible guardar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        clienteView.Id = int.Parse(txtId.Text);
+                        new ClienteControlador().ActualizarCliente(clienteView);
+
+                        DataGridViewRow rowSlt = new DataGridViewRow();
+
+                        foreach (DataGridViewRow row in dgv_clientes.Rows)
+                        {
+                            if (int.Parse(row.Cells["Id"].Value.ToString()) == clienteView.Id)
+                                rowSlt = row;
+                        }
 
                         AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
                         auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
                         auditoria.Modulo = "CLIENTE";
-                        auditoria.Accion = "INGRESAR";
-                        auditoria.Valor = "NUEVO";
+                        auditoria.Accion = "ACTUALIZAR";
+                        auditoria.Valor = rowSlt.Cells["Id"].Value.ToString() + "|" + rowSlt.Cells["Identificacion"].Value.ToString() + "|" + rowSlt.Cells["Nombre"].Value.ToString() + "|" + rowSlt.Cells["Correo"].Value.ToString() + "|" + rowSlt.Cells["Estado"].Value.ToString();
                         auditoria.Fecha = DateTime.Now;
                         new AuditoriaControlador().InsertarAuditoria(auditoria);
-
-                        ListarClientes();
-                        Limpiar();
                     }
                     else
                     {
-                        MessageBox.Show("Ya existe un cliente registrado con esta cédula", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        txtIdentificacion.Text = "";
+                        if (new ClienteControlador().InsertarCliente(clienteView))
+                        {
+                            MessageBox.Show("Cliente Agregado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                            AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
+                            auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
+                            auditoria.Modulo = "CLIENTE";
+                            auditoria.Accion = "INGRESAR";
+                            auditoria.Valor = "NUEVO | " + clienteView.Identificacion;
+                            auditoria.Fecha = DateTime.Now;
+                            new AuditoriaControlador().InsertarAuditoria(auditoria);
+                        }
+                        else
+                            MessageBox.Show("No es posible guardar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+
+                    ListarClientes();
+                    Limpiar();
                 }
             }
         }
@@ -240,6 +251,7 @@ namespace SastUI.UI.Windows.Formulario
             telefono.ClienteId = int.Parse(txtId.Text.ToString());
             telefono.Numero = txtNumero.Text.ToUpper().Trim();
             telefono.Estado = 1;
+
             if (new TelefonoControlador().InsertarTelefono(telefono))
             {
                 pnlTelefono.Visible = false;
@@ -276,15 +288,10 @@ namespace SastUI.UI.Windows.Formulario
             new SeguridadRepositorio().ValidarLetras(e);
         }
 
-        private void txtIdentificacion_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            new SeguridadRepositorio().ValidarNumeros(e);
-        }
-
         private void txtIdentificacion_Leave(object sender, EventArgs e)
         {
-            string cedula = txtIdentificacion.Text.ToString();
-            if (!new SeguridadRepositorio().ValidarCedula(cedula))
+            string identificacion = txtIdentificacion.Text.ToString();
+            if (!new SeguridadRepositorio().VerificarIdentificacion(identificacion))
             {
                 MessageBox.Show("La cédula ingresada es incorrecta", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtIdentificacion.Text = "";
@@ -347,6 +354,7 @@ namespace SastUI.UI.Windows.Formulario
         private void btnCancelarBusqueda_Click(object sender, EventArgs e)
         {
             txtInformacion.Visible = false;
+            txtInformacion.Text = "";
             btnBuscar.Visible = false;
             btnCancelarBusqueda.Visible = false;
             cmbTipoBusqueda.SelectedIndex = 0;

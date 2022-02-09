@@ -62,7 +62,8 @@ namespace SastUI.UI.Windows.Formulario
 
         public void CargarModelos()
         {
-            var tiposActivos = new ModeloControlador().ListarModelosActivos();
+            int idMarca = 0;
+            var tiposActivos = new ModeloControlador().ListarModelosActivos(idMarca);
             cmbModelos.DataSource = tiposActivos;
             cmbModelos.ValueMember = "Id";
             cmbModelos.DisplayMember = "Descripcion";
@@ -122,7 +123,7 @@ namespace SastUI.UI.Windows.Formulario
             if (int.Parse(tipoBusqueda) > 0 && !string.IsNullOrEmpty(info))
             {
                 var cliente = new ClienteControlador().BuscarClientePorCriterio(int.Parse(tipoBusqueda), info);
-                if (cliente != null && !string.IsNullOrEmpty(cliente.ToList()[0].Identificacion))
+                if (cliente != null && cliente.ToList().Count > 0)
                 {
                     txtIdCliente.Text = cliente.ToList()[0].Id.ToString();
                     txtNombreCliente.Text = cliente.ToList()[0].Nombre.ToString();
