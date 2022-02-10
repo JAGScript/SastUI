@@ -54,13 +54,13 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtProceso = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtEstado = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.txtIdDetalle = new System.Windows.Forms.TextBox();
             this.txtIdCabecera = new System.Windows.Forms.TextBox();
             this.txtIdEquipo = new System.Windows.Forms.TextBox();
+            this.cmbEstados = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pct_cerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaFichas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleFicha)).BeginInit();
@@ -207,9 +207,10 @@
             this.dgvListaFichas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaFichas.Location = new System.Drawing.Point(45, 132);
             this.dgvListaFichas.Name = "dgvListaFichas";
+            this.dgvListaFichas.ReadOnly = true;
             this.dgvListaFichas.RowHeadersWidth = 51;
             this.dgvListaFichas.RowTemplate.Height = 24;
-            this.dgvListaFichas.Size = new System.Drawing.Size(1267, 200);
+            this.dgvListaFichas.Size = new System.Drawing.Size(1417, 200);
             this.dgvListaFichas.TabIndex = 78;
             this.dgvListaFichas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaFichas_CellClick);
             // 
@@ -266,9 +267,10 @@
             this.dgvDetalleFicha.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetalleFicha.Location = new System.Drawing.Point(45, 338);
             this.dgvDetalleFicha.Name = "dgvDetalleFicha";
+            this.dgvDetalleFicha.ReadOnly = true;
             this.dgvDetalleFicha.RowHeadersWidth = 51;
             this.dgvDetalleFicha.RowTemplate.Height = 24;
-            this.dgvDetalleFicha.Size = new System.Drawing.Size(1267, 184);
+            this.dgvDetalleFicha.Size = new System.Drawing.Size(1417, 184);
             this.dgvDetalleFicha.TabIndex = 83;
             this.dgvDetalleFicha.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleFicha_CellClick);
             // 
@@ -357,14 +359,6 @@
             this.label10.Text = "Proceso:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtEstado
-            // 
-            this.txtEstado.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEstado.Location = new System.Drawing.Point(792, 707);
-            this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(441, 32);
-            this.txtEstado.TabIndex = 93;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -430,6 +424,15 @@
             this.txtIdEquipo.TabIndex = 98;
             this.txtIdEquipo.Visible = false;
             // 
+            // cmbEstados
+            // 
+            this.cmbEstados.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEstados.FormattingEnabled = true;
+            this.cmbEstados.Location = new System.Drawing.Point(792, 707);
+            this.cmbEstados.Name = "cmbEstados";
+            this.cmbEstados.Size = new System.Drawing.Size(441, 32);
+            this.cmbEstados.TabIndex = 99;
+            // 
             // FormActFicha
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -437,12 +440,12 @@
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1475, 773);
             this.ControlBox = false;
+            this.Controls.Add(this.cmbEstados);
             this.Controls.Add(this.txtIdEquipo);
             this.Controls.Add(this.txtIdCabecera);
             this.Controls.Add(this.txtIdDetalle);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnLimpiar);
-            this.Controls.Add(this.txtEstado);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtProceso);
             this.Controls.Add(this.label10);
@@ -509,12 +512,12 @@
         private Label label9;
         private TextBox txtProceso;
         private Label label10;
-        private TextBox txtEstado;
         private Label label11;
         private Button btnActualizar;
         private Button btnLimpiar;
         private TextBox txtIdDetalle;
         private TextBox txtIdCabecera;
         private TextBox txtIdEquipo;
+        private ComboBox cmbEstados;
     }
 }

@@ -100,28 +100,35 @@ namespace SastUI.UI.Windows.Formulario
                 MessageBox.Show("Existen campos vacios! llenalos par continuar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                if (new MarcaControlador().ValidarDuplicado(marcaView.Descripcion))
+                if (!string.IsNullOrEmpty(txtId.Text))
                 {
-                    MessageBox.Show("Ya existe un registro con esta descripción", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtDescripcion.Text = "";
-                }                    
-                else
-                {
-                    if (!string.IsNullOrEmpty(txtId.Text))
+                    marcaView.Id = int.Parse(txtId.Text);
+                    MessageBox.Show("Marca Agregada", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    DataGridViewRow rowSlt = new DataGridViewRow();
+
+                    foreach (DataGridViewRow row in dgvMarcas.Rows)
                     {
-                        marcaView.Id = int.Parse(txtId.Text);
+                        if (int.Parse(row.Cells["Id"].Value.ToString()) == marcaView.Id)
+                            rowSlt = row;
+                    }
+
+                    bool validarDuplicado = false;
+
+                    if (rowSlt.Cells["Descripcion"].Value.ToString().Trim() != marcaView.Descripcion)
+                    {
+                        validarDuplicado = new MarcaControlador().ValidarDuplicado(marcaView.Descripcion);
+                        if (validarDuplicado)
+                        {
+                            MessageBox.Show("Ya existe un registro con los datos ingresados", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtDescripcion.Text = "";
+                        }
+                    }
+
+                    if (!validarDuplicado)
+                    {
                         if (new MarcaControlador().ActualizarMarca(marcaView))
                         {
-                            MessageBox.Show("Marca Agregada", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                            DataGridViewRow rowSlt = new DataGridViewRow();
-
-                            foreach (DataGridViewRow row in dgvMarcas.Rows)
-                            {
-                                if (int.Parse(row.Cells["Id"].Value.ToString()) == marcaView.Id)
-                                    rowSlt = row;
-                            }
-
                             AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
                             auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
                             auditoria.Modulo = "MARCA";
@@ -129,9 +136,22 @@ namespace SastUI.UI.Windows.Formulario
                             auditoria.Valor = rowSlt.Cells["Id"].Value.ToString() + "|" + rowSlt.Cells["Descripcion"].Value.ToString();
                             auditoria.Fecha = DateTime.Now;
                             new AuditoriaControlador().InsertarAuditoria(auditoria);
+
+                            MessageBox.Show("Modelo Actualizado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         else
                             MessageBox.Show("No es posible actualizar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    ListarMarcas();
+                    Limpiar();
+                }
+                else
+                {
+                    if (new MarcaControlador().ValidarDuplicado(marcaView.Descripcion))
+                    {
+                        MessageBox.Show("Ya existe un registro con esta descripción", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtDescripcion.Text = "";
                     }
                     else
                     {
@@ -146,13 +166,13 @@ namespace SastUI.UI.Windows.Formulario
                             auditoria.Valor = "NUEVO | " + marcaView.Descripcion;
                             auditoria.Fecha = DateTime.Now;
                             new AuditoriaControlador().InsertarAuditoria(auditoria);
-                        } 
+                        }
                         else
                             MessageBox.Show("No es posible guardar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
 
-                    ListarMarcas();
-                    Limpiar();
+                        ListarMarcas();
+                        Limpiar();
+                    }
                 }
             }
         }

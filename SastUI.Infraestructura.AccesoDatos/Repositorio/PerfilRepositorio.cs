@@ -50,5 +50,57 @@ namespace SastUI.Infraestructura.AccesoDatos.Repositorio
                 throw new Exception("Error al desactviar perfil, ", ex);
             }
         }
+
+        public bool ValidarDuplicado(string perfilDes)
+        {
+            try
+            {
+                using (var contexto = new SASTEntities())
+                {
+                    var query = from perfil in contexto.TBL_PERFIL
+                                where perfil.pe_nombre == perfilDes
+                                select perfil;
+
+                    if (query.ToList().Count >= 1)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al consultar perfil, ", ex);
+            }
+        }
+
+        public IEnumerable<TBL_PERFIL> BuscarPerfilPorCriterio(int tipoBusqueda, string info)
+        {
+            IEnumerable<TBL_PERFIL> perfil = new List<TBL_PERFIL>();
+            if (tipoBusqueda == 1)//Por descripcion
+            {
+                perfil = BuscarPorDescripcion(info);
+            }
+
+            return perfil;
+        }
+
+        private IEnumerable<TBL_PERFIL> BuscarPorDescripcion(string descripcion)
+        {
+            try
+            {
+                using (var contexto = new SASTEntities())
+                {
+                    var query = from perfil in contexto.TBL_PERFIL
+                                where perfil.pe_nombre == descripcion
+                                select perfil;
+
+                    return query.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al consultar perfil, ", ex);
+            }
+        }
     }
 }

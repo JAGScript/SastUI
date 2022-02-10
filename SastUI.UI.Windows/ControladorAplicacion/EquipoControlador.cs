@@ -39,6 +39,7 @@ namespace SastUI.UI.Windows.ControladorAplicacion
             TBL_EQUIPO equipo = new TBL_EQUIPO();
             try
             {
+                equipo.eq_id = equipoView.Id;
                 equipo.tp_id = equipoView.TipoId;
                 equipo.ma_id = equipoView.MarcaId;
                 equipo.mo_id = equipoView.ModeloId;

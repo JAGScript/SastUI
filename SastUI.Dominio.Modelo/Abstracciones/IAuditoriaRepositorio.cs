@@ -9,5 +9,6 @@ namespace SastUI.Dominio.Modelo.Abstracciones
 {
     public interface IAuditoriaRepositorio : IBaseRepositorio<TBL_AUDITORIA>
     {
+        IEnumerable<TBL_AUDITORIA> BuscarAuditoriaPorCriterio(int tipoBusqueda, string info);
     }
 }

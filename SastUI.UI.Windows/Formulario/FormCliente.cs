@@ -184,33 +184,56 @@ namespace SastUI.UI.Windows.Formulario
                 clienteView.Correo = correo;
                 clienteView.Estado = estado;
 
-                if (new ClienteControlador().ValidarDuplicados(identificacion))
+                if (!string.IsNullOrEmpty(txtId.Text))
                 {
-                    MessageBox.Show("Ya existe un cliente registrado con esta cédula", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtIdentificacion.Text = "";
+                    clienteView.Id = int.Parse(txtId.Text);
+                    DataGridViewRow rowSlt = new DataGridViewRow();
+
+                    foreach (DataGridViewRow row in dgv_clientes.Rows)
+                    {
+                        if (int.Parse(row.Cells["Id"].Value.ToString()) == clienteView.Id)
+                            rowSlt = row;
+                    }
+
+                    bool validarDuplicado = false;
+
+                    if (rowSlt.Cells["Identificacion"].Value.ToString().Trim() != clienteView.Identificacion)
+                    {
+                        validarDuplicado = new MarcaControlador().ValidarDuplicado(clienteView.Identificacion);
+                        if (validarDuplicado)
+                        {
+                            MessageBox.Show("Ya existe un registro con los datos ingresados", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtIdentificacion.Text = "";
+                        }
+                    }
+
+                    if (!validarDuplicado)
+                    {
+                        if (new ClienteControlador().ActualizarCliente(clienteView))
+                        {
+                            AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
+                            auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
+                            auditoria.Modulo = "CLIENTE";
+                            auditoria.Accion = "ACTUALIZAR";
+                            auditoria.Valor = rowSlt.Cells["Id"].Value.ToString() + "|" + rowSlt.Cells["Identificacion"].Value.ToString() + "|" + rowSlt.Cells["Nombre"].Value.ToString() + "|" + rowSlt.Cells["Correo"].Value.ToString() + "|" + rowSlt.Cells["Estado"].Value.ToString();
+                            auditoria.Fecha = DateTime.Now;
+                            new AuditoriaControlador().InsertarAuditoria(auditoria);
+
+                            MessageBox.Show("Cliente Agregado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        else
+                            MessageBox.Show("No es posible actualizar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    ListarClientes();
+                    Limpiar();
                 }
                 else
                 {
-                    if (!string.IsNullOrEmpty(txtId.Text))
+                    if (new ClienteControlador().ValidarDuplicados(identificacion))
                     {
-                        clienteView.Id = int.Parse(txtId.Text);
-                        new ClienteControlador().ActualizarCliente(clienteView);
-
-                        DataGridViewRow rowSlt = new DataGridViewRow();
-
-                        foreach (DataGridViewRow row in dgv_clientes.Rows)
-                        {
-                            if (int.Parse(row.Cells["Id"].Value.ToString()) == clienteView.Id)
-                                rowSlt = row;
-                        }
-
-                        AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
-                        auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
-                        auditoria.Modulo = "CLIENTE";
-                        auditoria.Accion = "ACTUALIZAR";
-                        auditoria.Valor = rowSlt.Cells["Id"].Value.ToString() + "|" + rowSlt.Cells["Identificacion"].Value.ToString() + "|" + rowSlt.Cells["Nombre"].Value.ToString() + "|" + rowSlt.Cells["Correo"].Value.ToString() + "|" + rowSlt.Cells["Estado"].Value.ToString();
-                        auditoria.Fecha = DateTime.Now;
-                        new AuditoriaControlador().InsertarAuditoria(auditoria);
+                        MessageBox.Show("Ya existe un cliente registrado con esta cédula", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtIdentificacion.Text = "";
                     }
                     else
                     {
@@ -228,10 +251,10 @@ namespace SastUI.UI.Windows.Formulario
                         }
                         else
                             MessageBox.Show("No es posible guardar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
 
-                    ListarClientes();
-                    Limpiar();
+                        ListarClientes();
+                        Limpiar();
+                    }                    
                 }
             }
         }
@@ -291,10 +314,13 @@ namespace SastUI.UI.Windows.Formulario
         private void txtIdentificacion_Leave(object sender, EventArgs e)
         {
             string identificacion = txtIdentificacion.Text.ToString();
-            if (!new SeguridadRepositorio().VerificarIdentificacion(identificacion))
+            if (!string.IsNullOrEmpty(identificacion))
             {
-                MessageBox.Show("La cédula ingresada es incorrecta", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtIdentificacion.Text = "";
+                if (!new SeguridadRepositorio().VerificarIdentificacion(identificacion))
+                {
+                    MessageBox.Show("La identificación ingresada es incorrecta", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtIdentificacion.Text = "";
+                }
             }
         }
 

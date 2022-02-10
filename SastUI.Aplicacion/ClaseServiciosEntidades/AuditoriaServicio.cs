@@ -77,5 +77,17 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
                 throw new Exception("Error: " + ex.Message);
             }
         }
+
+        public IEnumerable<TBL_AUDITORIA> BuscarAuditoriaPorCriterio(int tipoBusqueda, string info)
+        {
+            try
+            {
+                return auditoriaRepositorio.BuscarAuditoriaPorCriterio(tipoBusqueda, info);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
     }
 }

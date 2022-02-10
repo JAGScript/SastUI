@@ -114,23 +114,33 @@ namespace SastUI.UI.Windows.Formulario
             }
             else
             {
-                if (new ModeloControlador().ValidarDuplicado(modeloView.Descripcion, modeloView.MarcaId.GetValueOrDefault()))
-                    MessageBox.Show("Ya existe un registro con esta descripción", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else
+                if (!string.IsNullOrEmpty(txtId.Text))
                 {
-                    if (!string.IsNullOrEmpty(txtId.Text))
+                    modeloView.Id = int.Parse(txtId.Text);
+                    DataGridViewRow rowSlt = new DataGridViewRow();
+
+                    foreach (DataGridViewRow row in dgvModelos.Rows)
                     {
-                        modeloView.Id = int.Parse(txtId.Text);
+                        if (int.Parse(row.Cells["Id"].Value.ToString()) == modeloView.Id)
+                            rowSlt = row;
+                    }
+
+                    bool validarDuplicado = false;
+
+                    if (rowSlt.Cells["Descripcion"].Value.ToString().Trim() != modeloView.Descripcion && rowSlt.Cells["MarcaId"].Value.ToString().Trim() != modeloView.MarcaId.ToString())
+                    {
+                        validarDuplicado = new ModeloControlador().ValidarDuplicado(modeloView.Descripcion, modeloView.MarcaId.GetValueOrDefault());
+                        if (validarDuplicado)
+                        {
+                            MessageBox.Show("Ya existe un registro con los datos ingresados", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtDescripcion.Text = "";
+                        }
+                    }
+
+                    if (!validarDuplicado)
+                    {
                         if (new ModeloControlador().ActualizarModelo(modeloView))
                         {
-                            DataGridViewRow rowSlt = new DataGridViewRow();
-
-                            foreach (DataGridViewRow row in dgvModelos.Rows)
-                            {
-                                if (int.Parse(row.Cells["Id"].Value.ToString()) == modeloView.Id)
-                                    rowSlt = row;
-                            }
-
                             AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
                             auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
                             auditoria.Modulo = "MODELO";
@@ -142,8 +152,16 @@ namespace SastUI.UI.Windows.Formulario
                             MessageBox.Show("Modelo Actualizado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         else
-                            MessageBox.Show("No es posible actualizar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("No es posible guardar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+
+                    ListarModelos();
+                    Limpiar();
+                }
+                else
+                {
+                    if (new ModeloControlador().ValidarDuplicado(modeloView.Descripcion, modeloView.MarcaId.GetValueOrDefault()))
+                        MessageBox.Show("Ya existe un registro con esta descripción", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else
                     {
                         if (new ModeloControlador().InsertarModelo(modeloView))

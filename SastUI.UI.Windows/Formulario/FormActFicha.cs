@@ -35,7 +35,13 @@ namespace SastUI.UI.Windows.Formulario
 
         public void ListarFichas()
         {
-            dgvListaFichas.DataSource = new CabeceraFichaControlador().ListarFichasActivas();
+            var idUsuario = int.Parse(txtIdUsuario.Text);
+            var permisos = int.Parse(txtPermisos.Text);
+
+            if (permisos == 1)
+                dgvListaFichas.DataSource = new CabeceraFichaControlador().ListarFichasActivas();
+            else
+                dgvListaFichas.DataSource = new CabeceraFichaControlador().ListarFichasActivasPorUsuario(idUsuario);
         }
 
         public void Limpiar()
@@ -49,7 +55,7 @@ namespace SastUI.UI.Windows.Formulario
             txtEquipo.Text = "";
             txtObs.Text = "";
             txtProceso.Text = "";
-            txtEstado.Text = "";
+            cmbEstados.SelectedIndex = 0;
             dgvDetalleFicha.Columns.Clear();
         }
 
@@ -67,13 +73,29 @@ namespace SastUI.UI.Windows.Formulario
             dtBusqueda.Columns.Add("Id");
             dtBusqueda.Columns.Add("Nombre");
 
-            dtBusqueda.Rows.Add(0, "Busar");
+            dtBusqueda.Rows.Add(0, "Buscar");
             dtBusqueda.Rows.Add(1, "Cédula");
 
             cmbTipoBusqueda.Items.Clear();
             cmbTipoBusqueda.DataSource = dtBusqueda;
             cmbTipoBusqueda.ValueMember = "Id";
             cmbTipoBusqueda.DisplayMember = "Nombre";
+
+            DataTable dtBusqueda2 = new DataTable();
+            dtBusqueda2.Columns.Add("Id");
+            dtBusqueda2.Columns.Add("Nombre");
+
+            dtBusqueda2.Rows.Add(0, "Estado");
+            dtBusqueda2.Rows.Add(1, "INGRESADO");
+            dtBusqueda2.Rows.Add(2, "EN PROCESO");
+            dtBusqueda2.Rows.Add(3, "ESPERANDO REPUESTO");
+            dtBusqueda2.Rows.Add(4, "FINALIZADO");
+            dtBusqueda2.Rows.Add(5, "ENTREGADO AL CLIENTE");
+
+            cmbEstados.Items.Clear();
+            cmbEstados.DataSource = dtBusqueda2;
+            cmbEstados.ValueMember = "Id";
+            cmbEstados.DisplayMember = "Nombre";
         }
 
         private void cmbTipoBusqueda_SelectionChangeCommitted(object sender, EventArgs e)
@@ -101,7 +123,13 @@ namespace SastUI.UI.Windows.Formulario
                 var cliente = new ClienteControlador().BuscarClientePorCriterio(int.Parse(tipoBusqueda), info);
                 if (cliente != null && cliente.ToList().Count > 0)
                 {
-                    dgvListaFichas.DataSource = new CabeceraFichaControlador().BuscarFichasPorCliente(cliente.ToList()[0].Id);
+                    var idUsuario = int.Parse(txtIdUsuario.Text);
+                    var permisos = int.Parse(txtPermisos.Text);
+
+                    if (permisos == 1)
+                        dgvListaFichas.DataSource = new CabeceraFichaControlador().BuscarFichasPorCliente(cliente.ToList()[0].Id);
+                    else
+                        dgvListaFichas.DataSource = new CabeceraFichaControlador().BuscarFichasPorCliente(cliente.ToList()[0].Id, idUsuario);
                 }
                 else
                 {
@@ -135,7 +163,7 @@ namespace SastUI.UI.Windows.Formulario
             txtEquipo.Text = seleccionado.Cells[3].Value.ToString();
             txtObs.Text = seleccionado.Cells[4].Value.ToString();
             txtProceso.Text = seleccionado.Cells[5].Value.ToString();
-            txtEstado.Text = seleccionado.Cells[6].Value.ToString();
+            cmbEstados.SelectedValue = int.Parse(seleccionado.Cells[6].Value.ToString());
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -145,9 +173,9 @@ namespace SastUI.UI.Windows.Formulario
             var idEquipo = int.Parse(txtIdEquipo.Text);
             var obs = txtObs.Text.Trim().ToUpper();
             var proceso = txtProceso.Text.Trim().ToUpper();
-            var estado = txtEstado.Text.Trim().ToUpper();
+            var estado = int.Parse(cmbEstados.SelectedValue.ToString());
 
-            if (string.IsNullOrEmpty(obs) || string.IsNullOrEmpty(proceso) || string.IsNullOrEmpty(estado))
+            if (string.IsNullOrEmpty(obs) || string.IsNullOrEmpty(proceso) || estado <= 0)
                 MessageBox.Show("Existen campos vacios! llenalos para continuar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
@@ -157,11 +185,8 @@ namespace SastUI.UI.Windows.Formulario
                 detalle.EquipoId = idEquipo;
                 detalle.Observaciones = obs;
                 detalle.Proceso = proceso;
-                detalle.Estado = estado;
+                detalle.Estado = estado.ToString();
 
-                new DetalleFichaControlador().ActualizarDetalleFicha(detalle);
-
-                //Ingresar auditoria
                 DataGridViewRow rowDetalle = new DataGridViewRow();
 
                 foreach (DataGridViewRow row in dgvDetalleFicha.Rows)
@@ -170,23 +195,36 @@ namespace SastUI.UI.Windows.Formulario
                         rowDetalle = row;
                 }
 
-                AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
-                auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
-                auditoria.Modulo = "ACTUALIZAR FICHA";
-                auditoria.Accion = "ACTUALIZAR";
-                auditoria.Valor = idDetalle.ToString() + "|" + idCabecera.ToString() + "|" + idEquipo.ToString() + "|" + rowDetalle.Cells["Observaciones"].Value.ToString() + "|" + rowDetalle.Cells["Proceso"].Value.ToString() + "|" + rowDetalle.Cells["Estado"].Value.ToString();
-                auditoria.Fecha = DateTime.Now;
-                new AuditoriaControlador().InsertarAuditoria(auditoria);
+                if ((int.Parse(rowDetalle.Cells["Estado"].Value.ToString()) == 4 || int.Parse(rowDetalle.Cells["Estado"].Value.ToString()) == 5) &&
+                    (int.Parse(detalle.Estado) == 1 || int.Parse(detalle.Estado) == 2 || int.Parse(detalle.Estado) == 3))
+                {
+                    MessageBox.Show("Esta Ficha se encuentra Finalizada, no se puede cambiar su estado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cmbEstados.SelectedValue = int.Parse(rowDetalle.Cells["Estado"].Value.ToString());
+                }
+                else
+                {
+                    new DetalleFichaControlador().ActualizarDetalleFicha(detalle);
 
-                dgvDetalleFicha.DataSource = ListarDetalle(idCabecera);
+                    //Ingresar auditoria
 
-                txtIdDetalle.Text = "";
-                txtIdCabecera.Text = "";
-                txtIdEquipo.Text = "";
-                txtEquipo.Text = "";
-                txtObs.Text = "";
-                txtProceso.Text = "";
-                txtEstado.Text = "";
+                    AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
+                    auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
+                    auditoria.Modulo = "ACTUALIZAR FICHA";
+                    auditoria.Accion = "ACTUALIZAR";
+                    auditoria.Valor = idDetalle.ToString() + "|" + idCabecera.ToString() + "|" + idEquipo.ToString() + "|" + rowDetalle.Cells["Observaciones"].Value.ToString() + "|" + rowDetalle.Cells["Proceso"].Value.ToString() + "|" + rowDetalle.Cells["Estado"].Value.ToString();
+                    auditoria.Fecha = DateTime.Now;
+                    new AuditoriaControlador().InsertarAuditoria(auditoria);
+
+                    dgvDetalleFicha.DataSource = ListarDetalle(idCabecera);
+
+                    txtIdDetalle.Text = "";
+                    txtIdCabecera.Text = "";
+                    txtIdEquipo.Text = "";
+                    txtEquipo.Text = "";
+                    txtObs.Text = "";
+                    txtProceso.Text = "";
+                    cmbEstados.SelectedIndex = 0;
+                }
             }
         }
 

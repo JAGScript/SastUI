@@ -295,28 +295,34 @@ namespace SastUI.UI.Windows.Formulario
                 MessageBox.Show("Existen campos vacios! llenalos para continuar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                if (new EquipoControlador().ValidarDuplicado(equipoView.Serie))
+                if (!string.IsNullOrEmpty(txtId.Text))
                 {
-                    MessageBox.Show("Ya existe un equipo registrado con este número de serie", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtSerie.Text = "";
-                }
-                else
-                {
-                    if (!string.IsNullOrEmpty(txtId.Text))
-                    {
-                        equipoView.Id = int.Parse(txtId.Text);
+                    equipoView.Id = int.Parse(txtId.Text);
+                    DataGridViewRow rowSlt = new DataGridViewRow();
 
+                    foreach (DataGridViewRow row in dgvEquipos.Rows)
+                    {
+                        if (int.Parse(row.Cells["Id"].Value.ToString()) == equipoView.Id)
+                            rowSlt = row;
+                    }
+
+                    bool validarDuplicado = false;
+
+                    if (rowSlt.Cells["Serie"].Value.ToString().Trim() != equipoView.Serie)
+                    {
+                        validarDuplicado = new MarcaControlador().ValidarDuplicado(equipoView.Serie);
+                        if (validarDuplicado)
+                        {
+                            MessageBox.Show("Ya existe un registro con los datos ingresados", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtSerie.Text = "";
+                        }
+                    }
+
+                    if (!validarDuplicado)
+                    {
                         if (new EquipoControlador().ActualizarEquipo(equipoView))
                         {
                             MessageBox.Show("Equipo Actualizado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                            DataGridViewRow rowSlt = new DataGridViewRow();
-
-                            foreach (DataGridViewRow row in dgvEquipos.Rows)
-                            {
-                                if (int.Parse(row.Cells["Id"].Value.ToString()) == equipoView.Id)
-                                    rowSlt = row;
-                            }
 
                             AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
                             auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
@@ -328,6 +334,17 @@ namespace SastUI.UI.Windows.Formulario
                         }
                         else
                             MessageBox.Show("No es posible actualizar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    ListarEquipos();
+                    Limpiar();
+                }
+                else
+                {
+                    if (new EquipoControlador().ValidarDuplicado(equipoView.Serie))
+                    {
+                        MessageBox.Show("Ya existe un equipo registrado con este número de serie", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtSerie.Text = "";
                     }
                     else
                     {
@@ -345,10 +362,10 @@ namespace SastUI.UI.Windows.Formulario
                         }
                         else
                             MessageBox.Show("No es posible guardar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
 
-                    ListarEquipos();
-                    Limpiar();
+                        ListarEquipos();
+                        Limpiar();
+                    }
                 }
             }
         }
@@ -387,13 +404,16 @@ namespace SastUI.UI.Windows.Formulario
             txtId.Text = seleccionado.Cells[0].Value.ToString();
             cmbTipoEquipo.SelectedValue = int.Parse(seleccionado.Cells[1].Value.ToString());
             cmbMarcas.SelectedValue = int.Parse(seleccionado.Cells[3].Value.ToString());
-            cmbModelos.SelectedValue = int.Parse(seleccionado.Cells[5].Value.ToString());
             txtSerie.Text = seleccionado.Cells[7].Value.ToString();
             txtSO.Text = seleccionado.Cells[8].Value.ToString();
             txtCaracteristicas.Text = seleccionado.Cells[9].Value.ToString();
             txtObservaciones.Text = seleccionado.Cells[10].Value.ToString();
             int estado = int.Parse(seleccionado.Cells[11].Value.ToString());
             cmbEstado.SelectedValue = estado;
+
+            int idMarca = int.Parse(seleccionado.Cells[3].Value.ToString());
+            CargarModelos(idMarca);
+            cmbModelos.SelectedValue = int.Parse(seleccionado.Cells[5].Value.ToString());
 
             int permisos = int.Parse(txtPermisos.Text);
             if (permisos == 1)

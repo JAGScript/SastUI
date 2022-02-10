@@ -57,12 +57,40 @@ namespace SastUI.UI.Windows.ControladorAplicacion
             var lista = new AuditoriaServicio().ListarAuditorias();
             List<AuditoriaVistaModelo> auditoriaView = new List<AuditoriaVistaModelo>();
 
+            var usuarios = new UsuarioControlador().ObtenerUsuarios().ToList();
+
             foreach (TBL_AUDITORIA item in lista)
             {
                 auditoriaView.Add(new AuditoriaVistaModelo
                 {
                     Id = item.au_id,
                     IdUsuario = item.us_id,
+                    Login = usuarios.Find(u => u.Id == item.us_id).Login,
+                    Usuario = usuarios.Find(u => u.Id == item.us_id).Nombre,
+                    Modulo = item.au_modulo,
+                    Accion = item.au_accion,
+                    Valor = item.au_valor,
+                    Fecha = item.au_fecha
+                });
+            }
+            return auditoriaView;
+        }
+
+        public IEnumerable<AuditoriaVistaModelo> BuscarAuditoriaPorCriterio(int tipoBusqueda, string info)
+        {
+            var lista = new AuditoriaServicio().BuscarAuditoriaPorCriterio(tipoBusqueda, info);
+            List<AuditoriaVistaModelo> auditoriaView = new List<AuditoriaVistaModelo>();
+
+            var usuarios = new UsuarioControlador().ObtenerUsuarios().ToList();
+
+            foreach (TBL_AUDITORIA item in lista)
+            {
+                auditoriaView.Add(new AuditoriaVistaModelo
+                {
+                    Id = item.au_id,
+                    IdUsuario = item.us_id,
+                    Login = usuarios.Find(u => u.Id == item.us_id).Login,
+                    Usuario = usuarios.Find(u => u.Id == item.us_id).Nombre,
                     Modulo = item.au_modulo,
                     Accion = item.au_accion,
                     Valor = item.au_valor,

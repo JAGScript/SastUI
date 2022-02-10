@@ -101,5 +101,29 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
                 throw new Exception("Error: " + ex.Message);
             }
         }
+
+        public bool ValidarDuplicado(string perfil)
+        {
+            try
+            {
+                return perfilRepositorio.ValidarDuplicado(perfil);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
+        public IEnumerable<TBL_PERFIL> BuscarPerfilPorCriterio(int tipoBusqueda, string info)
+        {
+            try
+            {
+                return perfilRepositorio.BuscarPerfilPorCriterio(tipoBusqueda, info);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
     }
 }

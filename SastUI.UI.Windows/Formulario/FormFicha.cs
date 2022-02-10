@@ -60,9 +60,8 @@ namespace SastUI.UI.Windows.Formulario
             cmbMarcas.DisplayMember = "Descripcion";
         }
 
-        public void CargarModelos()
+        public void CargarModelos(int idMarca)
         {
-            int idMarca = 0;
             var tiposActivos = new ModeloControlador().ListarModelosActivos(idMarca);
             cmbModelos.DataSource = tiposActivos;
             cmbModelos.ValueMember = "Id";
@@ -174,26 +173,60 @@ namespace SastUI.UI.Windows.Formulario
             cliente.Nombre = txtNuevoNombre.Text.ToUpper().Trim();
             cliente.Correo = txtNuevoCorreo.Text.ToLower().Trim();
             cliente.Estado = 1;
+            var numero = txtNuevoNumero.Text.Trim();
+            var tipoTelefono = int.Parse(cmbNuevoTipo.SelectedValue.ToString());
 
-            idCliente = new ClienteControlador().GuardarConId(cliente);
-
-            if(idCliente == null && idCliente <= 0)
-                MessageBox.Show("Error al guardar cliente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (string.IsNullOrEmpty(cliente.Identificacion) || string.IsNullOrEmpty(cliente.Nombre) || 
+                string.IsNullOrEmpty(cliente.Correo) || string.IsNullOrEmpty(numero) || tipoTelefono <= 0)
+                MessageBox.Show("Existen campos vacios! llenalos para continuar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                TelefonoVistaModelo telefono = new TelefonoVistaModelo();
-                telefono.ClienteId = idCliente.GetValueOrDefault();
-                telefono.Numero = txtNuevoNumero.Text.Trim();
-                telefono.IdTipoTelefono = int.Parse(cmbNuevoTipo.SelectedValue.ToString());
-                telefono.Estado = 1;
-                if (!new TelefonoControlador().InsertarTelefono(telefono))
-                    MessageBox.Show("No es posible guardar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                if (new ClienteControlador().ValidarDuplicados(cliente.Identificacion))
+                {
+                    MessageBox.Show("Ya existe un registro con esta información", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtNuevaIdentificacion.Text = "";
+                }
+                else
+                {
+                    idCliente = new ClienteControlador().GuardarConId(cliente);
 
-            txtIdCliente.Text = idCliente.ToString();
-            txtNombreCliente.Text = cliente.Nombre;
-            MessageBox.Show("Cliente Agregado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            CerrarNuevoCliente();
+                    if (idCliente == null && idCliente <= 0)
+                        MessageBox.Show("Error al guardar cliente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                    {
+                        AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
+                        auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
+                        auditoria.Modulo = "FICHA - CLIENTE";
+                        auditoria.Accion = "INGRESAR";
+                        auditoria.Valor = "NUEVO | " + idCliente;
+                        auditoria.Fecha = DateTime.Now;
+                        new AuditoriaControlador().InsertarAuditoria(auditoria);
+
+                        TelefonoVistaModelo telefono = new TelefonoVistaModelo();
+                        telefono.ClienteId = idCliente.GetValueOrDefault();
+                        telefono.Numero = numero;
+                        telefono.IdTipoTelefono = tipoTelefono;
+                        telefono.Estado = 1;
+                        if (!new TelefonoControlador().InsertarTelefono(telefono))
+                            MessageBox.Show("No es posible guardar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                        {
+                            AuditoriaVistaModelo auditoriaTel = new AuditoriaVistaModelo();
+                            auditoriaTel.IdUsuario = int.Parse(txtIdUsuario.Text);
+                            auditoriaTel.Modulo = "FICHA - TELEFONO";
+                            auditoriaTel.Accion = "INGRESAR";
+                            auditoriaTel.Valor = "NUEVO | " + idCliente + " | " + telefono.Numero;
+                            auditoriaTel.Fecha = DateTime.Now;
+                            new AuditoriaControlador().InsertarAuditoria(auditoriaTel);
+                        }
+
+                        txtIdCliente.Text = idCliente.ToString();
+                        txtNombreCliente.Text = cliente.Nombre;
+                        MessageBox.Show("Cliente Agregado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    CerrarNuevoCliente();
+                }
+            }
         }
 
         private void btnCancelarNuevoCliente_Click(object sender, EventArgs e)
@@ -207,7 +240,6 @@ namespace SastUI.UI.Windows.Formulario
             ListarEquipos();
             CargarTipoEquipo();
             CargarMarcas();
-            CargarModelos();
 
             int numeroFichas = 0;
 
@@ -242,6 +274,39 @@ namespace SastUI.UI.Windows.Formulario
             dgvEquiposDetalle.Columns.Add("SistemaOperativo", "SistemaOperativo");
             dgvEquiposDetalle.Columns.Add("Caracteristicas", "Caracteristicas");
             dgvEquiposDetalle.Columns.Add("Observaciones", "Observaciones");
+
+            //Llenar combo busqueda
+            DataTable dtBusqueda2 = new DataTable();
+            dtBusqueda2.Columns.Add("Id");
+            dtBusqueda2.Columns.Add("Nombre");
+
+            dtBusqueda2.Rows.Add(0, "Buscar");
+            dtBusqueda2.Rows.Add(1, "Serie");
+
+            cmbBuscarEquipos.Items.Clear();
+            cmbBuscarEquipos.DataSource = dtBusqueda2;
+            cmbBuscarEquipos.ValueMember = "Id";
+            cmbBuscarEquipos.DisplayMember = "Nombre";
+
+            var columnasEqExistentes = dgvEquiposExistentes.ColumnCount;
+            var columnasEqDetalle = dgvEquiposDetalle.ColumnCount;
+
+            //Deshabilitar edicion de columnas
+            for(var i = 0; i < columnasEqExistentes; i++)
+            {
+                if (i == 0)
+                    dgvEquiposExistentes.Columns[i].ReadOnly = false;
+                else
+                    dgvEquiposExistentes.Columns[i].ReadOnly = true;
+            }
+
+            for (var j = 0; j < columnasEqDetalle; j++)
+            {
+                if (j == 0)
+                    dgvEquiposDetalle.Columns[j].ReadOnly = false;
+                else
+                    dgvEquiposDetalle.Columns[j].ReadOnly = true;
+            }
         }
 
         private void txtNuevoNumero_KeyPress(object sender, KeyPressEventArgs e)
@@ -249,18 +314,16 @@ namespace SastUI.UI.Windows.Formulario
             new SeguridadRepositorio().ValidarNumeros(e);
         }
 
-        private void txtNuevaIdentificacion_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            new SeguridadRepositorio().ValidarNumeros(e);
-        }
-
         private void txtNuevaIdentificacion_Leave(object sender, EventArgs e)
         {
-            string cedula = txtNuevaIdentificacion.Text.ToString();
-            if (!new SeguridadRepositorio().ValidarCedula(cedula))
+            string identificacion = txtNuevaIdentificacion.Text.ToString();
+            if (!string.IsNullOrEmpty(identificacion))
             {
-                MessageBox.Show("La cédula ingresada es incorrecta", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtNuevaIdentificacion.Text = "";
+                if (!new SeguridadRepositorio().VerificarIdentificacion(identificacion))
+                {
+                    MessageBox.Show("La identificación ingresada es incorrecta", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtNuevaIdentificacion.Text = "";
+                }
             }
         }
 
@@ -338,15 +401,39 @@ namespace SastUI.UI.Windows.Formulario
             var tipoEquipo = new TipoEquipoVistaModelo();
             tipoEquipo.Descripcion = txtNuevoTipo.Text.ToUpper().Trim();
             tipoEquipo.Estado = 1;
-            if (new TipoEquipoControlador().InsertarTipoEquipo(tipoEquipo))
-            {
-                CargarTipoEquipo();
-                pnlTipoEquipo.Visible = false;
-                txtNuevoTipo.Text = "";
-                pnlTipoEquipo.SendToBack();
-            }
+
+            if (string.IsNullOrEmpty(tipoEquipo.Descripcion))
+                MessageBox.Show("Existen campos vacios! llenalos para continuar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
-                MessageBox.Show("No es posible guardar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                if (new TipoEquipoControlador().ValidarDuplicado(tipoEquipo.Descripcion))
+                {
+                    MessageBox.Show("Ya existe un registro con esta descripción", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtNuevoTipo.Text = "";
+                }
+                else
+                {
+                    if (new TipoEquipoControlador().InsertarTipoEquipo(tipoEquipo))
+                    {
+                        MessageBox.Show("Tipo Equipo Agregado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
+                        auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
+                        auditoria.Modulo = "FICHA - TIPOEQUIPO";
+                        auditoria.Accion = "INGRESAR";
+                        auditoria.Valor = "NUEVO | " + tipoEquipo.Descripcion;
+                        auditoria.Fecha = DateTime.Now;
+                        new AuditoriaControlador().InsertarAuditoria(auditoria);
+
+                        CargarTipoEquipo();
+                        pnlTipoEquipo.Visible = false;
+                        txtNuevoTipo.Text = "";
+                        pnlTipoEquipo.SendToBack();
+                    }
+                    else
+                        MessageBox.Show("No es posible guardar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void btnCancelarTipo_Click_1(object sender, EventArgs e)
@@ -361,15 +448,39 @@ namespace SastUI.UI.Windows.Formulario
             var marca = new MarcaVistaModelo();
             marca.Descripcion = txtNuevaMarca.Text.ToUpper().Trim();
             marca.Estado = 1;
-            if (new MarcaControlador().InsertarMarca(marca))
-            {
-                CargarMarcas();
-                pnlMarca.Visible = false;
-                txtNuevaMarca.Text = "";
-                pnlMarca.SendToBack();
-            }
+
+            if (string.IsNullOrEmpty(marca.Descripcion))
+                MessageBox.Show("Existen campos vacios! llenalos para continuar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
-                MessageBox.Show("No es posible guardar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                if (new MarcaControlador().ValidarDuplicado(marca.Descripcion))
+                {
+                    MessageBox.Show("Ya existe un registro con esta descripción", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtNuevaMarca.Text = "";
+                }
+                else
+                {
+                    if (new MarcaControlador().InsertarMarca(marca))
+                    {
+                        MessageBox.Show("Marca Agregada", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
+                        auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
+                        auditoria.Modulo = "FICHA - MARCA";
+                        auditoria.Accion = "INGRESAR";
+                        auditoria.Valor = "NUEVO | " + marca.Descripcion;
+                        auditoria.Fecha = DateTime.Now;
+                        new AuditoriaControlador().InsertarAuditoria(auditoria);
+
+                        CargarMarcas();
+                        pnlMarca.Visible = false;
+                        txtNuevaMarca.Text = "";
+                        pnlMarca.SendToBack();
+                    }
+                    else
+                        MessageBox.Show("No es posible guardar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void btnCancelarMarca_Click(object sender, EventArgs e)
@@ -383,16 +494,41 @@ namespace SastUI.UI.Windows.Formulario
         {
             var modelo = new ModeloVistaModelo();
             modelo.Descripcion = txtNuevoModelo.Text.ToUpper().Trim();
+            modelo.MarcaId = int.Parse(cmbMarcas.SelectedValue.ToString());
             modelo.Estado = 1;
-            if (new ModeloControlador().InsertarModelo(modelo))
-            {
-                CargarModelos();
-                pnlModelo.Visible = false;
-                txtNuevoModelo.Text = "";
-                pnlModelo.SendToBack();
-            }
+
+            if (string.IsNullOrEmpty(modelo.Descripcion) || modelo.MarcaId <= 0)
+                MessageBox.Show("Seleccione una marca, o llene los campos vacios", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
-                MessageBox.Show("No es posible guardar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                if (new ModeloControlador().ValidarDuplicado(modelo.Descripcion, modelo.MarcaId.GetValueOrDefault()))
+                {
+                    MessageBox.Show("Ya existe un registro con esta descripcion", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtNuevoModelo.Text = "";
+                }
+                else
+                {
+                    if (new ModeloControlador().InsertarModelo(modelo))
+                    {
+                        MessageBox.Show("Modelo Agregado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
+                        auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
+                        auditoria.Modulo = "FICHA - MODELO";
+                        auditoria.Accion = "INGRESAR";
+                        auditoria.Valor = "NUEVO | " + modelo.Descripcion + " | " + modelo.MarcaId;
+                        auditoria.Fecha = DateTime.Now;
+                        new AuditoriaControlador().InsertarAuditoria(auditoria);
+
+                        CargarModelos(modelo.MarcaId.GetValueOrDefault());
+                        pnlModelo.Visible = false;
+                        txtNuevoModelo.Text = "";
+                        pnlModelo.SendToBack();
+                    }
+                    else
+                        MessageBox.Show("No es posible guardar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void btnCancelarModelo_Click(object sender, EventArgs e)
@@ -422,16 +558,24 @@ namespace SastUI.UI.Windows.Formulario
                     MessageBox.Show("Existen campos vacios!, llenelos para continuar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {
-                    dgvEquiposDetalle.Rows.Add(false, 0, idTipo, nombreTipo, idMarca, nombreMarca, idModelo, nombreModelo,
+                    if (new EquipoControlador().ValidarDuplicado(serie))
+                    {
+                        MessageBox.Show("Ya existe un equipo con este numero de serie", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtSerie.Text = "";
+                    }
+                    else
+                    {
+                        dgvEquiposDetalle.Rows.Add(false, 0, idTipo, nombreTipo, idMarca, nombreMarca, idModelo, nombreModelo,
                         serie, so, caracteristicas, observaciones);
 
-                    cmbTipoEquipo.SelectedIndex = 0;
-                    cmbMarcas.SelectedIndex = 0;
-                    cmbModelos.SelectedIndex = 0;
-                    txtSerie.Text = "";
-                    txtSO.Text = "";
-                    txtCaracteristicas.Text = "";
-                    txtObservaciones.Text = "";
+                        cmbTipoEquipo.SelectedIndex = 0;
+                        cmbMarcas.SelectedIndex = 0;
+                        cmbModelos.SelectedIndex = 0;
+                        txtSerie.Text = "";
+                        txtSO.Text = "";
+                        txtCaracteristicas.Text = "";
+                        txtObservaciones.Text = "";
+                    }
                 }
             }
             else
@@ -545,7 +689,7 @@ namespace SastUI.UI.Windows.Formulario
                     detalle.EquipoId = idEquipoRegistrado;
                     detalle.Observaciones = "SN";
                     detalle.Proceso = "INGRESADO";
-                    detalle.Estado = "INGRESADO";
+                    detalle.Estado = "1";
 
                     new DetalleFichaControlador().InsertarDetalleFicha(detalle);
                 }
@@ -568,6 +712,65 @@ namespace SastUI.UI.Windows.Formulario
             {
                 MessageBox.Show("El correo ingresado es incorrecto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtNuevoCorreo.Text = "";
+            }
+        }
+
+        private void cmbBuscarEquipos_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            var idBusqueda = int.Parse(cmbBuscarEquipos.SelectedValue.ToString());
+            if (idBusqueda > 0)
+            {
+                txtBusquedaEquipo.Visible = true;
+                btnBuscarEquipo.Visible = true;
+                btnCancelarBuscarEquipo.Visible = true;
+            }
+            else
+            {
+                txtBusquedaEquipo.Visible = false;
+                btnBuscarEquipo.Visible = false;
+                btnCancelarBuscarEquipo.Visible = false;
+            }
+        }
+
+        private void btnBuscarEquipo_Click(object sender, EventArgs e)
+        {
+            var tipoBusqueda = cmbBuscarEquipos.SelectedValue.ToString();
+            var info = txtBusquedaEquipo.Text.Trim();
+
+            if (int.Parse(tipoBusqueda) > 0 && !string.IsNullOrEmpty(info))
+            {
+                var cliente = new EquipoControlador().BuscarEquipoPorCriterio(int.Parse(tipoBusqueda), info);
+                if (cliente != null)
+                {
+                    dgvEquiposExistentes.DataSource = cliente;
+                }
+                else
+                {
+                    MessageBox.Show("No existen coincidencias con los datos ingresados", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cmbTipoBusqueda.SelectedIndex = 0;
+                    txtInformacion.Text = "";
+                }
+            }
+        }
+
+        private void btnCancelarBuscarEquipo_Click(object sender, EventArgs e)
+        {
+            txtBusquedaEquipo.Visible = false;
+            btnBuscarEquipo.Visible = false;
+            btnCancelarBuscarEquipo.Visible = false;
+            cmbBuscarEquipos.SelectedIndex = 0;
+            ListarEquipos();
+        }
+
+        private void cmbMarcas_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            var idMarca = int.Parse(cmbMarcas.SelectedValue.ToString());
+            if (idMarca > 0)
+                CargarModelos(idMarca);
+            else
+            {
+                cmbModelos.DataSource = null;
+                cmbModelos.Items.Clear();
             }
         }
     }

@@ -10,6 +10,8 @@ namespace SastUI.UI.Windows.VistaModelo
     {
         public int Id { get; set; }
         public int IdUsuario { get; set; }
+        public string Login { get; set; }
+        public string Usuario { get; set; }
         public string Modulo { get; set; }
         public string Accion { get; set; }
         public string Valor { get; set; }

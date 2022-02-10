@@ -101,5 +101,29 @@ namespace SastUI.Aplicacion.ClaseServiciosEntidades
                 throw new Exception("Error: " + ex.Message);
             }
         }
+
+        public IEnumerable<TBL_USUARIO> BuscarUsuarioPorCriterio(int tipoBusqueda, string info)
+        {
+            try
+            {
+                return usuarioRepositorio.BuscarUsuarioPorCriterio(tipoBusqueda, info);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
+        public bool ValidarDuplicado(string login)
+        {
+            try
+            {
+                return usuarioRepositorio.ValidarDuplicado(login);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
     }
 }

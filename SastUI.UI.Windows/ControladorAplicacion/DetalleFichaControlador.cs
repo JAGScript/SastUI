@@ -90,6 +90,18 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                 var marca = marcas.Find(m => m.ma_id == equipo.ma_id);
                 var modelo = modelos.Find(mo => mo.mo_id == equipo.mo_id);
 
+                string desEstado = "";
+                if (int.Parse(item.df_estado) == 1)
+                    desEstado = "INGRESADO";
+                else if (int.Parse(item.df_estado) == 2)
+                    desEstado = "EN PROCESO";
+                else if (int.Parse(item.df_estado) == 3)
+                    desEstado = "ESPERANDO REPUESTO";
+                else if (int.Parse(item.df_estado) == 4)
+                    desEstado = "FINALIZADO";
+                else if (int.Parse(item.df_estado) == 5)
+                    desEstado = "ENTREGADO AL CLIENTE";
+
                 detalleFichaView.Add(new DetalleFichaVistaModelo
                 {
                     Id = item.df_id,
@@ -98,7 +110,8 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                     DescripcionEquipo = tipoEquipo.tp_descripcion + "|" + marca.ma_descripcion + "|" + modelo.mo_descripcion,
                     Observaciones = item.df_observaciones,
                     Proceso = item.df_proceso,
-                    Estado = item.df_estado
+                    Estado = item.df_estado,
+                    DescripcionEstado = desEstado
                 });
             }
             return detalleFichaView;

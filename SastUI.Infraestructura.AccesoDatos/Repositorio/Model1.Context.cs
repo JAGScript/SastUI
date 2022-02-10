@@ -37,5 +37,6 @@ namespace SastUI.Infraestructura.AccesoDatos.Repositorio
         public virtual DbSet<TBL_TIPO_EQUIPO> TBL_TIPO_EQUIPO { get; set; }
         public virtual DbSet<TBL_TIPO_TELEFONO> TBL_TIPO_TELEFONO { get; set; }
         public virtual DbSet<TBL_USUARIO> TBL_USUARIO { get; set; }
+        public virtual DbSet<TBL_AUDITORIA> TBL_AUDITORIA { get; set; }
     }
 }

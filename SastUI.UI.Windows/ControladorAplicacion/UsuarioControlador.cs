@@ -127,5 +127,44 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                 throw new Exception(ex.Message);
             }
         }
+
+        public IEnumerable<UsuarioVistaModelo> BuscarUsuarioPorCriterio(int tipoBusqueda, string info)
+        {
+            var lista = new UsuarioServicio().BuscarUsuarioPorCriterio(tipoBusqueda, info);
+            List<UsuarioVistaModelo> usuarioView = new List<UsuarioVistaModelo>();
+
+            var perfiles = new PerfilServicio().ListarPerfil().ToList();
+
+            foreach (TBL_USUARIO item in lista)
+            {
+                usuarioView.Add(new UsuarioVistaModelo
+                {
+                    Id = item.us_id,
+                    PerfilId = item.pe_id,
+                    DescripcionPerfil = perfiles.Find(p => p.pe_id == item.pe_id).pe_nombre.ToString(),
+                    Login = item.us_login,
+                    Pass = item.us_pass,
+                    Nombre = item.us_nombre,
+                    Correo = item.us_correo,
+                    Identificacion = item.us_identificacion,
+                    Estado = item.us_estado,
+                    EstadoDescripcion = item.us_estado == 1 ? "Activo" : "Inactivo",
+                    Permisos = perfiles.Find(p => p.pe_id == item.pe_id).pe_permisos.GetValueOrDefault()
+                });
+            }
+            return usuarioView;
+        }
+
+        public bool ValidarDuplicado(string login)
+        {
+            try
+            {
+                return new UsuarioServicio().ValidarDuplicado(login);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

@@ -118,6 +118,11 @@
             this.btnAgregarCliente = new System.Windows.Forms.Button();
             this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.pct_cerrar = new System.Windows.Forms.PictureBox();
+            this.btnCancelarBuscarEquipo = new System.Windows.Forms.Button();
+            this.btnBuscarEquipo = new System.Windows.Forms.Button();
+            this.txtBusquedaEquipo = new System.Windows.Forms.TextBox();
+            this.cmbBuscarEquipos = new System.Windows.Forms.ComboBox();
+            this.label31 = new System.Windows.Forms.Label();
             this.pnlBusquedaCliente.SuspendLayout();
             this.pnlNuevoCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEquiposDetalle)).BeginInit();
@@ -491,7 +496,6 @@
             this.txtNuevaIdentificacion.Name = "txtNuevaIdentificacion";
             this.txtNuevaIdentificacion.Size = new System.Drawing.Size(289, 32);
             this.txtNuevaIdentificacion.TabIndex = 33;
-            this.txtNuevaIdentificacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNuevaIdentificacion_KeyPress);
             this.txtNuevaIdentificacion.Leave += new System.EventHandler(this.txtNuevaIdentificacion_Leave);
             // 
             // label4
@@ -545,11 +549,11 @@
             this.dgvEquiposDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEquiposDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.chkDetalle});
-            this.dgvEquiposDetalle.Location = new System.Drawing.Point(813, 452);
+            this.dgvEquiposDetalle.Location = new System.Drawing.Point(813, 395);
             this.dgvEquiposDetalle.Name = "dgvEquiposDetalle";
             this.dgvEquiposDetalle.RowHeadersWidth = 51;
             this.dgvEquiposDetalle.RowTemplate.Height = 24;
-            this.dgvEquiposDetalle.Size = new System.Drawing.Size(633, 201);
+            this.dgvEquiposDetalle.Size = new System.Drawing.Size(633, 329);
             this.dgvEquiposDetalle.TabIndex = 60;
             // 
             // chkDetalle
@@ -557,17 +561,23 @@
             this.chkDetalle.HeaderText = "Seleccionar";
             this.chkDetalle.MinimumWidth = 6;
             this.chkDetalle.Name = "chkDetalle";
+            this.chkDetalle.ReadOnly = true;
             this.chkDetalle.Width = 90;
             // 
             // pnlEquiposExistentes
             // 
             this.pnlEquiposExistentes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlEquiposExistentes.Controls.Add(this.btnCancelarBuscarEquipo);
+            this.pnlEquiposExistentes.Controls.Add(this.btnBuscarEquipo);
+            this.pnlEquiposExistentes.Controls.Add(this.txtBusquedaEquipo);
+            this.pnlEquiposExistentes.Controls.Add(this.cmbBuscarEquipos);
+            this.pnlEquiposExistentes.Controls.Add(this.label31);
             this.pnlEquiposExistentes.Controls.Add(this.pctCerrarEquiposExistentes);
             this.pnlEquiposExistentes.Controls.Add(this.dgvEquiposExistentes);
             this.pnlEquiposExistentes.Controls.Add(this.label15);
-            this.pnlEquiposExistentes.Location = new System.Drawing.Point(51, 395);
+            this.pnlEquiposExistentes.Location = new System.Drawing.Point(21, 395);
             this.pnlEquiposExistentes.Name = "pnlEquiposExistentes";
-            this.pnlEquiposExistentes.Size = new System.Drawing.Size(659, 272);
+            this.pnlEquiposExistentes.Size = new System.Drawing.Size(689, 345);
             this.pnlEquiposExistentes.TabIndex = 61;
             this.pnlEquiposExistentes.Visible = false;
             // 
@@ -575,7 +585,7 @@
             // 
             this.pctCerrarEquiposExistentes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pctCerrarEquiposExistentes.Image = global::SastUI.UI.Windows.Properties.Resources.Cerrar;
-            this.pctCerrarEquiposExistentes.Location = new System.Drawing.Point(626, -1);
+            this.pctCerrarEquiposExistentes.Location = new System.Drawing.Point(656, -1);
             this.pctCerrarEquiposExistentes.Margin = new System.Windows.Forms.Padding(4);
             this.pctCerrarEquiposExistentes.Name = "pctCerrarEquiposExistentes";
             this.pctCerrarEquiposExistentes.Size = new System.Drawing.Size(32, 32);
@@ -589,11 +599,11 @@
             this.dgvEquiposExistentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEquiposExistentes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.chkExistente});
-            this.dgvEquiposExistentes.Location = new System.Drawing.Point(3, 56);
+            this.dgvEquiposExistentes.Location = new System.Drawing.Point(4, 91);
             this.dgvEquiposExistentes.Name = "dgvEquiposExistentes";
             this.dgvEquiposExistentes.RowHeadersWidth = 51;
             this.dgvEquiposExistentes.RowTemplate.Height = 24;
-            this.dgvEquiposExistentes.Size = new System.Drawing.Size(633, 201);
+            this.dgvEquiposExistentes.Size = new System.Drawing.Size(680, 237);
             this.dgvEquiposExistentes.TabIndex = 59;
             // 
             // chkExistente
@@ -601,6 +611,7 @@
             this.chkExistente.HeaderText = "Seleccionar";
             this.chkExistente.MinimumWidth = 6;
             this.chkExistente.Name = "chkExistente";
+            this.chkExistente.ReadOnly = true;
             this.chkExistente.Width = 90;
             // 
             // label15
@@ -671,9 +682,9 @@
             this.pnlNuevoEquipo.Controls.Add(this.label22);
             this.pnlNuevoEquipo.Controls.Add(this.cmbTipoEquipo);
             this.pnlNuevoEquipo.Controls.Add(this.label23);
-            this.pnlNuevoEquipo.Location = new System.Drawing.Point(34, 411);
+            this.pnlNuevoEquipo.Location = new System.Drawing.Point(12, 411);
             this.pnlNuevoEquipo.Name = "pnlNuevoEquipo";
-            this.pnlNuevoEquipo.Size = new System.Drawing.Size(659, 301);
+            this.pnlNuevoEquipo.Size = new System.Drawing.Size(681, 301);
             this.pnlNuevoEquipo.TabIndex = 65;
             this.pnlNuevoEquipo.Visible = false;
             // 
@@ -681,7 +692,7 @@
             // 
             this.pctCerrarNuevoEquipo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pctCerrarNuevoEquipo.Image = global::SastUI.UI.Windows.Properties.Resources.Cerrar;
-            this.pctCerrarNuevoEquipo.Location = new System.Drawing.Point(626, 0);
+            this.pctCerrarNuevoEquipo.Location = new System.Drawing.Point(648, 0);
             this.pctCerrarNuevoEquipo.Margin = new System.Windows.Forms.Padding(4);
             this.pctCerrarNuevoEquipo.Name = "pctCerrarNuevoEquipo";
             this.pctCerrarNuevoEquipo.Size = new System.Drawing.Size(32, 32);
@@ -847,6 +858,7 @@
             this.cmbMarcas.Name = "cmbMarcas";
             this.cmbMarcas.Size = new System.Drawing.Size(244, 29);
             this.cmbMarcas.TabIndex = 57;
+            this.cmbMarcas.SelectionChangeCommitted += new System.EventHandler(this.cmbMarcas_SelectionChangeCommitted);
             // 
             // label22
             // 
@@ -1195,6 +1207,69 @@
             this.pct_cerrar.TabStop = false;
             this.pct_cerrar.Click += new System.EventHandler(this.pct_cerrar_Click);
             // 
+            // btnCancelarBuscarEquipo
+            // 
+            this.btnCancelarBuscarEquipo.Font = new System.Drawing.Font("Bahnschrift", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarBuscarEquipo.Image = global::SastUI.UI.Windows.Properties.Resources.Cancelar;
+            this.btnCancelarBuscarEquipo.Location = new System.Drawing.Point(471, -1);
+            this.btnCancelarBuscarEquipo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelarBuscarEquipo.Name = "btnCancelarBuscarEquipo";
+            this.btnCancelarBuscarEquipo.Size = new System.Drawing.Size(144, 44);
+            this.btnCancelarBuscarEquipo.TabIndex = 97;
+            this.btnCancelarBuscarEquipo.Text = "Cancelar";
+            this.btnCancelarBuscarEquipo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancelarBuscarEquipo.UseVisualStyleBackColor = true;
+            this.btnCancelarBuscarEquipo.Visible = false;
+            this.btnCancelarBuscarEquipo.Click += new System.EventHandler(this.btnCancelarBuscarEquipo_Click);
+            // 
+            // btnBuscarEquipo
+            // 
+            this.btnBuscarEquipo.Font = new System.Drawing.Font("Bahnschrift", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarEquipo.Image = global::SastUI.UI.Windows.Properties.Resources.Buscar;
+            this.btnBuscarEquipo.Location = new System.Drawing.Point(323, -1);
+            this.btnBuscarEquipo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscarEquipo.Name = "btnBuscarEquipo";
+            this.btnBuscarEquipo.Size = new System.Drawing.Size(144, 44);
+            this.btnBuscarEquipo.TabIndex = 96;
+            this.btnBuscarEquipo.Text = "Buscar";
+            this.btnBuscarEquipo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBuscarEquipo.UseVisualStyleBackColor = true;
+            this.btnBuscarEquipo.Visible = false;
+            this.btnBuscarEquipo.Click += new System.EventHandler(this.btnBuscarEquipo_Click);
+            // 
+            // txtBusquedaEquipo
+            // 
+            this.txtBusquedaEquipo.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusquedaEquipo.Location = new System.Drawing.Point(314, 44);
+            this.txtBusquedaEquipo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBusquedaEquipo.Name = "txtBusquedaEquipo";
+            this.txtBusquedaEquipo.Size = new System.Drawing.Size(306, 32);
+            this.txtBusquedaEquipo.TabIndex = 95;
+            this.txtBusquedaEquipo.Visible = false;
+            // 
+            // cmbBuscarEquipos
+            // 
+            this.cmbBuscarEquipos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBuscarEquipos.FormattingEnabled = true;
+            this.cmbBuscarEquipos.Location = new System.Drawing.Point(120, 44);
+            this.cmbBuscarEquipos.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbBuscarEquipos.Name = "cmbBuscarEquipos";
+            this.cmbBuscarEquipos.Size = new System.Drawing.Size(186, 32);
+            this.cmbBuscarEquipos.TabIndex = 94;
+            this.cmbBuscarEquipos.SelectionChangeCommitted += new System.EventHandler(this.cmbBuscarEquipos_SelectionChangeCommitted);
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(4, 47);
+            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(114, 24);
+            this.label31.TabIndex = 93;
+            this.label31.Text = "Buscar por:";
+            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FormFicha
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1353,5 +1428,10 @@
         private Button btnGuardar;
         private Button btnLimpiar;
         private TextBox txtPermisos;
+        private Button btnCancelarBuscarEquipo;
+        private Button btnBuscarEquipo;
+        private TextBox txtBusquedaEquipo;
+        private ComboBox cmbBuscarEquipos;
+        private Label label31;
     }
 }

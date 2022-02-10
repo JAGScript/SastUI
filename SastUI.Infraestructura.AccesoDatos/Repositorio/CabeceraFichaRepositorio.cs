@@ -65,5 +65,45 @@ namespace SastUI.Infraestructura.AccesoDatos.Repositorio
                 throw new Exception("Error al consultar fichas, ", ex);
             }
         }
+
+        public IEnumerable<TBL_CABECERA_FICHA> ListarFichasActivasPorUsuario(int idUsuario)
+        {
+            try
+            {
+                using (var contexto = new SASTEntities())
+                {
+                    var query = from ficha in contexto.TBL_CABECERA_FICHA
+                                where ficha.cf_estado == 1
+                                && ficha.us_id == idUsuario
+                                select ficha;
+
+                    return query.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al consultar fichas, ", ex);
+            }
+        }
+
+        public IEnumerable<TBL_CABECERA_FICHA> BuscarFichasPorCliente(int idCliente, int idUsuario)
+        {
+            try
+            {
+                using (var contexto = new SASTEntities())
+                {
+                    var query = from ficha in contexto.TBL_CABECERA_FICHA
+                                where ficha.cl_id == idCliente
+                                && ficha.us_id == idUsuario
+                                select ficha;
+
+                    return query.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al consultar fichas, ", ex);
+            }
+        }
     }
 }

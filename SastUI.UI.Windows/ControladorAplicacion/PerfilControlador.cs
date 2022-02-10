@@ -102,5 +102,36 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                 throw new Exception(ex.Message);
             }
         }
+
+        public bool ValidarDuplicado(string perfil)
+        {
+            try
+            {
+                return new PerfilServicio().ValidarDuplicado(perfil);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public IEnumerable<PerfilVistaModelo> BuscarPerfilPorCriterio(int tipoBusqueda, string info)
+        {
+            var lista = new PerfilServicio().BuscarPerfilPorCriterio(tipoBusqueda, info);
+            List<PerfilVistaModelo> perfilView = new List<PerfilVistaModelo>();
+
+            foreach (TBL_PERFIL item in lista)
+            {
+                perfilView.Add(new PerfilVistaModelo
+                {
+                    Id = item.pe_id,
+                    Nombre = item.pe_nombre,
+                    Estado = item.pe_estado,
+                    EstadoDescripcion = item.pe_estado == 1 ? "Activo" : "Inactivo",
+                    Permisos = item.pe_permisos.GetValueOrDefault()
+                });
+            }
+            return perfilView;
+        }
     }
 }

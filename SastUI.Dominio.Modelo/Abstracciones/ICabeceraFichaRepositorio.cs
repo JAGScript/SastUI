@@ -14,5 +14,9 @@ namespace SastUI.Dominio.Modelo.Abstracciones
         IEnumerable<TBL_CABECERA_FICHA> ListarFichasActivas();
 
         IEnumerable<TBL_CABECERA_FICHA> BuscarFichasPorCliente(int idCliente);
+
+        IEnumerable<TBL_CABECERA_FICHA> ListarFichasActivasPorUsuario(int idUsuario);
+
+        IEnumerable<TBL_CABECERA_FICHA> BuscarFichasPorCliente(int idCliente, int idUsuario);
     }
 }

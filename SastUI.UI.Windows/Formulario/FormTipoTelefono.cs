@@ -31,7 +31,8 @@ namespace SastUI.UI.Windows.Formulario
         {
             txtId.Text = "";
             txtDescripcion.Text = "";
-            cmbEstado.SelectedIndex = 0;
+            cmbEstado.SelectedIndex = 1;
+            cmbEstado.Enabled = false;
         }
 
         private void FormTipoTelefono_Load(object sender, EventArgs e)
@@ -89,23 +90,32 @@ namespace SastUI.UI.Windows.Formulario
                 MessageBox.Show("Existen campos vacios! llenalos para continuar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                if (new TipoTelefonoControlador().ValidarDuplicado(tipoTelefonoView.Descripcion))
-                    MessageBox.Show("Ya existe un registro con esta descripción", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else
+                if (!string.IsNullOrEmpty(txtId.Text))
                 {
-                    if (!string.IsNullOrEmpty(txtId.Text))
+                    tipoTelefonoView.Id = int.Parse(txtId.Text);
+                    bool validarDuplicado = false;
+
+                    DataGridViewRow rowSlt = new DataGridViewRow();
+                    foreach (DataGridViewRow row in dgvTipos.Rows)
                     {
-                        tipoTelefonoView.Id = int.Parse(txtId.Text);
+                        if (int.Parse(row.Cells["Id"].Value.ToString()) == tipoTelefonoView.Id)
+                            rowSlt = row;
+                    }
+
+                    if (rowSlt.Cells["Descripcion"].Value.ToString().Trim() != tipoTelefonoView.Descripcion)
+                    {
+                        validarDuplicado = new TipoTelefonoControlador().ValidarDuplicado(tipoTelefonoView.Descripcion);
+                        if (validarDuplicado)
+                        {
+                            MessageBox.Show("Ya existe un registro con los datos ingresados", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtDescripcion.Text = "";
+                        }
+                    }
+
+                    if (!validarDuplicado)
+                    {
                         if (new TipoTelefonoControlador().ActualizarTipoTelefono(tipoTelefonoView))
                         {
-                            DataGridViewRow rowSlt = new DataGridViewRow();
-
-                            foreach (DataGridViewRow row in dgvTipos.Rows)
-                            {
-                                if (int.Parse(row.Cells["Id"].Value.ToString()) == tipoTelefonoView.Id)
-                                    rowSlt = row;
-                            }
-
                             AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
                             auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
                             auditoria.Modulo = "TIPO TELEFONO";
@@ -113,10 +123,20 @@ namespace SastUI.UI.Windows.Formulario
                             auditoria.Valor = rowSlt.Cells["Id"].Value.ToString() + "|" + rowSlt.Cells["Descripcion"].Value.ToString();
                             auditoria.Fecha = DateTime.Now;
                             new AuditoriaControlador().InsertarAuditoria(auditoria);
+
+                            MessageBox.Show("Tipo Teléfono Actualizado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         else
                             MessageBox.Show("No es posible actualizar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        ListarTipos();
+                        Limpiar();
                     }
+                }
+                else
+                {
+                    if (new TipoTelefonoControlador().ValidarDuplicado(tipoTelefonoView.Descripcion))
+                        MessageBox.Show("Ya existe un registro con esta descripción", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else
                     {
                         if (new TipoTelefonoControlador().InsertarTipoTelefono(tipoTelefonoView))
@@ -132,11 +152,11 @@ namespace SastUI.UI.Windows.Formulario
                             new AuditoriaControlador().InsertarAuditoria(auditoria);
                         }
                         else
-                            MessageBox.Show("No es posible guardar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                            MessageBox.Show("No es posible actualizar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    ListarTipos();
-                    Limpiar();
+                        ListarTipos();
+                        Limpiar();
+                    }
                 }
             }
         }

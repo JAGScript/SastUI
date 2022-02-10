@@ -108,23 +108,33 @@ namespace SastUI.UI.Windows.Formulario
             }
             else
             {
-                if (new TipoEquipoControlador().ValidarDuplicado(tipoView.Descripcion))
-                    MessageBox.Show("Ya existe un registro con esta descripción", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else
+                if (!string.IsNullOrEmpty(txtId.Text))
                 {
-                    if (!string.IsNullOrEmpty(txtId.Text))
+                    tipoView.Id = int.Parse(txtId.Text);
+                    DataGridViewRow rowSlt = new DataGridViewRow();
+
+                    foreach (DataGridViewRow row in dgvTiposEquipos.Rows)
                     {
-                        tipoView.Id = int.Parse(txtId.Text);
-                        if (new TipoEquipoControlador().ActualizarTipoEquipo(tipoView))
+                        if (int.Parse(row.Cells["Id"].Value.ToString()) == tipoView.Id)
+                            rowSlt = row;
+                    }
+
+                    bool validarDuplicado = false;
+
+                    if (rowSlt.Cells["Nombre"].Value.ToString().Trim() != tipoView.Descripcion)
+                    {
+                        validarDuplicado = new TipoEquipoControlador().ValidarDuplicado(tipoView.Descripcion);
+                        if (validarDuplicado)
                         {
-                            DataGridViewRow rowSlt = new DataGridViewRow();
+                            MessageBox.Show("Ya existe un registro con los datos ingresados", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtDescripcion.Text = "";
+                        }
+                    }
 
-                            foreach (DataGridViewRow row in dgvTiposEquipos.Rows)
-                            {
-                                if (int.Parse(row.Cells["Id"].Value.ToString()) == tipoView.Id)
-                                    rowSlt = row;
-                            }
-
+                    if (!validarDuplicado)
+                    {
+                        if(new TipoEquipoControlador().ActualizarTipoEquipo(tipoView))
+                        {
                             AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
                             auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
                             auditoria.Modulo = "TIPO EQUIPO";
@@ -138,6 +148,14 @@ namespace SastUI.UI.Windows.Formulario
                         else
                             MessageBox.Show("No es posible actualizar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+
+                    ListarTipos();
+                    Limpiar();
+                }
+                else
+                {
+                    if (new TipoEquipoControlador().ValidarDuplicado(tipoView.Descripcion))
+                        MessageBox.Show("Ya existe un registro con esta descripción", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else
                     {
                         if (new TipoEquipoControlador().InsertarTipoEquipo(tipoView))
@@ -153,7 +171,7 @@ namespace SastUI.UI.Windows.Formulario
                             new AuditoriaControlador().InsertarAuditoria(auditoria);
                         }
                         else
-                            MessageBox.Show("No es posible guardar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("No es posible actualizar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                     ListarTipos();

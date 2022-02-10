@@ -12,5 +12,9 @@ namespace SastUI.Dominio.Modelo.Abstracciones
         IEnumerable<TBL_PERFIL> ListarPerfilesActivos();
 
         bool DesactivarPerfil(int idPerfil);
+
+        bool ValidarDuplicado(string perfil);
+
+        IEnumerable<TBL_PERFIL> BuscarPerfilPorCriterio(int tipoBusqueda, string info);
     }
 }

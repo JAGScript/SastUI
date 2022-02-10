@@ -43,7 +43,8 @@ namespace SastUI.UI.Windows.Formulario
             txtNombreCliente.Text = "";
             txtNumero.Text = "";
             cmbTipo.SelectedIndex = 0;
-            cmbEstado.SelectedIndex = 0;
+            cmbEstado.SelectedIndex = 1;
+            cmbEstado.Enabled = false;
         }
 
         private void FormTelefono_Load(object sender, EventArgs e)
@@ -159,23 +160,33 @@ namespace SastUI.UI.Windows.Formulario
                 MessageBox.Show("Existen campos vacios! llenalos para continuar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                if (new TelefonoControlador().ValidarDuplicados(telefonoView.Numero, telefonoView.ClienteId))
-                    MessageBox.Show("El número ingresado ya esta registrado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else
+                if (!string.IsNullOrEmpty(txtId.Text))
                 {
-                    if (!string.IsNullOrEmpty(txtId.Text))
+                    telefonoView.Id = int.Parse(txtId.Text);
+                    DataGridViewRow rowSlt = new DataGridViewRow();
+
+                    foreach (DataGridViewRow row in dgvTelefonos.Rows)
                     {
-                        telefonoView.Id = int.Parse(txtId.Text);
+                        if (int.Parse(row.Cells["Id"].Value.ToString()) == telefonoView.Id)
+                            rowSlt = row;
+                    }
+
+                    bool validarDuplicado = false;
+
+                    if (rowSlt.Cells["Numero"].Value.ToString().Trim() != telefonoView.Numero && rowSlt.Cells["ClienteId"].Value.ToString().Trim() != telefonoView.ClienteId.ToString())
+                    {
+                        validarDuplicado = new TelefonoControlador().ValidarDuplicados(telefonoView.Numero, telefonoView.ClienteId);
+                        if (validarDuplicado)
+                        {
+                            MessageBox.Show("Ya existe un registro con los datos ingresados", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtNumero.Text = "";
+                        }
+                    }
+
+                    if (!validarDuplicado)
+                    {
                         if (new TelefonoControlador().ActualizarTelefono(telefonoView))
                         {
-                            DataGridViewRow rowSlt = new DataGridViewRow();
-
-                            foreach (DataGridViewRow row in dgvTelefonos.Rows)
-                            {
-                                if (int.Parse(row.Cells["Id"].Value.ToString()) == telefonoView.Id)
-                                    rowSlt = row;
-                            }
-
                             AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
                             auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
                             auditoria.Modulo = "TELEFONO";
@@ -183,10 +194,20 @@ namespace SastUI.UI.Windows.Formulario
                             auditoria.Valor = rowSlt.Cells["Id"].Value.ToString() + "|" + rowSlt.Cells["IdTipoTelefono"].Value.ToString() + "|" + rowSlt.Cells["ClienteId"].Value.ToString() + "|" + rowSlt.Cells["Numero"].Value.ToString();
                             auditoria.Fecha = DateTime.Now;
                             new AuditoriaControlador().InsertarAuditoria(auditoria);
+
+                            MessageBox.Show("Teléfono Actualizado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         else
                             MessageBox.Show("No es posible actualizar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+
+                    ListarTelefonos();
+                    Limpiar();
+                }
+                else
+                {
+                    if (new TelefonoControlador().ValidarDuplicados(telefonoView.Numero, telefonoView.ClienteId))
+                        MessageBox.Show("El número ingresado ya esta registrado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else
                     {
                         if (new TelefonoControlador().InsertarTelefono(telefonoView))
@@ -202,11 +223,11 @@ namespace SastUI.UI.Windows.Formulario
                             new AuditoriaControlador().InsertarAuditoria(auditoria);
                         }
                         else
-                            MessageBox.Show("No es posible guardar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                            MessageBox.Show("No es posible actualizar el registro!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    ListarTelefonos();
-                    Limpiar();
+                        ListarTelefonos();
+                        Limpiar();
+                    }
                 }
             }
         }

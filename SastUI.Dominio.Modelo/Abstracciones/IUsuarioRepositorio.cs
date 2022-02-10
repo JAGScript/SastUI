@@ -12,5 +12,9 @@ namespace SastUI.Dominio.Modelo.Abstracciones
         TBL_USUARIO ValidarUsuario(string strUsuario, string strPass);
 
         bool DesactivarUsuario(int idUsuario);
+
+        IEnumerable<TBL_USUARIO> BuscarUsuarioPorCriterio(int tipoBusqueda, string info);
+
+        bool ValidarDuplicado(string login);
     }
 }

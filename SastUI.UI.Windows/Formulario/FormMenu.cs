@@ -215,7 +215,15 @@ namespace SastUI.UI.Windows.Formulario
 
         public void AbrirAuditoria()
         {
-
+            var idUsuario = int.Parse(txtIdUsuario.Text);
+            var nombreUsuario = txtNombreUsuario.Text.ToString();
+            var permisos = int.Parse(txtPermisos.Text);
+            FormAuditoria auditoria = new FormAuditoria(idUsuario, nombreUsuario, permisos);
+            auditoria.TopLevel = false;
+            pnlContenido.Controls.Add(auditoria);
+            pnlContenido.Visible = true;
+            pnlContenido.BringToFront();
+            auditoria.Show();
         }
 
         private void pctClientes_Click(object sender, EventArgs e)
