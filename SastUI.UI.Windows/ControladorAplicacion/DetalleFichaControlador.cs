@@ -22,6 +22,9 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                 nuevo.df_observaciones = detalleFichaView.Observaciones;
                 nuevo.df_proceso = detalleFichaView.Proceso;
                 nuevo.df_estado = detalleFichaView.Estado;
+                nuevo.df_fecha_ingreso = detalleFichaView.FechaIngreso;
+                nuevo.df_fecha_finalizacion = detalleFichaView.FechaFinalización;
+                nuevo.df_tiempo = detalleFichaView.Tiempo;
                 new DetalleFichaServicio().InsertarDetalleFicha(nuevo);
                 return true;
             }
@@ -43,6 +46,9 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                 detalleFicha.df_observaciones = detalleFichaView.Observaciones;
                 detalleFicha.df_proceso = detalleFichaView.Proceso;
                 detalleFicha.df_estado = detalleFichaView.Estado;
+                detalleFicha.df_fecha_ingreso = detalleFichaView.FechaIngreso;
+                detalleFicha.df_fecha_finalizacion = detalleFichaView.FechaFinalización;
+                detalleFicha.df_tiempo = detalleFichaView.Tiempo;
                 new DetalleFichaServicio().ModificarDetalleFicha(detalleFicha);
                 return true;
             }
@@ -111,7 +117,10 @@ namespace SastUI.UI.Windows.ControladorAplicacion
                     Observaciones = item.df_observaciones,
                     Proceso = item.df_proceso,
                     Estado = item.df_estado,
-                    DescripcionEstado = desEstado
+                    DescripcionEstado = desEstado,
+                    FechaIngreso = item.df_fecha_ingreso,
+                    FechaFinalización = item.df_fecha_finalizacion,
+                    Tiempo = item.df_tiempo
                 });
             }
             return detalleFichaView;

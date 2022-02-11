@@ -690,6 +690,9 @@ namespace SastUI.UI.Windows.Formulario
                     detalle.Observaciones = "SN";
                     detalle.Proceso = "INGRESADO";
                     detalle.Estado = "1";
+                    detalle.FechaIngreso = DateTime.Now;
+                    detalle.FechaFinalización = null;
+                    detalle.Tiempo = "";
 
                     new DetalleFichaControlador().InsertarDetalleFicha(detalle);
                 }

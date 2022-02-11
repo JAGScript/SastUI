@@ -47,6 +47,9 @@
           <Property Name="df_observaciones" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="df_proceso" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="df_estado" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="df_fecha_ingreso" Type="datetime" />
+          <Property Name="df_fecha_finalizacion" Type="datetime" />
+          <Property Name="df_tiempo" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TBL_EQUIPO">
           <Key>
@@ -343,6 +346,9 @@
           <Property Name="df_estado" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="TBL_CABECERA_FICHA" Relationship="Self.FK_DetalleFicha_CabeceraFicha" FromRole="TBL_DETALLE_FICHA" ToRole="TBL_CABECERA_FICHA" />
           <NavigationProperty Name="TBL_EQUIPO" Relationship="Self.FK_DetalleFicha_Equipo" FromRole="TBL_DETALLE_FICHA" ToRole="TBL_EQUIPO" />
+          <Property Name="df_fecha_ingreso" Type="DateTime" Precision="3" />
+          <Property Name="df_fecha_finalizacion" Type="DateTime" Precision="3" />
+          <Property Name="df_tiempo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="true" />
         </EntityType>
         <EntityType Name="TBL_EQUIPO">
           <Key>
@@ -653,6 +659,9 @@
           <EntitySetMapping Name="TBL_DETALLE_FICHA">
             <EntityTypeMapping TypeName="SASTModel.TBL_DETALLE_FICHA">
               <MappingFragment StoreEntitySet="TBL_DETALLE_FICHA">
+                <ScalarProperty Name="df_tiempo" ColumnName="df_tiempo" />
+                <ScalarProperty Name="df_fecha_finalizacion" ColumnName="df_fecha_finalizacion" />
+                <ScalarProperty Name="df_fecha_ingreso" ColumnName="df_fecha_ingreso" />
                 <ScalarProperty Name="df_id" ColumnName="df_id" />
                 <ScalarProperty Name="cf_id" ColumnName="cf_id" />
                 <ScalarProperty Name="eq_id" ColumnName="eq_id" />

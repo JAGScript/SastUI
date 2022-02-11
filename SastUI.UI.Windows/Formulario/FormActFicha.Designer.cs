@@ -147,7 +147,7 @@
             // txtPermisos
             // 
             this.txtPermisos.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPermisos.Location = new System.Drawing.Point(1276, 18);
+            this.txtPermisos.Location = new System.Drawing.Point(1565, 20);
             this.txtPermisos.Margin = new System.Windows.Forms.Padding(4);
             this.txtPermisos.Name = "txtPermisos";
             this.txtPermisos.ReadOnly = true;
@@ -158,7 +158,7 @@
             // txtNombreUsuario
             // 
             this.txtNombreUsuario.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreUsuario.Location = new System.Drawing.Point(1366, 18);
+            this.txtNombreUsuario.Location = new System.Drawing.Point(1655, 20);
             this.txtNombreUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.ReadOnly = true;
@@ -169,7 +169,7 @@
             // txtIdUsuario
             // 
             this.txtIdUsuario.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdUsuario.Location = new System.Drawing.Point(1320, 18);
+            this.txtIdUsuario.Location = new System.Drawing.Point(1609, 20);
             this.txtIdUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdUsuario.Name = "txtIdUsuario";
             this.txtIdUsuario.ReadOnly = true;
@@ -181,7 +181,7 @@
             // 
             this.pct_cerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pct_cerrar.Image = global::SastUI.UI.Windows.Properties.Resources.Cerrar;
-            this.pct_cerrar.Location = new System.Drawing.Point(1415, 15);
+            this.pct_cerrar.Location = new System.Drawing.Point(1709, 15);
             this.pct_cerrar.Margin = new System.Windows.Forms.Padding(4);
             this.pct_cerrar.Name = "pct_cerrar";
             this.pct_cerrar.Size = new System.Drawing.Size(47, 37);
@@ -210,7 +210,7 @@
             this.dgvListaFichas.ReadOnly = true;
             this.dgvListaFichas.RowHeadersWidth = 51;
             this.dgvListaFichas.RowTemplate.Height = 24;
-            this.dgvListaFichas.Size = new System.Drawing.Size(1417, 200);
+            this.dgvListaFichas.Size = new System.Drawing.Size(1687, 200);
             this.dgvListaFichas.TabIndex = 78;
             this.dgvListaFichas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaFichas_CellClick);
             // 
@@ -270,7 +270,7 @@
             this.dgvDetalleFicha.ReadOnly = true;
             this.dgvDetalleFicha.RowHeadersWidth = 51;
             this.dgvDetalleFicha.RowTemplate.Height = 24;
-            this.dgvDetalleFicha.Size = new System.Drawing.Size(1417, 184);
+            this.dgvDetalleFicha.Size = new System.Drawing.Size(1687, 184);
             this.dgvDetalleFicha.TabIndex = 83;
             this.dgvDetalleFicha.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleFicha_CellClick);
             // 
@@ -438,7 +438,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(1475, 773);
+            this.ClientSize = new System.Drawing.Size(1769, 773);
             this.ControlBox = false;
             this.Controls.Add(this.cmbEstados);
             this.Controls.Add(this.txtIdEquipo);

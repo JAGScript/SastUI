@@ -16,5 +16,8 @@ namespace SastUI.UI.Windows.VistaModelo
         public string Proceso { get; set; }
         public string Estado { get; set; }
         public string DescripcionEstado { get; set; }
+        public DateTime? FechaIngreso { get; set; }
+        public DateTime? FechaFinalización { get; set; }
+        public string Tiempo { get; set; }
     }
 }

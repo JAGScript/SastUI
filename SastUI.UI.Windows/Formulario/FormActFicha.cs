@@ -164,6 +164,9 @@ namespace SastUI.UI.Windows.Formulario
             txtObs.Text = seleccionado.Cells[4].Value.ToString();
             txtProceso.Text = seleccionado.Cells[5].Value.ToString();
             cmbEstados.SelectedValue = int.Parse(seleccionado.Cells[6].Value.ToString());
+
+            if (int.Parse(seleccionado.Cells[6].Value.ToString()) == 5)
+                btnActualizar.Enabled = false;
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -195,6 +198,8 @@ namespace SastUI.UI.Windows.Formulario
                         rowDetalle = row;
                 }
 
+                detalle.FechaIngreso = Convert.ToDateTime(rowDetalle.Cells["FechaIngreso"].Value.ToString());
+
                 if ((int.Parse(rowDetalle.Cells["Estado"].Value.ToString()) == 4 || int.Parse(rowDetalle.Cells["Estado"].Value.ToString()) == 5) &&
                     (int.Parse(detalle.Estado) == 1 || int.Parse(detalle.Estado) == 2 || int.Parse(detalle.Estado) == 3))
                 {
@@ -203,27 +208,55 @@ namespace SastUI.UI.Windows.Formulario
                 }
                 else
                 {
-                    new DetalleFichaControlador().ActualizarDetalleFicha(detalle);
+                    if (estado == 5 && int.Parse(rowDetalle.Cells["Estado"].Value.ToString()) != 4)
+                    {
+                        MessageBox.Show("La ficha no se encuentra Finalizada, para la Entrega al Cliente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        cmbEstados.SelectedValue = int.Parse(rowDetalle.Cells["Estado"].Value.ToString());
+                    }
+                    else
+                    {
+                        if (estado == 4)//Cuando ya finaliza el proceso
+                        {
+                            var fechaFinalizacion = DateTime.Now;
+                            var fechaIngreso = Convert.ToDateTime(rowDetalle.Cells["FechaIngreso"].Value.ToString());
+                            string tiempo = "Horas: " + (fechaFinalizacion - fechaIngreso).Hours + " Minutos: " + (fechaFinalizacion - fechaIngreso).Minutes;
+                            detalle.FechaFinalización = fechaFinalizacion;
+                            detalle.Tiempo = tiempo;
+                        }
+                        else
+                        {
+                            detalle.FechaFinalización = null;
+                            detalle.Tiempo = "";
+                        }
 
-                    //Ingresar auditoria
+                        if (estado == 5)
+                        {
+                            detalle.FechaFinalización = Convert.ToDateTime(rowDetalle.Cells["FechaFinalización"].Value.ToString());
+                            detalle.Tiempo = rowDetalle.Cells["Tiempo"].Value.ToString();
+                        }
 
-                    AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
-                    auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
-                    auditoria.Modulo = "ACTUALIZAR FICHA";
-                    auditoria.Accion = "ACTUALIZAR";
-                    auditoria.Valor = idDetalle.ToString() + "|" + idCabecera.ToString() + "|" + idEquipo.ToString() + "|" + rowDetalle.Cells["Observaciones"].Value.ToString() + "|" + rowDetalle.Cells["Proceso"].Value.ToString() + "|" + rowDetalle.Cells["Estado"].Value.ToString();
-                    auditoria.Fecha = DateTime.Now;
-                    new AuditoriaControlador().InsertarAuditoria(auditoria);
+                        new DetalleFichaControlador().ActualizarDetalleFicha(detalle);
 
-                    dgvDetalleFicha.DataSource = ListarDetalle(idCabecera);
+                        //Ingresar auditoria
 
-                    txtIdDetalle.Text = "";
-                    txtIdCabecera.Text = "";
-                    txtIdEquipo.Text = "";
-                    txtEquipo.Text = "";
-                    txtObs.Text = "";
-                    txtProceso.Text = "";
-                    cmbEstados.SelectedIndex = 0;
+                        AuditoriaVistaModelo auditoria = new AuditoriaVistaModelo();
+                        auditoria.IdUsuario = int.Parse(txtIdUsuario.Text);
+                        auditoria.Modulo = "ACTUALIZAR FICHA";
+                        auditoria.Accion = "ACTUALIZAR";
+                        auditoria.Valor = idDetalle.ToString() + "|" + idCabecera.ToString() + "|" + idEquipo.ToString() + "|" + rowDetalle.Cells["Observaciones"].Value.ToString() + "|" + rowDetalle.Cells["Proceso"].Value.ToString() + "|" + rowDetalle.Cells["Estado"].Value.ToString() + "|" + rowDetalle.Cells["DescripcionEstado"].Value.ToString();
+                        auditoria.Fecha = DateTime.Now;
+                        new AuditoriaControlador().InsertarAuditoria(auditoria);
+
+                        dgvDetalleFicha.DataSource = ListarDetalle(idCabecera);
+
+                        txtIdDetalle.Text = "";
+                        txtIdCabecera.Text = "";
+                        txtIdEquipo.Text = "";
+                        txtEquipo.Text = "";
+                        txtObs.Text = "";
+                        txtProceso.Text = "";
+                        cmbEstados.SelectedIndex = 0;
+                    }
                 }
             }
         }

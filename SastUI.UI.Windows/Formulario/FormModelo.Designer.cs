@@ -74,9 +74,9 @@
             this.label4.Location = new System.Drawing.Point(47, 322);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(205, 33);
+            this.label4.Size = new System.Drawing.Size(219, 33);
             this.label4.TabIndex = 47;
-            this.label4.Text = "Lista de Marcas";
+            this.label4.Text = "Lista de Modelos";
             // 
             // cmbEstado
             // 
@@ -150,9 +150,9 @@
             this.label1.Location = new System.Drawing.Point(47, 28);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 33);
+            this.label1.Size = new System.Drawing.Size(117, 33);
             this.label1.TabIndex = 40;
-            this.label1.Text = "Marcas";
+            this.label1.Text = "Modelos";
             // 
             // btnEliminar
             // 

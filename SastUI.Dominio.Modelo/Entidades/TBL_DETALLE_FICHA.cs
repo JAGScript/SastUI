@@ -20,6 +20,9 @@ namespace SastUI.Dominio.Modelo.Entidades
         public string df_observaciones { get; set; }
         public string df_proceso { get; set; }
         public string df_estado { get; set; }
+        public Nullable<System.DateTime> df_fecha_ingreso { get; set; }
+        public Nullable<System.DateTime> df_fecha_finalizacion { get; set; }
+        public string df_tiempo { get; set; }
     
         public virtual TBL_CABECERA_FICHA TBL_CABECERA_FICHA { get; set; }
         public virtual TBL_EQUIPO TBL_EQUIPO { get; set; }

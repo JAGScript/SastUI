@@ -106,7 +106,7 @@ namespace SastUI.UI.Windows.Formulario
         {
             txtInfo.Visible = false;
             btnBuscar.Visible = false;
-            btnBuscar.Visible = false;
+            btnCancelar.Visible = false;
             cmbBusqueda.SelectedIndex = 0;
             ListarAuditoria();
         }
